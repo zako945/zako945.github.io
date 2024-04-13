@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-04-13T04:20:28.503Z</updated>
+  <updated>2024-04-13T04:49:31.864Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://zako945.github.io/post/3sum/"/>
     <id>http://zako945.github.io/post/3sum/</id>
     <published>2024-04-12T16:00:00.000Z</published>
-    <updated>2024-04-13T04:20:28.503Z</updated>
+    <updated>2024-04-13T04:49:31.864Z</updated>
     
     
       
@@ -36,7 +36,7 @@
     
     
     
-    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Two-Pointers/"/>
+    <category term="Leetcode - Two Pointers" scheme="http://zako945.github.io/categories/Leetcode-Two-Pointers/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
