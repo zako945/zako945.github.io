@@ -13,7 +13,9 @@
       
       <categories>
           
-          <category> Leetcode - Two Pointers </category>
+          <category> Leetcode </category>
+          
+          <category> Two Pointers </category>
           
       </categories>
       
@@ -44,6 +46,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -52,35 +56,6 @@
         <tags>
             
             <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
-            <tag> Easy </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>844. Backspace String Compare</title>
-      <link href="/post/backspace-string-compare/"/>
-      <url>/post/backspace-string-compare/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/backspace-string-compare/">https://leetcode.cn/problems/backspace-string-compare/</a></strong></p><p><strong>題意：</strong>給兩個 string <code>s</code>, <code>t</code>, 其中的 <code>#</code> 代表 <code>退格(backspace)字元</code>, 求兩字串是否相等。</p></blockquote><p><img src="https://i.imgur.com/DvHelFY.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 two pointers, 其中 <code>slowindex</code> 負責 in-place 記錄新的 string, 而 <code>fastindex</code> 負責遍歷整個 string</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">backspaceCompare</span><span class="params">(string s, string t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(s) == <span class="built_in">build</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">string <span class="title">build</span><span class="params">(string s)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> slowindex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fastindex = <span class="number">0</span>; fastindex &lt; s.<span class="built_in">size</span>(); ++fastindex)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[fastindex] == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                slowindex = <span class="built_in">max</span>(<span class="number">0</span>, --slowindex);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                s[slowindex++] = s[fastindex];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(<span class="number">0</span>, slowindex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(m + n)$ ➔ 遍歷 <code>s</code> 和 <code>t</code>, 其中 m 為 <code>s</code> 之長度, <code>n</code> 為 <code>t</code> 之長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Two Pointers </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
@@ -102,6 +77,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -120,23 +97,23 @@
     
     
     <entry>
-      <title>121. Best Time to Buy and Sell Stock</title>
-      <link href="/post/best-time-to-buy-and-sell-stock/"/>
-      <url>/post/best-time-to-buy-and-sell-stock/</url>
+      <title>844. Backspace String Compare</title>
+      <link href="/post/backspace-string-compare/"/>
+      <url>/post/backspace-string-compare/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/">https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/</a></strong></p><p><strong>題意：</strong>給一 array <code>prices</code>, 從左到右分別是每天的股票價格, 求如何買賣可以獲得最大的利潤。</p><p><strong>注意：</strong>買入的天數必須在賣出的天數之前。</p></blockquote><p><img src="https://i.imgur.com/oGeonr9.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 紀錄前 <code>i - 1</code> 天的最大利潤、最小價格, 然後計算第 <code>i</code> 天的利潤並比較</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>; <span class="comment">// 紀錄前 (i - 1) 天的最大利潤</span></span><br><span class="line">        <span class="type">int</span> minPrice = prices[<span class="number">0</span>];<span class="comment">// 紀錄前 (i - 1) 天的最小價格</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            res = <span class="built_in">max</span>(res, prices[i] - minPrice);</span><br><span class="line">            minPrice = <span class="built_in">min</span>(minPrice, prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>prices</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/backspace-string-compare/">https://leetcode.cn/problems/backspace-string-compare/</a></strong></p><p><strong>題意：</strong>給兩個 string <code>s</code>, <code>t</code>, 其中的 <code>#</code> 代表 <code>退格(backspace)字元</code>, 求兩字串是否相等。</p></blockquote><p><img src="https://i.imgur.com/DvHelFY.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 two pointers, 其中 <code>slowindex</code> 負責 in-place 記錄新的 string, 而 <code>fastindex</code> 負責遍歷整個 string</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">backspaceCompare</span><span class="params">(string s, string t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(s) == <span class="built_in">build</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function">string <span class="title">build</span><span class="params">(string s)</span></span>&#123;</span><br><span class="line">        <span class="type">int</span> slowindex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> fastindex = <span class="number">0</span>; fastindex &lt; s.<span class="built_in">size</span>(); ++fastindex)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[fastindex] == <span class="string">&#x27;#&#x27;</span>)</span><br><span class="line">                slowindex = <span class="built_in">max</span>(<span class="number">0</span>, --slowindex);</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                s[slowindex++] = s[fastindex];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(<span class="number">0</span>, slowindex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(m + n)$ ➔ 遍歷 <code>s</code> 和 <code>t</code>, 其中 m 為 <code>s</code> 之長度, <code>n</code> 為 <code>t</code> 之長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
       
       
       <categories>
           
-          <category> Sliding Window </category>
+          <category> Leetcode </category>
+          
+          <category> Two Pointers </category>
           
       </categories>
       
       
         <tags>
-            
-            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
@@ -160,7 +137,42 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>121. Best Time to Buy and Sell Stock</title>
+      <link href="/post/best-time-to-buy-and-sell-stock/"/>
+      <url>/post/best-time-to-buy-and-sell-stock/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/">https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/</a></strong></p><p><strong>題意：</strong>給一 array <code>prices</code>, 從左到右分別是每天的股票價格, 求如何買賣可以獲得最大的利潤。</p><p><strong>注意：</strong>買入的天數必須在賣出的天數之前。</p></blockquote><p><img src="https://i.imgur.com/oGeonr9.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 紀錄前 <code>i - 1</code> 天的最大利潤、最小價格, 然後計算第 <code>i</code> 天的利潤並比較</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxProfit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; prices)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>; <span class="comment">// 紀錄前 (i - 1) 天的最大利潤</span></span><br><span class="line">        <span class="type">int</span> minPrice = prices[<span class="number">0</span>];<span class="comment">// 紀錄前 (i - 1) 天的最小價格</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; prices.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            res = <span class="built_in">max</span>(res, prices[i] - minPrice);</span><br><span class="line">            minPrice = <span class="built_in">min</span>(minPrice, prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>prices</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Sliding Window </category>
           
       </categories>
       
@@ -190,6 +202,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Dynamic Programming </category>
           
@@ -222,6 +236,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -252,6 +268,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Array </category>
           
@@ -284,6 +302,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -310,6 +330,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Bit Manipulation </category>
           
@@ -340,6 +362,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -369,6 +393,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -395,6 +421,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Stack </category>
           
@@ -427,6 +455,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -454,6 +484,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Binary Search </category>
           
       </categories>
@@ -480,6 +512,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Stack </category>
           
@@ -512,6 +546,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -543,6 +579,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Math &amp; Geometry </category>
           
       </categories>
@@ -572,6 +610,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Trie </category>
           
       </categories>
@@ -598,6 +638,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Tree </category>
           
@@ -630,6 +672,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Heap </category>
           
       </categories>
@@ -656,6 +700,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Heap </category>
           
@@ -684,6 +730,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Linked List </category>
           
       </categories>
@@ -704,6 +752,37 @@
     
     
     <entry>
+      <title>424. Longest Repeating Character Replacement</title>
+      <link href="/post/longest-repeating-character-replacement/"/>
+      <url>/post/longest-repeating-character-replacement/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/longest-repeating-character-replacement/">https://leetcode.cn/problems/longest-repeating-character-replacement/</a></strong></p><p><strong>題意：</strong>給一 string <code>s</code> 和一整數 <code>k</code>, 你可以選擇將 <code>s</code> 中的任意字元變成其他大寫英文字母, 該操作最多執行 <code>k</code> 次。</p><p>經上述操作後, 返回<strong>僅包含相同字元</strong>的最大 substring 長度。</p><p>s 由大寫英文字母所組成。</p></blockquote><p><img src="https://i.imgur.com/xPxWZv5.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 Sliding Window, 將 <code>window</code> 中的元素分成兩部分</strong></p><ul><li>出現頻率最多的元素</li><li>扣掉出現頻率最多的元素後，所剩餘的元素</li></ul><p><strong>若剩餘的元素個數 <code>≤ k</code>, 代表剩餘的元素可全部替換為頻率最多的元素。反之, 則不行。做完後, 更新 <code>res</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">characterReplacement</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">window</span><span class="params">(<span class="number">26</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s[right];</span><br><span class="line">            ++window[c - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若剩餘元素個數 &gt; k，則縮小窗口</span></span><br><span class="line">            <span class="keyword">while</span>(right - left - *<span class="built_in">max_element</span>(window.<span class="built_in">begin</span>(), window.<span class="built_in">end</span>()) &gt; k)&#123;</span><br><span class="line">                <span class="type">char</span> d = s[left];</span><br><span class="line">                --window[d - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="built_in">max</span>(res, right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ $O(26 \cdot n)$, <code>s</code> 中的每個元素最多被遍歷 2 次（<code>left</code>、<code>right</code>）<ul><li>$O(26 \cdot n)$：while loop 中每次取 <code>max_element()</code> 需 $O(26)$</li></ul></li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code></li></ul><h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a><strong>Solution 2:</strong></h2><blockquote><p><strong>想法: 改善 Solution 1, 將 <code>max_element()</code> 提出, 變成在 while loop 外部維護, 而非在 while loop 中維護</strong></p><ul><li>能這樣做是因為在內層 while loop 中移除 <code>window[s[left]]</code> 後, <code>maxf</code> 只會<strong>越來越小</strong></li><li>也就是說 <code>right - left - maxf(移除前) ≥ right - left - maxf(移除後)</code> 始終是成立的, 因為 <code>maxf(移除後) ≤ maxf(移除前)</code></li><li>若 <code>right - left - maxf(移除前) &gt; k</code> 成立, 則 <code>right - left - maxf(移除後) &gt; k</code> 也必定成立, 因此根本不必在 while loop 中更新 <code>maxf</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">characterReplacement</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; window;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s[right];</span><br><span class="line">            ++window[c];</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 取出 widnow 中出現頻率最高的 char 的個數</span></span><br><span class="line">            <span class="type">int</span> maxf = <span class="built_in">max_element</span>(window.<span class="built_in">begin</span>(), window.<span class="built_in">end</span>(), [](<span class="keyword">auto</span>&amp; p1, <span class="keyword">auto</span>&amp; p2)&#123;</span><br><span class="line">                <span class="keyword">return</span> p1.second &lt; p2.second;</span><br><span class="line">            &#125;)-&gt;second;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(right - left - maxf &gt; k)&#123;</span><br><span class="line">                <span class="type">char</span> d = s[left];</span><br><span class="line">                --window[d];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="built_in">max</span>(res, right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ <code>s</code> 中的每個元素最多被遍歷 2 次（<code>left</code>、<code>right</code>）</li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code> 長度為 $O(26)$</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Sliding Window </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>128. Longest Consecutive Sequence</title>
       <link href="/post/longest-consecutive-sequence/"/>
       <url>/post/longest-consecutive-sequence/</url>
@@ -712,6 +791,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Array </category>
           
@@ -735,35 +816,6 @@
     
     
     <entry>
-      <title>424. Longest Repeating Character Replacement</title>
-      <link href="/post/longest-repeating-character-replacement/"/>
-      <url>/post/longest-repeating-character-replacement/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/longest-repeating-character-replacement/">https://leetcode.cn/problems/longest-repeating-character-replacement/</a></strong></p><p><strong>題意：</strong>給一 string <code>s</code> 和一整數 <code>k</code>, 你可以選擇將 <code>s</code> 中的任意字元變成其他大寫英文字母, 該操作最多執行 <code>k</code> 次。</p><p>經上述操作後, 返回<strong>僅包含相同字元</strong>的最大 substring 長度。</p><p>s 由大寫英文字母所組成。</p></blockquote><p><img src="https://i.imgur.com/xPxWZv5.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 Sliding Window, 將 <code>window</code> 中的元素分成兩部分</strong></p><ul><li>出現頻率最多的元素</li><li>扣掉出現頻率最多的元素後，所剩餘的元素</li></ul><p><strong>若剩餘的元素個數 <code>≤ k</code>, 代表剩餘的元素可全部替換為頻率最多的元素。反之, 則不行。做完後, 更新 <code>res</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">characterReplacement</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">window</span><span class="params">(<span class="number">26</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s[right];</span><br><span class="line">            ++window[c - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若剩餘元素個數 &gt; k，則縮小窗口</span></span><br><span class="line">            <span class="keyword">while</span>(right - left - *<span class="built_in">max_element</span>(window.<span class="built_in">begin</span>(), window.<span class="built_in">end</span>()) &gt; k)&#123;</span><br><span class="line">                <span class="type">char</span> d = s[left];</span><br><span class="line">                --window[d - <span class="string">&#x27;A&#x27;</span>];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="built_in">max</span>(res, right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ $O(26 \cdot n)$, <code>s</code> 中的每個元素最多被遍歷 2 次（<code>left</code>、<code>right</code>）<ul><li>$O(26 \cdot n)$：while loop 中每次取 <code>max_element()</code> 需 $O(26)$</li></ul></li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code></li></ul><h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution 2:"></a><strong>Solution 2:</strong></h2><blockquote><p><strong>想法: 改善 Solution 1, 將 <code>max_element()</code> 提出, 變成在 while loop 外部維護, 而非在 while loop 中維護</strong></p><ul><li>能這樣做是因為在內層 while loop 中移除 <code>window[s[left]]</code> 後, <code>maxf</code> 只會<strong>越來越小</strong></li><li>也就是說 <code>right - left - maxf(移除前) ≥ right - left - maxf(移除後)</code> 始終是成立的, 因為 <code>maxf(移除後) ≤ maxf(移除前)</code></li><li>若 <code>right - left - maxf(移除前) &gt; k</code> 成立, 則 <code>right - left - maxf(移除後) &gt; k</code> 也必定成立, 因此根本不必在 while loop 中更新 <code>maxf</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">characterReplacement</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; window;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s[right];</span><br><span class="line">            ++window[c];</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 取出 widnow 中出現頻率最高的 char 的個數</span></span><br><span class="line">            <span class="type">int</span> maxf = <span class="built_in">max_element</span>(window.<span class="built_in">begin</span>(), window.<span class="built_in">end</span>(), [](<span class="keyword">auto</span>&amp; p1, <span class="keyword">auto</span>&amp; p2)&#123;</span><br><span class="line">                <span class="keyword">return</span> p1.second &lt; p2.second;</span><br><span class="line">            &#125;)-&gt;second;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(right - left - maxf &gt; k)&#123;</span><br><span class="line">                <span class="type">char</span> d = s[left];</span><br><span class="line">                --window[d];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">            res = <span class="built_in">max</span>(res, right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ <code>s</code> 中的每個元素最多被遍歷 2 次（<code>left</code>、<code>right</code>）</li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code> 長度為 $O(26)$</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Sliding Window </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>3. Longest Substring Without Repeating Characters</title>
       <link href="/post/longest-substring-without-repeating-characters/"/>
       <url>/post/longest-substring-without-repeating-characters/</url>
@@ -772,6 +824,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Sliding Window </category>
           
@@ -804,6 +858,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -834,6 +890,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Tree </category>
           
@@ -866,6 +924,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Intervals </category>
           
       </categories>
@@ -895,6 +955,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -923,6 +985,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Linked List </category>
           
@@ -955,6 +1019,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -985,6 +1051,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Dynamic Programming </category>
           
@@ -1017,6 +1085,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Stack </category>
           
       </categories>
@@ -1046,6 +1116,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -1072,6 +1144,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Bit Manipulation </category>
           
@@ -1104,6 +1178,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Bit Manipulation </category>
           
       </categories>
@@ -1133,6 +1209,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -1155,35 +1233,6 @@
     
     
     <entry>
-      <title>567. Permutation in String</title>
-      <link href="/post/permutation-in-string/"/>
-      <url>/post/permutation-in-string/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/permutation-in-string/">https://leetcode.cn/problems/permutation-in-string/</a></strong></p><p><strong>題意：</strong>給兩 string <code>s1</code> 和 <code>s2</code>, 若 <code>s2</code> 包含 <code>s1</code> 的<strong>排列</strong>, 則返回 <code>true</code>。否則, 返回 <code>false</code>。</p><p><code>s1</code> 的排列之一是 <code>s2</code> 的 <strong>substring</strong>。</p><p><strong>注意：</strong>substring 為連續的, subsequence 為非連續的</p></blockquote><p><img src="https://i.imgur.com/XbTG8Fb.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Sliding Window, 類似 <a href="https://zako945.github.io/post/minimum-window-substring/">76. Minimum Window Substring</a></strong></p><ul><li>先不斷地增加 <code>right</code> 來擴大窗口</li><li>縮小窗口的時機是窗口大小 <code>≥ s1.size()</code> 時</li><li>當 <code>valid == need.size()</code> 時, 代表窗口中的 substring 為合法的排列</li></ul><p><strong>注意：這題是「固定長度」的窗口, 因為窗口每次向前滑動時只會移出一個字元, 故可以把內層的 while 改成 if, 其效果是一樣的</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">checkInclusion</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right= <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; window, need;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; ch : s1)</span><br><span class="line">            ++need[ch];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> valid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s2.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s2[right];</span><br><span class="line">            window[c]++;</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(need.<span class="built_in">find</span>(c) != need.<span class="built_in">end</span>() &amp;&amp; window[c] == need[c])</span><br><span class="line">                ++valid;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(right - left &gt;= s1.<span class="built_in">size</span>())&#123; <span class="comment">// 固定窗口，可以改成 if 判斷</span></span><br><span class="line">                <span class="keyword">if</span>(valid == need.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 存在排列 substring</span></span><br><span class="line"></span><br><span class="line">                <span class="type">char</span> d = s2[left];</span><br><span class="line">                <span class="keyword">if</span>(need.<span class="built_in">find</span>(d) != need.<span class="built_in">end</span>() &amp;&amp; window[d] == need[d]) <span class="comment">// 移出前相等</span></span><br><span class="line">                    --valid;</span><br><span class="line">                --window[d];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n1 + n2)$ ➔ 其中 <code>n1</code>、<code>n2</code> 分別為 <code>s1</code>、<code>s2</code> 的長度<ul><li>$O(n1)$：遍歷 <code>s1</code> 計算 <code>need</code></li><li>$O(n2)$：<code>s2</code> 中的每個元素最多被遍歷 <code>2</code> 次（<code>left</code>、<code>right</code>）</li></ul></li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code>、<code>need</code> 長度皆為 $O(26)$</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Sliding Window </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>112. Path Sum</title>
       <link href="/post/path-sum/"/>
       <url>/post/path-sum/</url>
@@ -1192,6 +1241,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Tree </category>
           
@@ -1213,6 +1264,37 @@
     
     
     <entry>
+      <title>567. Permutation in String</title>
+      <link href="/post/permutation-in-string/"/>
+      <url>/post/permutation-in-string/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/permutation-in-string/">https://leetcode.cn/problems/permutation-in-string/</a></strong></p><p><strong>題意：</strong>給兩 string <code>s1</code> 和 <code>s2</code>, 若 <code>s2</code> 包含 <code>s1</code> 的<strong>排列</strong>, 則返回 <code>true</code>。否則, 返回 <code>false</code>。</p><p><code>s1</code> 的排列之一是 <code>s2</code> 的 <strong>substring</strong>。</p><p><strong>注意：</strong>substring 為連續的, subsequence 為非連續的</p></blockquote><p><img src="https://i.imgur.com/XbTG8Fb.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Sliding Window, 類似 <a href="https://zako945.github.io/post/minimum-window-substring/">76. Minimum Window Substring</a></strong></p><ul><li>先不斷地增加 <code>right</code> 來擴大窗口</li><li>縮小窗口的時機是窗口大小 <code>≥ s1.size()</code> 時</li><li>當 <code>valid == need.size()</code> 時, 代表窗口中的 substring 為合法的排列</li></ul><p><strong>注意：這題是「固定長度」的窗口, 因為窗口每次向前滑動時只會移出一個字元, 故可以把內層的 while 改成 if, 其效果是一樣的</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">checkInclusion</span><span class="params">(string s1, string s2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right= <span class="number">0</span>;</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; window, need;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; ch : s1)</span><br><span class="line">            ++need[ch];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> valid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(right &lt; s2.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="type">char</span> c = s2[right];</span><br><span class="line">            window[c]++;</span><br><span class="line">            ++right;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(need.<span class="built_in">find</span>(c) != need.<span class="built_in">end</span>() &amp;&amp; window[c] == need[c])</span><br><span class="line">                ++valid;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(right - left &gt;= s1.<span class="built_in">size</span>())&#123; <span class="comment">// 固定窗口，可以改成 if 判斷</span></span><br><span class="line">                <span class="keyword">if</span>(valid == need.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 存在排列 substring</span></span><br><span class="line"></span><br><span class="line">                <span class="type">char</span> d = s2[left];</span><br><span class="line">                <span class="keyword">if</span>(need.<span class="built_in">find</span>(d) != need.<span class="built_in">end</span>() &amp;&amp; window[d] == need[d]) <span class="comment">// 移出前相等</span></span><br><span class="line">                    --valid;</span><br><span class="line">                --window[d];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n1 + n2)$ ➔ 其中 <code>n1</code>、<code>n2</code> 分別為 <code>s1</code>、<code>s2</code> 的長度<ul><li>$O(n1)$：遍歷 <code>s1</code> 計算 <code>need</code></li><li>$O(n2)$：<code>s2</code> 中的每個元素最多被遍歷 <code>2</code> 次（<code>left</code>、<code>right</code>）</li></ul></li><li><strong>space：</strong>$O(1)$ ➔ <code>window</code>、<code>need</code> 長度皆為 $O(26)$</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Sliding Window </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>66. Plus One</title>
       <link href="/post/plus-one/"/>
       <url>/post/plus-one/</url>
@@ -1221,6 +1303,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Math &amp; Geometry </category>
           
@@ -1250,6 +1334,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Array </category>
           
@@ -1282,6 +1368,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Dynamic Programming </category>
           
       </categories>
@@ -1300,6 +1388,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Two Pointers </category>
           
@@ -1332,6 +1422,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -1358,6 +1450,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Bit Manipulation </category>
           
@@ -1387,6 +1481,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Linked List </category>
           
@@ -1419,6 +1515,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -1450,6 +1548,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Bit Manipulation </category>
           
       </categories>
@@ -1478,6 +1578,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Two Pointers </category>
           
@@ -1508,6 +1610,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Tree </category>
           
       </categories>
@@ -1534,6 +1638,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Heap </category>
           
@@ -1566,6 +1672,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Array </category>
           
       </categories>
@@ -1597,6 +1705,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -1625,6 +1735,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Array </category>
           
@@ -1657,6 +1769,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Two Pointers </category>
           
       </categories>
@@ -1688,6 +1802,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Stack </category>
           
       </categories>
@@ -1718,6 +1834,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Array </category>
           
