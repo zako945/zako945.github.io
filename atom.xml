@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-04-30T16:39:17.975Z</updated>
+  <updated>2024-12-10T23:40:56.913Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>15. 3Sum</title>
-    <link href="http://zako945.github.io/post/3sum/"/>
-    <id>http://zako945.github.io/post/3sum/</id>
-    <published>2024-04-12T16:00:00.000Z</published>
-    <updated>2024-04-30T16:39:17.975Z</updated>
+    <title>42. Trapping Rain Water</title>
+    <link href="http://zako945.github.io/post/trapping-rain-water/"/>
+    <id>http://zako945.github.io/post/trapping-rain-water/</id>
+    <published>2024-12-10T16:00:00.000Z</published>
+    <updated>2024-12-10T23:40:56.913Z</updated>
     
     
       
@@ -29,25 +29,23 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/3sum/&quot;&gt;https://leetcode.cn/problems/3sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;, 返回 &lt;code&gt;nums&lt;/code&gt; 是否存在 &lt;code&gt;[nums[i], nums[j], nums[k]]&lt;/code&gt;, 使得</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/trapping-rain-water/&quot;&gt;https://leetcode.cn/problems/trapping-rain-water/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給 &lt;code&gt;n&lt;/code&gt; 個非負整數, 代表每個寬度為 &lt;code&gt;1&lt;/code&gt; 的柱子之高度圖, 計算按此排列的柱子,</summary>
         
       
     
     
     
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    <category term="Stack" scheme="http://zako945.github.io/categories/Stack/"/>
     
-    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
     
   </entry>
   
@@ -76,11 +74,46 @@
     <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
     
     
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+  </entry>
+  
+  <entry>
+    <title>15. 3Sum</title>
+    <link href="http://zako945.github.io/post/3sum/"/>
+    <id>http://zako945.github.io/post/3sum/</id>
+    <published>2024-04-12T16:00:00.000Z</published>
+    <updated>2024-04-30T16:39:17.975Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/3sum/&quot;&gt;https://leetcode.cn/problems/3sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;, 返回 &lt;code&gt;nums&lt;/code&gt; 是否存在 &lt;code&gt;[nums[i], nums[j], nums[k]]&lt;/code&gt;, 使得</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -109,11 +142,11 @@
     <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
     
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -142,9 +175,9 @@
     <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
     
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
     <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
   </entry>
   
@@ -173,13 +206,13 @@
     <category term="Sliding Window" scheme="http://zako945.github.io/categories/Leetcode/Sliding-Window/"/>
     
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -208,13 +241,13 @@
     <category term="Binary Search" scheme="http://zako945.github.io/categories/Leetcode/Binary-Search/"/>
     
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -243,13 +276,13 @@
     <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
     
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -278,13 +311,13 @@
     <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
     
     
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -315,44 +348,13 @@
     <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
     
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>2022. Convert 1D Array Into 2D Array</title>
-    <link href="http://zako945.github.io/post/convert-1d-array-into-2d-array/"/>
-    <id>http://zako945.github.io/post/convert-1d-array-into-2d-array/</id>
-    <published>2024-04-12T16:00:00.000Z</published>
-    <updated>2024-04-13T05:04:55.341Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/convert-1d-array-into-2d-array/&quot;&gt;https://leetcode.cn/problems/convert-1d-array-into-2d-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;將 1d array &lt;code&gt;original&lt;/code&gt; 轉成</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
-    
-    
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
     
   </entry>
   
