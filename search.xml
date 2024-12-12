@@ -35,6 +35,155 @@
     
     
     <entry>
+      <title>739. Daily Temperatures</title>
+      <link href="/post/daily-temperatures/"/>
+      <url>/post/daily-temperatures/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/daily-temperatures/">https://leetcode.cn/problems/daily-temperatures/</a></strong></p><p><strong>題意:</strong> 給一整數 array <code>temperatures</code> 代表每天的溫度。請返回 array <code>res</code>, 其中 <code>res[i]</code> 是指對於第 <code>i</code> 天, 下一個更高溫度是出現在幾天後。如果氣溫在這之後都不會升高, 則該位置用 <code>0</code> 來代替。</p></blockquote><p><img src="https://i.imgur.com/NEFqBSZ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Stack, 使用 Monotonic（遞減） Stack <code>stk</code> 紀錄 <code>&#123;temperature, idx&#125;</code>, 一旦當前溫度 <code>temperatures[i]</code> 比 <code>stk.top().first</code> 還高, 則不斷將 <code>stk.top()</code> 取出, 並計算 <code>res[idx]</code>, 直到 <code>stk.top().first &gt; temperatures[i]</code> 才把 <code>temperatures[i]</code> push 到 <code>stk</code> 中</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = temperatures.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">0</span>)</span></span>; <span class="comment">// 若最後 stk 不為空, 則剩餘元素的 res[idx] 皆為 0</span></span><br><span class="line">        stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; stk; <span class="comment">// &#123;temperature, idx&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="comment">// 一旦當前溫度 &gt; top, 則不斷將 top 給 pop 掉, 並計算 res[idx]</span></span><br><span class="line">            <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>() &amp;&amp; temperatures[i] &gt; stk.<span class="built_in">top</span>().first) &#123;</span><br><span class="line">                <span class="keyword">auto</span> [temperature, idx] = stk.<span class="built_in">top</span>();</span><br><span class="line">                stk.<span class="built_in">pop</span>();</span><br><span class="line">                res[idx] = i - idx;</span><br><span class="line">            &#125;</span><br><span class="line">            stk.<span class="built_in">emplace</span>(pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&#123;temperatures[i], i&#125;); <span class="comment">// push 當前元素</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>stk</code> 中的元素個數不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Stack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>853. Car Fleet</title>
+      <link href="/post/car-fleet/"/>
+      <url>/post/car-fleet/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/car-fleet/">https://leetcode.cn/problems/car-fleet/</a></strong></p><p><strong>題意:</strong> 在一條單行道上, 有 <code>n</code> 輛車開往同一目的地, 目的地是幾英里外的 <code>target</code>。</p><p>給兩個整數 array <code>position</code>、<code>speed</code>, 其中 <code>position[i]</code> 是第 <code>i</code> 輛車的位置, <code>speed[i]</code> 是第 <code>i</code> 輛車的時速(英里&#x2F;小時)。</p><p>一輛車永遠不會超過前面的另一輛車, 但它可以追上去, 並與前車<strong>以相同的速度</strong>緊接著行駛。此時, 我們可忽略這兩輛車之間的距離, 也就是說, 它們被假定處於相同的位置。</p><p><strong>車隊</strong>是一些由行駛在相同位置、具有相同速度的車組成的非空集合。注意, 一輛車也可以是一個車隊。</p><p>即便一輛車在目的地才趕上了一個車隊, 它們仍然會被視作是同一個車隊。</p><p>返回到達目的地的<strong>車隊數量</strong>。</p></blockquote><p><img src="https://i.imgur.com/A0EImP6.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Monotonic（遞減） Stack, 先使用 map 根據 <code>position[i]</code> 「由小到大」排序, 然後依序取出, 並計算 <code>position[i]</code> 到 <code>target</code> 所需的時間。如果當前所需的時間 <code>time ≥ stk.top()</code>, 則代表兩車會合併為一個車隊, 因為離 <code>target</code> 較遠的那輛車所需的時間 <code>stk.top()</code> 較短, 但是道路為單向且不能超車。所以最後抵達 <code>target</code> 的時間會受制於 <code>time</code>。所以一旦 <code>time ≥ stk.top()</code> 就要 <code>stk.pop()</code>, 將兩輛車合併為一個車隊（受限於當前 <code>time</code> 的車隊）, 直到 <code>stk.top() &gt; time</code>, 才能將 <code>time</code> push 到 <code>stk</code> 中。最後, <code>stk</code> 中的元素個數即為車隊數量。</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">carFleet</span><span class="params">(<span class="type">int</span> target, vector&lt;<span class="type">int</span>&gt;&amp; position, vector&lt;<span class="type">int</span>&gt;&amp; speed)</span> </span>&#123;</span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; ps;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; position.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            ps[position[i]] = speed[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stack&lt;<span class="type">float</span>&gt; stk;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [pos, spd] : ps) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">float</span> time = <span class="built_in">float</span>(target - pos) / spd;</span><br><span class="line">            <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>() &amp;&amp; time &gt;= stk.<span class="built_in">top</span>()) &#123;</span><br><span class="line">                stk.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            stk.<span class="built_in">emplace</span>(time);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stk.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>stk</code> 中的元素個數不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Stack </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>74. Search a 2D Matrix</title>
+      <link href="/post/search-a-2d-matrix/"/>
+      <url>/post/search-a-2d-matrix/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-a-2d-matrix/">https://leetcode.cn/problems/search-a-2d-matrix/</a></strong></p><p><strong>題意</strong>: 設計一高效演算法來搜索 <code>m x n</code> matrix 中是否存在整數 <code>target</code>, matrix 滿足以下特性:</p><ul><li>每列的元素由左到右按升序排列</li><li>每列的第一個元素 &gt; 前一列的最後一個元素</li></ul></blockquote><p><img src="https://i.imgur.com/1iXww8t.png"></p><p><img src="https://i.imgur.com/PJveiV8.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, <code>matrix</code> 其實就是 1D 已排序的 array, 只是改成用 2D array 表達而已, 故將 <code>matrix</code> 看成 1D array, 然後還原回 2D array 座標來做 Binary Search</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = m * n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (matrix[mid / n][mid % n] &gt;= target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (left &lt; m * n &amp;&amp; matrix[left / n][left % n] == target) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(mn))$ ➔ Binary Search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>875. Koko Eating Bananas</title>
+      <link href="/post/koko-eating-bananas/"/>
+      <url>/post/koko-eating-bananas/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/koko-eating-bananas/">https://leetcode.cn/problems/koko-eating-bananas/</a></strong></p><p><strong>題意:</strong> Koko 喜歡吃香蕉。這里有 <code>n</code> 堆香蕉, 第 <code>i</code> 堆中有 <code>piles[i]</code> 根香蕉。警衛已經離開了, 並且將在 <code>h</code> 小時後回來。</p><p>Koko 可以決定她吃香蕉的速度 <code>k</code> （單位：根 &#x2F; 小時）。每個小時, 她將會選擇其中一堆的香蕉, 並從中吃掉 <code>k</code> 根。如果這堆香蕉少於 <code>k</code> 根, 她將吃掉這堆所有的香蕉, 然後這一小時內都不會再吃更多的香蕉。  </p><p>Koko 喜歡慢慢吃, 但仍然想在警衛回來前吃掉所有的香蕉。</p><p>返回她可以在 <code>h</code> 小時內吃掉所有香蕉的最小速度 <code>k</code>, 其中 <code>k</code> 為整數。</p></blockquote><p><img src="https://i.imgur.com/8vBcc5O.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 其中 <code>k</code> 的區間為 <code>[1,  max(piles)]</code>, 因為 Koko 吃掉該堆所有的香蕉後, 這一小時內都不會再吃更多的香蕉, 所以 <code>k</code> 取到 <code>max(piles)</code> 即可。此外, <code>left</code> 不能為 <code>0</code>, 否則 <code>mid</code> 有可能為 <code>0</code>, 這會導致計算 <code>time += ceil(1.0 * pile / mid)</code> 時發生錯誤</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minEatingSpeed</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; piles, <span class="type">int</span> h)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">1</span>, right = *<span class="built_in">max_element</span>(piles.<span class="built_in">begin</span>(), piles.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>; <span class="comment">// speed</span></span><br><span class="line"></span><br><span class="line">            <span class="type">long</span> cost = <span class="number">0</span>; <span class="comment">// 加總有可能會 overflow, 故取 long</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp; pile : piles) &#123;</span><br><span class="line">                cost += <span class="built_in">ceil</span>(<span class="number">1.0</span> * pile / mid); <span class="comment">// 先轉成 float 再運算, 最後取 ceiling</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (cost &lt;= h) &#123; <span class="comment">// 速度過快, 往左區間繼續搜尋</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(m))$ ➔ 其中 <code>n</code> 為 <code>piles</code> 的長度, <code>m</code> 為 <code>piles</code> 中的最大值<ul><li>$O(log(m))$ : Binary Search 的次數</li><li>$O(n \cdot log(m))$ : 每一次 Binary Search 皆須 $O(n)$, 因為計算出 mid 後, 皆須遍歷 <code>piles</code></li></ul></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>33. Search in Rotated Sorted Array</title>
+      <link href="/post/find-minimum-in-rotated-sorted-array/"/>
+      <url>/post/find-minimum-in-rotated-sorted-array/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/">https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/</a></strong></p><p><strong>題意</strong>: 給一長度為 <code>n</code> 的 array, 已照升序排列, 經過 1 到 <code>n</code> 次旋轉後得到 input array。</p><p>e.g. <code>nums = [0,1,2,4,5,6,7]</code> 經過變化後可得到:</p><ul><li>若旋轉 <code>4</code> 次, 可得到 <code>[4,5,6,7,0,1,2]</code></li><li>若旋轉 <code>7</code> 次, 可得到 <code>[0,1,2,4,5,6,7]</code></li></ul><p>給一元素互不相同的 array <code>nums</code>, 已照升序排列, 並進行多次旋轉, 返回 <code>nums</code> 中最小的元素。</p><p><strong>注意</strong>: 請設計 $O(log(n))$ time 的演算法</p></blockquote><p><img src="https://i.imgur.com/gSIGk6B.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 根據比較左、中、右三個位置的值來縮小左邊界 or 右邊界, 有以下幾種情況：</strong></p><ul><li><strong>(左 &lt; 中) 且 (中 &lt; 右)</strong>, e.g. <code>[1,2,3,4,5]</code>。代表<strong>沒有旋轉</strong> ➔ min 在左半邊, 故縮小<strong>右</strong>邊界。</li><li><strong>(左 &gt; 中) 且 (中 &lt; 右)</strong>, e.g. <code>[5,1,2,3,4]</code>。代表<strong>有旋轉</strong> ➔ min 在左半邊, 故縮小<strong>右</strong>邊界</li><li><strong>(左 &lt; 中) 且 (中 &gt; 右)</strong>, e.g. <code>[2,3,4,5,1]</code>。代表<strong>有旋轉</strong> ➔ min 在右半邊, 故縮小<strong>左</strong>邊界</li><li><strong>(左 &gt; 中) 且 (中 &gt; 右)</strong>, e.g. <code>[5,4,3,2,1]</code>。單調遞減, 本題不可能出現此種情形, 因為遞增的 array 再怎麼轉也不可能變遞減的</li></ul><p>分析前面三種可能的情況, 我們選擇比較<strong>中、右</strong></p><p>➔ 因為這樣可將情況 1、2 是視作一類（中 &lt; 右, 縮小右邊界）, 而情況 3 視作另一類（中 &gt; 右, 縮小左邊界）</p><p><img src="https://i.imgur.com/uuP4Hbh.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findMin</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = nums[<span class="number">0</span>]; <span class="comment">// 初始值設 array 的第一個元素</span></span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            res = <span class="built_in">min</span>(res, nums[mid]); <span class="comment">// 更新最小值</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] &lt; nums[right]) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>637. Average of Levels in Binary Tree</title>
       <link href="/post/average-of-levels-in-binary-tree/"/>
       <url>/post/average-of-levels-in-binary-tree/</url>
@@ -1409,6 +1558,8 @@
         <tags>
             
             <tag> Easy </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
