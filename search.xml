@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>33. Search in Rotated Sorted Array</title>
+      <link href="/post/search-in-rotated-sorted-array/"/>
+      <url>/post/search-in-rotated-sorted-array/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">https://leetcode.cn/problems/search-in-rotated-sorted-array/</a></strong></p><p><strong>題意</strong>: 有一整數 array <code>nums</code> 按升序排列, 其中的值<strong>互不相同</strong>。</p><p>給一<strong>旋轉後</strong>的 array <code>nums</code> 和一整數 <code>target</code>, 如果 <code>nums</code> 中存在 <code>target</code>, 則返回其 index; 否則, 返回 <code>-1</code>。</p><p>請設計 $O(log(n))$ time 的演算法。</p></blockquote><p><img src="https://i.imgur.com/oxWfuYg.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 將 <code>nums</code> 從中間分開成左右兩部分的時候, 一定有一部分是有序的。</strong></p><p><strong>e.g. <code>nums = [4,5,6,7,0,1,2]</code>, 從 <code>6</code> 切割, 可分成 <code>[4,5,6]</code> 和 <code>[7,0,1,2]</code> 兩個部分, 其中左邊 <code>[4,5,6]</code> 是有序的</strong></p><p>因此我們可以在 Binary Search 時查看當前 <code>mid</code> 分割的兩個部分 <code>[left, mid]</code> 和 <code>[mid + 1, right]</code> 中哪個是有序的, 藉此來縮小左邊界 or 右邊界。</p><ul><li>若 <code>target == nums[mid]</code>, 則直接返回 <code>mid</code></li><li>若 <code>[left, mid]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>[nums[left], nums[mid])</code></strong> 間, 則縮小搜索範圍為 <code>[left, mid - 1]</code>; 否則, 縮小搜索範圍為 <code>[mid + 1, right]</code></li><li>若 <code>[mid + 1, right]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>(nums[mid], nums[right]]</code></strong> 間, 則縮小搜索範圍為 <code>[mid + 1, right]</code>; 否則, 縮小搜索範圍為 <code>[left, mid - 1]</code></li></ul><p>當 <code>[left, mid]</code> 區間恰好只有一個元素時, 也滿足左半邊已排序的定義</p><p>e.g. <code>nums = [3, 1]</code>, <code>target = 1</code></p><ul><li><code>left = 0</code>, <code>right = 1</code>, <code>mid = 0</code> ➔ <code>[left, mid]</code> 區間恰好只有一個元素, 使得 <code>nums[left] == nums[mid]</code>, 這時 <code>target</code> 應跟左半邊中的元素比較, 然後才縮小邊界</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 這種特殊的 Binary Search 建議搜到就返回</span></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 左半邊是被排序過的, e.g. [4,5,6,7,0,1,2], mid = 7</span></span><br><span class="line">            <span class="comment">// nums[left] == nums[mid] 也滿足左半邊是排序的定義（有可能 left == mid）</span></span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123;</span><br><span class="line">                <span class="comment">// 因為 target != nums[mid], 故用 &lt; 即可</span></span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 右半邊是被排序過的, e.g. [7,0,1,2,4,5,6], mid = 2</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>981. Time Based Key-Value Store</title>
+      <link href="/post/time-based-key-value-store/"/>
+      <url>/post/time-based-key-value-store/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/time-based-key-value-store/">https://leetcode.cn/problems/time-based-key-value-store/</a></strong></p><p><strong>題意：</strong>設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key 的多個值, 並針對特定 timestamp 得到相對應的 key 的 value。</p><p>實作 <code>TimeMap</code> class：</p><ul><li><code>TimeMap()</code> : 初始化 instance</li><li><code>void set(String key, String value, int timestamp)</code> : 儲存 <code>key</code>、 <code>value</code>, 以及 <code>timestamp</code>。</li><li><code>String get(String key, int timestamp)</code> :<ul><li>返回 <code>timestamp_prev</code> 對應的 value, 其中 <code>timestamp_prev &lt;= timestamp</code></li><li>如果存在多個值, 則返回對應<strong>最大</strong>的 <code>timestamp_prev</code> 的 value。</li><li>如果不存在, 則返回 <code>&quot;&quot;</code>。</li></ul></li></ul><p><strong>注意:</strong> <code>set(key, value, timestamp)</code> 中的 <code>timestamp</code> 都是嚴格遞增的。</p></blockquote><p><img src="https://i.imgur.com/9V7VWMN.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：題目的意思如下圖, <code>key</code> 裡面會儲存 <code>values</code>, 而 <code>values</code> 裡面可以有多個 <code>&#123;value, timestmap&#125;</code> pair。由於 <code>values</code> 裡面的 <code>timestamp</code> 都是嚴格遞增的(已排序), 所以我們可直接使用 Binary Search</strong></p></blockquote><p><img src="https://i.imgur.com/PdkaQmt.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TimeMap</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TimeMap</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(string key, string value, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        m[key].<span class="built_in">emplace_back</span>(pair&lt;string, <span class="type">int</span>&gt;&#123;value, timestamp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">get</span><span class="params">(string key, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(key) == m.<span class="built_in">end</span>()) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> n = m[key].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(m[key][mid].second &gt; timestamp)</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// left 為 &gt; timestamp 的位置, 故 left - 1 為 &lt;= timestamp 的位置</span></span><br><span class="line">        <span class="keyword">return</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span>) ? m[key][left - <span class="number">1</span>].first : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    unordered_map&lt;string, vector&lt;pair&lt;string, <span class="type">int</span>&gt;&gt;&gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary Search, 其中 <code>n</code> 為 <code>m[key]</code> 的長度</li><li><strong>space：</strong>$O(n)$ ➔ 其中 <code>n</code> 為 <code>set()</code> 的次數</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>42. Trapping Rain Water</title>
       <link href="/post/trapping-rain-water/"/>
       <url>/post/trapping-rain-water/</url>
@@ -153,7 +211,7 @@
     
     
     <entry>
-      <title>33. Search in Rotated Sorted Array</title>
+      <title>153. Find Minimum in Rotated Sorted Array</title>
       <link href="/post/find-minimum-in-rotated-sorted-array/"/>
       <url>/post/find-minimum-in-rotated-sorted-array/</url>
       

@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-11T00:03:40.451Z</updated>
+  <updated>2024-12-12T23:50:29.267Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -15,6 +15,68 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>33. Search in Rotated Sorted Array</title>
+    <link href="http://zako945.github.io/post/search-in-rotated-sorted-array/"/>
+    <id>http://zako945.github.io/post/search-in-rotated-sorted-array/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-12T23:50:29.267Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址: &lt;a href=&quot;https://leetcode.cn/problems/search-in-rotated-sorted-array/&quot;&gt;https://leetcode.cn/problems/search-in-rotated-sorted-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;: 有一整數 array &lt;code&gt;nums&lt;/code&gt; 按升序排列,</summary>
+        
+      
+    
+    
+    
+    <category term="Binary Search" scheme="http://zako945.github.io/categories/Binary-Search/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>981. Time Based Key-Value Store</title>
+    <link href="http://zako945.github.io/post/time-based-key-value-store/"/>
+    <id>http://zako945.github.io/post/time-based-key-value-store/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-12T23:55:04.464Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/time-based-key-value-store/&quot;&gt;https://leetcode.cn/problems/time-based-key-value-store/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key</summary>
+        
+      
+    
+    
+    
+    <category term="Binary Search" scheme="http://zako945.github.io/categories/Binary-Search/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
   
   <entry>
     <title>42. Trapping Rain Water</title>
@@ -177,11 +239,11 @@
   </entry>
   
   <entry>
-    <title>33. Search in Rotated Sorted Array</title>
+    <title>153. Find Minimum in Rotated Sorted Array</title>
     <link href="http://zako945.github.io/post/find-minimum-in-rotated-sorted-array/"/>
     <id>http://zako945.github.io/post/find-minimum-in-rotated-sorted-array/</id>
     <published>2024-12-10T16:00:00.000Z</published>
-    <updated>2024-12-12T23:44:43.320Z</updated>
+    <updated>2024-12-12T23:49:00.649Z</updated>
     
     
       
@@ -274,70 +336,6 @@
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>844. Backspace String Compare</title>
-    <link href="http://zako945.github.io/post/backspace-string-compare/"/>
-    <id>http://zako945.github.io/post/backspace-string-compare/</id>
-    <published>2024-04-12T16:00:00.000Z</published>
-    <updated>2024-04-13T05:04:55.336Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/backspace-string-compare/&quot;&gt;https://leetcode.cn/problems/backspace-string-compare/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給兩個 string &lt;code&gt;s&lt;/code&gt;, &lt;code&gt;t&lt;/code&gt;, 其中的</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
-    
-    
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>110. Balanced Binary Tree</title>
-    <link href="http://zako945.github.io/post/balanced-binary-tree/"/>
-    <id>http://zako945.github.io/post/balanced-binary-tree/</id>
-    <published>2024-04-12T16:00:00.000Z</published>
-    <updated>2024-04-13T05:04:55.337Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/balanced-binary-tree/&quot;&gt;https://leetcode.cn/problems/balanced-binary-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT, 判斷它是否</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Easy" scheme="http://zako945.github.io/tags/Easy/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
   </entry>
   
