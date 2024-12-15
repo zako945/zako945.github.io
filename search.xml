@@ -13,6 +13,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Binary Search </category>
           
       </categories>
@@ -37,10 +39,12 @@
       <link href="/post/time-based-key-value-store/"/>
       <url>/post/time-based-key-value-store/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/time-based-key-value-store/">https://leetcode.cn/problems/time-based-key-value-store/</a></strong></p><p><strong>題意：</strong>設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key 的多個值, 並針對特定 timestamp 得到相對應的 key 的 value。</p><p>實作 <code>TimeMap</code> class：</p><ul><li><code>TimeMap()</code> : 初始化 instance</li><li><code>void set(String key, String value, int timestamp)</code> : 儲存 <code>key</code>、 <code>value</code>, 以及 <code>timestamp</code>。</li><li><code>String get(String key, int timestamp)</code> :<ul><li>返回 <code>timestamp_prev</code> 對應的 value, 其中 <code>timestamp_prev &lt;= timestamp</code></li><li>如果存在多個值, 則返回對應<strong>最大</strong>的 <code>timestamp_prev</code> 的 value。</li><li>如果不存在, 則返回 <code>&quot;&quot;</code>。</li></ul></li></ul><p><strong>注意:</strong> <code>set(key, value, timestamp)</code> 中的 <code>timestamp</code> 都是嚴格遞增的。</p></blockquote><p><img src="https://i.imgur.com/9V7VWMN.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：題目的意思如下圖, <code>key</code> 裡面會儲存 <code>values</code>, 而 <code>values</code> 裡面可以有多個 <code>&#123;value, timestmap&#125;</code> pair。由於 <code>values</code> 裡面的 <code>timestamp</code> 都是嚴格遞增的(已排序), 所以我們可直接使用 Binary Search</strong></p></blockquote><p><img src="https://i.imgur.com/PdkaQmt.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TimeMap</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TimeMap</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(string key, string value, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        m[key].<span class="built_in">emplace_back</span>(pair&lt;string, <span class="type">int</span>&gt;&#123;value, timestamp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">get</span><span class="params">(string key, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m.<span class="built_in">find</span>(key) == m.<span class="built_in">end</span>()) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> n = m[key].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(left &lt;= right)&#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(m[key][mid].second &gt; timestamp)</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// left 為 &gt; timestamp 的位置, 故 left - 1 為 &lt;= timestamp 的位置</span></span><br><span class="line">        <span class="keyword">return</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span>) ? m[key][left - <span class="number">1</span>].first : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    unordered_map&lt;string, vector&lt;pair&lt;string, <span class="type">int</span>&gt;&gt;&gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary Search, 其中 <code>n</code> 為 <code>m[key]</code> 的長度</li><li><strong>space：</strong>$O(n)$ ➔ 其中 <code>n</code> 為 <code>set()</code> 的次數</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/time-based-key-value-store/">https://leetcode.cn/problems/time-based-key-value-store/</a></strong></p><p><strong>題意：</strong>設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key 的多個值, 並針對特定 timestamp 得到相對應的 key 的 value。</p><p>實作 <code>TimeMap</code> class：</p><ul><li><code>TimeMap()</code> : 初始化 instance</li><li><code>void set(String key, String value, int timestamp)</code> : 儲存 <code>key</code>、 <code>value</code>, 以及 <code>timestamp</code>。</li><li><code>String get(String key, int timestamp)</code> :<ul><li>返回 <code>timestamp_prev</code> 對應的 value, 其中 <code>timestamp_prev &lt;= timestamp</code></li><li>如果存在多個值, 則返回對應<strong>最大</strong>的 <code>timestamp_prev</code> 的 value。</li><li>如果不存在, 則返回 <code>&quot;&quot;</code>。</li></ul></li></ul><p><strong>注意:</strong> <code>set(key, value, timestamp)</code> 中的 <code>timestamp</code> 都是嚴格遞增的。</p></blockquote><p><img src="https://i.imgur.com/9V7VWMN.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：題目的意思如下圖, <code>key</code> 裡面會儲存 <code>values</code>, 而 <code>values</code> 裡面可以有多個 <code>&#123;value, timestmap&#125;</code> pair。由於 <code>values</code> 裡面的 <code>timestamp</code> 都是嚴格遞增的(已排序), 所以我們可直接使用 Binary Search</strong></p></blockquote><p><img src="https://i.imgur.com/PdkaQmt.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TimeMap</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TimeMap</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(string key, string value, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        m[key].<span class="built_in">emplace_back</span>(pair&lt;string, <span class="type">int</span>&gt;&#123;value, timestamp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">get</span><span class="params">(string key, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m.<span class="built_in">find</span>(key) == m.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = m[key].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (m[key][mid].second &gt; timestamp) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// left 為 &gt; timestamp 的位置, 故 left - 1 為 &lt;= timestamp 的位置</span></span><br><span class="line">        <span class="keyword">return</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span>) ? m[key][left - <span class="number">1</span>].first : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    unordered_map&lt;string, vector&lt;pair&lt;string, <span class="type">int</span>&gt;&gt;&gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary Search, 其中 <code>n</code> 為 <code>m[key]</code> 的長度</li><li><strong>space：</strong>$O(n)$ ➔ 其中 <code>n</code> 為 <code>set()</code> 的次數</li></ul>]]></content>
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Binary Search </category>
           
@@ -50,6 +54,217 @@
         <tags>
             
             <tag> Amazon </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2. Add Two Numbers</title>
+      <link href="/post/add-two-numbers/"/>
+      <url>/post/add-two-numbers/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/add-two-numbers/">https://leetcode.cn/problems/add-two-numbers/</a></strong></p><p><strong>題意</strong>：給兩個<strong>非空</strong> linked list 表示兩個非負整數, 每位數字都是按照<strong>逆序</strong>（e.g. 個位數在前, 十位數在後）儲存的, 且每一個 node 只能存一位數字。請將兩數相加, 並以相同型式返回和的 linked list。</p><p>除了數字 0 以外, 其他數字都不會以 0 作為開頭。</p></blockquote><p><img src="https://i.imgur.com/ICc2d6B.png"></p><p><img src="https://i.imgur.com/9nnmNaL.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution</strong>：</h2><blockquote><p><strong>想法：用 dummy 記住新的 linked list 開頭, tail 用來更新新的 linked list 之尾端。除此之外, 還要考慮進位(carry bit)和以下特殊情況</strong>：</p><ul><li><p><strong>兩個整數長度不一（e.g. <code>123</code> + <code>4567</code>）</strong><br>➔ 當 <code>node</code> 為 <code>NULL</code> 時, 把 <code>node-&gt;val</code> 設為 <code>0</code></p></li><li><p><strong>進位導致輸出比原本最長整數還長（e.g. <code>1</code> + <code>99</code> &#x3D; <code>100</code>）</strong><br>➔ loop 終止條件須判斷 carry bit 是否為 0</p><p>  <img src="https://i.imgur.com/atRCQf4.png"></p></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>), *tail = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (l1 || l2 || carry) &#123;</span><br><span class="line">            <span class="type">int</span> sum = (l1 ? l1-&gt;val : <span class="number">0</span>) + (l2 ? l2-&gt;val : <span class="number">0</span>) + carry;</span><br><span class="line">            tail-&gt;next = <span class="keyword">new</span> <span class="built_in">ListNode</span>(sum % <span class="number">10</span>);</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 更新 ptr, 若 ptr 為 null, 則不能用 ptr-&gt;next, 而是直接設成 null</span></span><br><span class="line">            l1 = l1 ? l1-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">            l2 = l2 ? l2-&gt;next : <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(max(m,n))$ ➔ while loop 終止是取決最長的 linked list 長度</li><li><strong>space：</strong>$O(max(m,n))$ ➔ 新的 linked list 長度取決於最長的 linked list 長度</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>138. Copy List with Random Pointer</title>
+      <link href="/post/copy-list-with-random-pointer/"/>
+      <url>/post/copy-list-with-random-pointer/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/copy-list-with-random-pointer/">https://leetcode.cn/problems/copy-list-with-random-pointer/</a></strong></p><p><strong>題意：</strong>給一長度為 <code>n</code> 的 linked list, 每個節點包含一個額外增加的隨機 pointer <code>random</code>, 該 pointer 可以指向 linked list 中的任何節點 or 空節點。</p><p>建構該 linked list 的 deep copy, 它由 <code>n</code> 個新節點組成, 其中每個新節點的值都設為其對應的 <code>node.val</code>。</p><p>新節點的 <code>next</code> 和 <code>random</code> 也都應指向新 linked list 中的其他節點, 使原 linked list 和新 linked list 能夠表示成相同的 linked list。</p><p>e.g. 如果原 linked list 中有 <code>X</code> 和 <code>Y</code> 兩個節點, 其中 <code>X.random --&gt; Y</code>。則新 linked list 中對應的兩個節點 <code>x</code> 和 <code>y</code>, 同樣有 <code>x.random --&gt; y</code>。</p><p>返回新 linked list 的 <code>head</code>。</p></blockquote><p><img src="https://i.imgur.com/pfPzZ9u.png"></p><p><img src="https://i.imgur.com/a0gJl5X.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 hash table, 先遍歷原 linked list, 並在遍歷的同時不斷創建新節點, 將 <code>原節點</code> 作為 <code>key</code>、<code>新節點</code> 作為 <code>value</code> 放入 hash table 中。最後, 再遍歷一次原 linked list, 並設置新 linked list 的 <code>next</code> 和 <code>random</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        Node *cur = head;</span><br><span class="line">        unordered_map&lt;Node*, Node*&gt; oldToNew; <span class="comment">// &#123;old, new&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            oldToNew[cur] = newNode;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            oldToNew[cur]-&gt;next = oldToNew[cur-&gt;next];</span><br><span class="line">            oldToNew[cur]-&gt;random = oldToNew[cur-&gt;random];</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oldToNew[head];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(n)$ ➔ <code>oldToNew</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：分成三個步驟</strong></p><ul><li>根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面<br>e.g. <code>1 -&gt; 1&#39; -&gt; 2 -&gt; 2&#39; -&gt; 3 -&gt; 3&#39;</code></li><li>設置新節點的 <code>random</code><br>➔ 新節點的 <code>random</code> 為原節點的 <code>random-&gt;next</code> (原 <code>random</code> 對應的新節點)</li><li>將兩個 linked list 分開</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面</span></span><br><span class="line">        Node *cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            newNode-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = newNode;</span><br><span class="line">            cur = newNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 設置新節點的 random</span></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            <span class="comment">// 不用判斷 cur-&gt;next 是否為 null, 是因為 cur 為原 linked list 的節點</span></span><br><span class="line">            <span class="comment">// cur-&gt;next 為對應的新節點, 在 cur != null 的前提下, cur-&gt;next 必不為 null</span></span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;random) &#123;</span><br><span class="line">                cur-&gt;next-&gt;random = cur-&gt;random-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 將兩個 linked list 分開</span></span><br><span class="line">        cur = head;</span><br><span class="line">        Node *dummy = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">0</span>), *tail = dummy;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            tail-&gt;next = cur-&gt;next; <span class="comment">// 將新節點加到新 linked list</span></span><br><span class="line">            tail = tail-&gt;next; <span class="comment">// 更新 tail</span></span><br><span class="line">            cur-&gt;next = tail-&gt;next; <span class="comment">// 將 cur 指向下一個原 linked list 的 node</span></span><br><span class="line">            cur = cur-&gt;next; <span class="comment">// 將 cur 更新成下一個原 linked list 的 node</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 若不考慮要 copy 的 node, 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>287. Find the Duplicate Number</title>
+      <link href="/post/find-the-duplicate-number/"/>
+      <url>/post/find-the-duplicate-number/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/find-the-duplicate-number/">https://leetcode.cn/problems/find-the-duplicate-number/</a></strong></p><p><strong>題意</strong>：給一有 <code>n + 1</code> 個數的 array <code>nums</code>, 每個元素值皆在 <code>[1, n]</code>, 剛好<strong>只有一數字重複</strong>, 求重複的數字。</p><p><strong>注意</strong>：只能使用 $O(1)$ space, 且<strong>不能改變</strong> <code>nums</code></p><p><strong>進階</strong>：設計 $O(n)$ time 的演算法</p></blockquote><p><img src="https://i.imgur.com/GNc82JD.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1</strong>：</h2><blockquote><p><strong>想法：利用 Binary Search, 先在 <code>[1, n]</code> 中找中點 <code>mid</code>, 然後判斷整個 <code>nums</code> 中 <code>≤ mid</code> 的元素個數 <code>cnt</code>。若 <code>cnt &gt; mid</code> 代表有重複, 則往左繼續找</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">不要考慮 nums, 只需要考慮數字都在 1 到 n 之間</span><br><span class="line">nums = [1,3,4,2,2] 此時數字在 1 到 4 之間</span><br><span class="line"></span><br><span class="line">mid = (1 + 4) / 2 = 2, nums 中 ≤ 2 的有3個(1,2,2), 1到2中肯定有重複, 往左搜尋 ➔ right = 2</span><br><span class="line">mid = (1 + 2) / 2 = 1, nums 中 ≤ 1 的有1個(1), 2到2中肯定有重複, 往右搜尋</span><br><span class="line">➔ left = 2, left &lt; right 不成立</span><br><span class="line">➔ 所以重複的數是 2</span><br></pre></td></tr></table></figure></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findDuplicate</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">1</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; num : nums) &#123;</span><br><span class="line">                <span class="keyword">if</span> (num &lt;= mid) &#123;</span><br><span class="line">                    ++count;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (count &gt; mid) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$<ul><li>$O(log(n))$<strong>：</strong>Binary Search, while loop 得做 $O(log(n))$ 次</li><li>$O(n)$<strong>：</strong>while loop 每迭代一次, for loop 都得遍歷 <code>nums</code></li></ul></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：將此問題轉換成 linked list cyle, 利用 slow &amp; fast pointers 找出 cycle 的起點, 可參考 142. Linked List Cycle II</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nums = [1,3,4,2,2]</span><br><span class="line"></span><br><span class="line">第一個 0 代表從 idx = 0 開始</span><br><span class="line">下一個移動到 nums[0] = 1</span><br><span class="line">下一個移動到 nums[1] = 3, 依此類推</span><br><span class="line">因為有重複數, 代表會有兩個數指向同一個數 e.g. nums[3] 和 nums[4] 都指向 nums[2] = 4</span><br><span class="line">0-&gt;1-&gt;3-&gt;2-&gt;4-&gt;2, cycle: 2-&gt;4-&gt;2</span><br></pre></td></tr></table></figure><p><img src="https://i.imgur.com/65xJ87D.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">findDuplicate</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> slow = <span class="number">0</span>, fast = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找出 slow 和 fast 相遇的點</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[nums[fast]];</span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 找出 cycle 的起點</span></span><br><span class="line">        slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (fast != slow) &#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[fast];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>146. LRU Cache</title>
+      <link href="/post/lru-cache/"/>
+      <url>/post/lru-cache/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/lru-cache/">https://leetcode.cn/problems/lru-cache/</a></strong></p><p><strong>題意：</strong>設計並實現一個滿足 <strong>LRU（Least Recently Used）</strong>的資料結構。</p><p><strong>實現 <code>LRUCache</code> class：</strong></p><ul><li><code>LRUCache(int capacity)</code>：以 <code>capacity</code> 初始化 LRU cache 的大小。</li><li><code>int get(int key)</code>：若 <code>key</code> 存在於 cache 中, 則返回其對應的 <code>val</code>, 否則返回 <code>1</code>。</li><li><code>void put(int key, int value)</code>：<ul><li>若 <code>key</code> 已經存在, 則變更其 <code>value</code></li><li>若不存在, 則將該組 <code>key-value</code> insert 到 cache 中</li><li>若 insert 操作導致 pair 數量超過 <code>capacity</code>, 則移除最久未使用的 <code>key-value</code> pair</li></ul></li></ul><p><strong>注意：</strong><code>get()</code> 和 <code>put()</code> 必須是 $O(1)$ time</p></blockquote><p><img src="https://i.imgur.com/xxJOpVQ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution</strong>：</h2><blockquote><p><strong>想法：利用 hash table + list, 其中 <code>cache</code> 用來存放所有的 <code>key</code>, 用來記錄哪個 <code>key</code> 最近被使用、最久沒被使用。用 list 而非 forward_list 的原因是：「當 <code>get()</code> 訪問的是處於中間位置的節點時, 可以直接獲取其前一個節點和後一個節點, 從而省去了遍歷整個 linked list的時間」。若用 forward_list, 要獲取前一個節點和後一個節點必須從 linked list 的 head 開始遍歷</strong></p><ul><li><code>cache.begin()</code> : 最久未用的 key</li><li><code>--cache.end()</code> : 最近使用的 key</li></ul><p><strong>而 <code>key2val</code> 和 <code>key2iter</code> 分別存放 <code>key</code> 所對應到的 <code>val</code> 和 <code>iterator</code></strong></p><ul><li><strong><code>get(key)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則將其放到 <code>cache</code> 尾部</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則返回 <code>1</code></li></ul></li><li><strong><code>put(key, value)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則更新其對應的 val</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則要新增該 key。若 <code>capacity</code> 已滿, 則要移除 <code>cache.begin()</code></li></ul></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">LRUCache</span>(<span class="type">int</span> capacity) &#123;</span><br><span class="line">        capacity_ = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 若 cache 已存在該 key, 則將其放到 cache 尾部</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">find</span>(key) != key2val.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = key2val[key];</span><br><span class="line">            <span class="keyword">auto</span> it = key2iter[key];</span><br><span class="line">            cache.<span class="built_in">erase</span>(it);</span><br><span class="line">            cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">            key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// key not found</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">put</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// cache 已存在該 key, 則更新其對應的 val</span></span><br><span class="line">        <span class="comment">// 直接調用 get(key), 若存在 key, 則 get 會將其放到 cache 尾端, 然後更新 val 即可</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(key) != <span class="number">-1</span>) &#123;</span><br><span class="line">            key2val[key] = value;</span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// key 已存在, 因此 put 後 size 不變, 不會超過 cap, 所以直接返回</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// cache 不存在該 key, 則要新增該 key</span></span><br><span class="line">        <span class="comment">// 若 cache 已滿, 則要先移除 cache.begin()</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">size</span>() == capacity_) &#123;</span><br><span class="line">            <span class="type">int</span> keyDel = *cache.<span class="built_in">begin</span>();</span><br><span class="line">            cache.<span class="built_in">erase</span>(cache.<span class="built_in">begin</span>());</span><br><span class="line">            key2val.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">            key2iter.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">        key2val[key] = value;</span><br><span class="line">        key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> capacity_;</span><br><span class="line">    list&lt;<span class="type">int</span>&gt; cache; <span class="comment">// 存放 &quot;key&quot; 的 list</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; key2val; <span class="comment">// &#123;key, val&#125;</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, list&lt;<span class="type">int</span>&gt;::iterator&gt; key2iter; <span class="comment">// &#123;key, iterator&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(1)$</li><li><strong>space：</strong>$O(capacity)$ ➔ <code>cache</code>, <code>key2val</code>, <code>key2iter</code> 的元素個數不超過 <code>capacity</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>235. Lowest Common Ancestor of a Binary Search Tree</title>
+      <link href="/post/lowest-common-ancestor-of-a-binary-search-tree/"/>
+      <url>/post/lowest-common-ancestor-of-a-binary-search-tree/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/">https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/</a></strong></p><p><strong>題意：</strong>給一 BT 和兩個節點 <code>p</code>, <code>q</code>, 求兩節點之<strong>最低共同祖先(LCA)</strong></p></blockquote><p><img src="https://i.imgur.com/aMLdW4p.png"></p><p><img src="https://i.imgur.com/wS3XAZv.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS 和 BST 的性質, 找到一 node 滿足 <code>node.val</code> 介於 <code>p</code>、<code>q</code> 之間</strong></p><ul><li><code>p-&gt;val ≤ node.val ≤ q-&gt;val</code> 或</li><li><code>q-&gt;val ≤ node.val ≤ p-&gt;val</code></li></ul><p><strong>BST 性質:</strong></p><ul><li><code>root</code> 左子樹中所有 <code>node.val</code> 皆小於 <code>root.val</code></li><li><code>root</code> 右子樹中所有 <code>node.val</code> 皆大於 <code>root.val</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p-&gt;val &gt; root-&gt;val &amp;&amp; q-&gt;val &gt; root-&gt;val) &#123; <span class="comment">// 當前 root 太小</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">lowestCommonAncestor</span>(root-&gt;right, p, q);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (p-&gt;val &lt; root-&gt;val &amp;&amp; q-&gt;val &lt; root-&gt;val) &#123; <span class="comment">// 當前 root 太大</span></span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">lowestCommonAncestor</span>(root-&gt;left, p, q);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root; <span class="comment">// 當前 root-&gt;val 介於 p、q 之間, 故返回 root</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ skew tree, 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ skew tree, 遞迴深度為 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Medium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>143. Reorder List</title>
+      <link href="/post/reorder-list/"/>
+      <url>/post/reorder-list/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/reorder-list/">https://leetcode.cn/problems/reorder-list/</a></strong></p><p><strong>題意：</strong>給一單向 linked list 的起始節點 <code>head</code>, 該 linked list 可表示為</p><p><code>L0 → L1 → … → Ln - 1 → Ln</code></p><p>將其重新排序為</p><p><code>L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …</code></p><p>不能只是單純改變節點內部的值, 必須進行實際的節點交換。</p></blockquote><p><img src="https://i.imgur.com/HgeYnkh.png"></p><p><img src="https://i.imgur.com/IblLtsI.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：分成以下步驟</strong></p><ul><li><strong>找到 linked list 的中點, 按照 <a href="https://zako945.github.io/post/linked-list-cycle/">141. Linked List Cycle</a> 的方法</strong><ul><li>奇數時, <code>mid</code> 指向中點</li><li>偶數時, <code>mid</code> 指向右中點</li><li>因此, 最一開始要先讓 <code>fast</code> 先走一步, 這樣不管是奇偶數, <code>mid</code> 都會指向左中點</li></ul></li><li><strong>重要：截斷兩個 list ➔ <code>mid-&gt;next = nullptr</code>（容易忘記這步）</strong></li><li><strong>reverse 右半部分 <code>Ln → Ln - 1 → Ln - 2 → ...</code></strong></li><li><strong>merge 左半和右半</strong></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *mid = <span class="built_in">get_mid</span>(head); <span class="comment">// 得到第一個中點</span></span><br><span class="line">        ListNode *right = mid-&gt;next; <span class="comment">// 得到右半部分</span></span><br><span class="line">        mid-&gt;next = <span class="literal">nullptr</span>; <span class="comment">// **重要** 截斷兩個 list</span></span><br><span class="line">        right = <span class="built_in">reverse</span>(right); <span class="comment">// reverse 右半部分</span></span><br><span class="line">        <span class="built_in">merge</span>(head, right); <span class="comment">// merge 左半和右半</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// // 找到中點; 若為偶數, 則返回第一個中點</span></span><br><span class="line">    <span class="function">ListNode* <span class="title">get_mid</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 先讓 fast 先走一步, 這樣偶數時, slow 才會是第一個中點</span></span><br><span class="line">        ListNode *slow = head, *fast = head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span> (fast &amp;&amp; fast-&gt;next) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        ListNode *tail = head;</span><br><span class="line">        ListNode *prev = <span class="literal">nullptr</span>, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> (tail) &#123;</span><br><span class="line">            nxt = tail-&gt;next;</span><br><span class="line">            tail-&gt;next = prev;</span><br><span class="line">            prev = tail;</span><br><span class="line">            tail = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="comment">// 先儲存各自的 next</span></span><br><span class="line">            ListNode *n1 = l1-&gt;next;</span><br><span class="line">            ListNode *n2 = l2-&gt;next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// l1 下一個指向當前的 l2, 然後 l2 下一個指向 n1</span></span><br><span class="line">            l1-&gt;next = l2;</span><br><span class="line">            l2-&gt;next = n1;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 各自前進到下一個</span></span><br><span class="line">            l1 = n1;</span><br><span class="line">            l2 = n2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>19. Remove Nth Node From End of List</title>
+      <link href="/post/remove-nth-node-from-end-of-list/"/>
+      <url>/post/remove-nth-node-from-end-of-list/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">https://leetcode.cn/problems/remove-nth-node-from-end-of-list/</a></strong></p><p><strong>題意：</strong>給一 linked list, 請刪除倒數第 <code>n</code> 個 node, 並返回 linked list 的 head。</p><p><strong>進階：</strong>試著用一次掃描就完成。</p></blockquote><p><img src="https://i.imgur.com/o9Lnn8T.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 slow &amp; fast pointers, 用 <code>dummy</code> 是因為有可能第一個 node 被刪, 所以需要有 ptr 指著第一個 node 的前一個 node。首先 <code>fast</code> 先從 head 走 <code>n</code> 步（讓 <code>fast</code> 領先）, 然後 <code>slow</code> 才從 <code>dummy</code> 開始往前走, 直到 <code>fast</code> 變成 <code>NULL</code></strong></p><ul><li><strong>為什麼 <code>fast</code> 是初始化為 <code>head</code>, 而 <code>slow</code> 初始化為 <code>dummy</code> ?</strong><br>因為若 <code>fast</code> 和 <code>slow</code> 都初始化為 <code>head</code>, 則當 <code>fast</code> 為 <code>NULL</code> 時, <code>slow</code> 恰好在倒數第 <code>n</code> 個 node(因為 <code>fast</code> 領先 <code>n</code> 步), 但是我們是要<strong>刪除</strong>倒數第 <code>n</code> 個 node, <strong>要取得的是倒數第 <code>n</code> 個 node 的前一個節點</strong>(倒數第 <code>n + 1</code> 的 node), 故讓 slow 在初始化時就慢 <code>fast</code> 一步, 讓 <code>fast</code> 領先 <code>n + 1</code> 步, 這樣 <code>slow</code> 最後才會是倒數第 <code>n + 1</code> 的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        ListNode *slow = dummy, *fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow-&gt;next = slow-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(L)$ ➔ 遍歷 linked list, 其中 <code>L</code> 為 linked list 的長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
             
             <tag> Medium </tag>
             
@@ -160,6 +375,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Binary Search </category>
           
       </categories>
@@ -191,6 +408,8 @@
       
       <categories>
           
+          <category> Leetcode </category>
+          
           <category> Binary Search </category>
           
       </categories>
@@ -219,6 +438,8 @@
       
       
       <categories>
+          
+          <category> Leetcode </category>
           
           <category> Binary Search </category>
           
