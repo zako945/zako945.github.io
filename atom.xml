@@ -150,11 +150,11 @@
   </entry>
   
   <entry>
-    <title>98. Validate Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/validate-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/validate-binary-search-tree/</id>
+    <title>211. Design Add and Search Words Data Structure</title>
+    <link href="http://zako945.github.io/post/design-add-and-search-words-data-structure/"/>
+    <id>http://zako945.github.io/post/design-add-and-search-words-data-structure/</id>
     <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.044Z</updated>
+    <updated>2024-12-16T04:34:22.927Z</updated>
     
     
       
@@ -162,8 +162,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/validate-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/validate-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回其是否為</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/design-add-and-search-words-data-structure/&quot;&gt;https://leetcode.cn/problems/design-add-and-search-words-data-structure/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;請設計一資料結構, 支持新增單字、搜尋</summary>
         
       
     
@@ -171,7 +171,40 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>208. Implement Trie (Prefix Tree)</title>
+    <link href="http://zako945.github.io/post/implement-trie-prefix-tree/"/>
+    <id>http://zako945.github.io/post/implement-trie-prefix-tree/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T04:30:11.624Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/implement-trie-prefix-tree/&quot;&gt;https://leetcode.cn/problems/implement-trie-prefix-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;Trie 也稱作 prefix tree, 是一種可以高效儲存、取得 string 中的 key</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
@@ -212,6 +245,41 @@
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>98. Validate Binary Search Tree</title>
+    <link href="http://zako945.github.io/post/validate-binary-search-tree/"/>
+    <id>http://zako945.github.io/post/validate-binary-search-tree/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T01:17:26.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/validate-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/validate-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回其是否為</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
@@ -282,72 +350,6 @@
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>287. Find the Duplicate Number</title>
-    <link href="http://zako945.github.io/post/find-the-duplicate-number/"/>
-    <id>http://zako945.github.io/post/find-the-duplicate-number/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.039Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/find-the-duplicate-number/&quot;&gt;https://leetcode.cn/problems/find-the-duplicate-number/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一有 &lt;code&gt;n + 1&lt;/code&gt; 個數的 array &lt;code&gt;nums&lt;/code&gt;,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>235. Lowest Common Ancestor of a Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.040Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 和兩個節點</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
   </entry>
   
