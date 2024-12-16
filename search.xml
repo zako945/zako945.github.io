@@ -4,29 +4,27 @@
   
     
     <entry>
-      <title>33. Search in Rotated Sorted Array</title>
-      <link href="/post/search-in-rotated-sorted-array/"/>
-      <url>/post/search-in-rotated-sorted-array/</url>
+      <title>102. Binary Tree Level Order Traversal</title>
+      <link href="/post/binary-tree-level-order-traversal/"/>
+      <url>/post/binary-tree-level-order-traversal/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">https://leetcode.cn/problems/search-in-rotated-sorted-array/</a></strong></p><p><strong>題意</strong>: 有一整數 array <code>nums</code> 按升序排列, 其中的值<strong>互不相同</strong>。</p><p>給一<strong>旋轉後</strong>的 array <code>nums</code> 和一整數 <code>target</code>, 如果 <code>nums</code> 中存在 <code>target</code>, 則返回其 index; 否則, 返回 <code>-1</code>。</p><p>請設計 $O(log(n))$ time 的演算法。</p></blockquote><p><img src="https://i.imgur.com/oxWfuYg.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 將 <code>nums</code> 從中間分開成左右兩部分的時候, 一定有一部分是有序的。</strong></p><p><strong>e.g. <code>nums = [4,5,6,7,0,1,2]</code>, 從 <code>6</code> 切割, 可分成 <code>[4,5,6]</code> 和 <code>[7,0,1,2]</code> 兩個部分, 其中左邊 <code>[4,5,6]</code> 是有序的</strong></p><p>因此我們可以在 Binary Search 時查看當前 <code>mid</code> 分割的兩個部分 <code>[left, mid]</code> 和 <code>[mid + 1, right]</code> 中哪個是有序的, 藉此來縮小左邊界 or 右邊界。</p><ul><li>若 <code>target == nums[mid]</code>, 則直接返回 <code>mid</code></li><li>若 <code>[left, mid]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>[nums[left], nums[mid])</code></strong> 間, 則縮小搜索範圍為 <code>[left, mid - 1]</code>; 否則, 縮小搜索範圍為 <code>[mid + 1, right]</code></li><li>若 <code>[mid + 1, right]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>(nums[mid], nums[right]]</code></strong> 間, 則縮小搜索範圍為 <code>[mid + 1, right]</code>; 否則, 縮小搜索範圍為 <code>[left, mid - 1]</code></li></ul><p>當 <code>[left, mid]</code> 區間恰好只有一個元素時, 也滿足左半邊已排序的定義</p><p>e.g. <code>nums = [3, 1]</code>, <code>target = 1</code></p><ul><li><code>left = 0</code>, <code>right = 1</code>, <code>mid = 0</code> ➔ <code>[left, mid]</code> 區間恰好只有一個元素, 使得 <code>nums[left] == nums[mid]</code>, 這時 <code>target</code> 應跟左半邊中的元素比較, 然後才縮小邊界</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 這種特殊的 Binary Search 建議搜到就返回</span></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 左半邊是被排序過的, e.g. [4,5,6,7,0,1,2], mid = 7</span></span><br><span class="line">            <span class="comment">// nums[left] == nums[mid] 也滿足左半邊是排序的定義（有可能 left == mid）</span></span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123;</span><br><span class="line">                <span class="comment">// 因為 target != nums[mid], 故用 &lt; 即可</span></span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 右半邊是被排序過的, e.g. [7,0,1,2,4,5,6], mid = 2</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">https://leetcode.cn/problems/binary-tree-level-order-traversal/</a></strong></p><p><strong>題意：</strong>給一 BT <code>root</code>, 返回 <code>node.val</code> 之 level-order（由上層往下層, 每層由左至右）。</p></blockquote><p><img src="https://i.imgur.com/RV7JAy9.png"></p><p><img src="https://i.imgur.com/f9wxlhh.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">emplace</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; level;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = q.<span class="built_in">size</span>(); i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">                <span class="keyword">auto</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                level.<span class="built_in">emplace_back</span>(cur-&gt;val);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;left) &#123;</span><br><span class="line">                    q.<span class="built_in">emplace</span>(cur-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;right) &#123;</span><br><span class="line">                    q.<span class="built_in">emplace</span>(cur-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(level);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 每個 node 皆被遍歷一次</li><li><strong>space：</strong>$O(n)$ ➔ 若不考慮要返回的 array, <code>q</code> 的元素個數不超過 <code>n</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 DFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">        <span class="built_in">dfs</span>(root, <span class="number">0</span>, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root, <span class="type">int</span> depth, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (res.<span class="built_in">size</span>() &lt;= depth) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(vector&lt;<span class="type">int</span>&gt;&#123;&#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        res[depth].<span class="built_in">emplace_back</span>(root-&gt;val);</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;left, depth + <span class="number">1</span>, res);</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;right, depth + <span class="number">1</span>, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 每個 node 皆被遍歷一次</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Binary Search </category>
+          <category> Tree </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
@@ -35,30 +33,63 @@
     
     
     <entry>
-      <title>981. Time Based Key-Value Store</title>
-      <link href="/post/time-based-key-value-store/"/>
-      <url>/post/time-based-key-value-store/</url>
+      <title>199. Binary Tree Right Side View</title>
+      <link href="/post/binary-tree-right-side-view/"/>
+      <url>/post/binary-tree-right-side-view/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/time-based-key-value-store/">https://leetcode.cn/problems/time-based-key-value-store/</a></strong></p><p><strong>題意：</strong>設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key 的多個值, 並針對特定 timestamp 得到相對應的 key 的 value。</p><p>實作 <code>TimeMap</code> class：</p><ul><li><code>TimeMap()</code> : 初始化 instance</li><li><code>void set(String key, String value, int timestamp)</code> : 儲存 <code>key</code>、 <code>value</code>, 以及 <code>timestamp</code>。</li><li><code>String get(String key, int timestamp)</code> :<ul><li>返回 <code>timestamp_prev</code> 對應的 value, 其中 <code>timestamp_prev &lt;= timestamp</code></li><li>如果存在多個值, 則返回對應<strong>最大</strong>的 <code>timestamp_prev</code> 的 value。</li><li>如果不存在, 則返回 <code>&quot;&quot;</code>。</li></ul></li></ul><p><strong>注意:</strong> <code>set(key, value, timestamp)</code> 中的 <code>timestamp</code> 都是嚴格遞增的。</p></blockquote><p><img src="https://i.imgur.com/9V7VWMN.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：題目的意思如下圖, <code>key</code> 裡面會儲存 <code>values</code>, 而 <code>values</code> 裡面可以有多個 <code>&#123;value, timestmap&#125;</code> pair。由於 <code>values</code> 裡面的 <code>timestamp</code> 都是嚴格遞增的(已排序), 所以我們可直接使用 Binary Search</strong></p></blockquote><p><img src="https://i.imgur.com/PdkaQmt.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TimeMap</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TimeMap</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(string key, string value, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        m[key].<span class="built_in">emplace_back</span>(pair&lt;string, <span class="type">int</span>&gt;&#123;value, timestamp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">get</span><span class="params">(string key, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m.<span class="built_in">find</span>(key) == m.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = m[key].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (m[key][mid].second &gt; timestamp) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// left 為 &gt; timestamp 的位置, 故 left - 1 為 &lt;= timestamp 的位置</span></span><br><span class="line">        <span class="keyword">return</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span>) ? m[key][left - <span class="number">1</span>].first : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    unordered_map&lt;string, vector&lt;pair&lt;string, <span class="type">int</span>&gt;&gt;&gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary Search, 其中 <code>n</code> 為 <code>m[key]</code> 的長度</li><li><strong>space：</strong>$O(n)$ ➔ 其中 <code>n</code> 為 <code>set()</code> 的次數</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/binary-tree-right-side-view/">https://leetcode.cn/problems/binary-tree-right-side-view/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>root</code>, 想像你站在 BT 的右側, 按照從頂部到底部的順序, 返回你從右側所能看到的 <code>node.val</code>。</p></blockquote><p><img src="https://i.imgur.com/xxrR9lV.png"></p><p><img src="https://i.imgur.com/Z0PWxXR.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">emplace</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = q.<span class="built_in">size</span>(); i &gt; <span class="number">0</span>; --i) &#123;</span><br><span class="line">                <span class="keyword">auto</span> cur = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 把每層最後一個 node 給 push 到 res 中</span></span><br><span class="line">                <span class="keyword">if</span> (i == <span class="number">1</span>) &#123;</span><br><span class="line">                    res.<span class="built_in">emplace_back</span>(cur-&gt;val);</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;left) &#123;</span><br><span class="line">                    q.<span class="built_in">emplace</span>(cur-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (cur-&gt;right) &#123;</span><br><span class="line">                    q.<span class="built_in">emplace</span>(cur-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 每個 node 皆被遍歷一次</li><li><strong>space：</strong>$O(n)$ ➔ 撇除要返回的 array, 在 while loop 迭代的過程中, <code>q</code> 的元素個數不超過 <code>n</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 DFS, 遍歷順序為 <code>root -&gt; right -&gt; left</code>, 並用 <code>depth</code> 紀錄當前 <code>root</code> 的深度, 而 <code>max_depth</code> 紀錄當前拜訪到的最大深度。</strong></p><ul><li>若遞迴拜訪的 <code>root</code> 滿足 <code>depth &gt; max_depth</code>, 代表這是下一層最靠右的 node, 則把該 node 加入到 res 中, 並更新 <code>max_depth</code></li></ul><p><img src="https://i.imgur.com/nRLDwxG.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightSideView</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="type">int</span> max_depth = <span class="number">-1</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(root, <span class="number">0</span>, max_depth, res);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(TreeNode* root, <span class="type">int</span> depth, <span class="type">int</span>&amp; max_depth, vector&lt;<span class="type">int</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (depth &gt; max_depth) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(root-&gt;val);</span><br><span class="line">            max_depth = depth;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 先拜訪 right, 再拜訪 left</span></span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;right, depth + <span class="number">1</span>, max_depth, res);</span><br><span class="line">        <span class="built_in">dfs</span>(root-&gt;left, depth + <span class="number">1</span>, max_depth, res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 每個 node 皆被遍歷一次</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Binary Search </category>
+          <category> Tree </category>
           
       </categories>
       
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>105. Construct Binary Tree from Preorder and Inorder Traversal</title>
+      <link href="/post/construct-binary-tree-from-preorder-and-inorder-traversal/"/>
+      <url>/post/construct-binary-tree-from-preorder-and-inorder-traversal/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>preorder</code> 和 <code>inorder</code>, 構建並返回該 BT。</p><p>tree 中沒有重複的元素。</p></blockquote><p><img src="https://i.imgur.com/H1ONem7.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 跟 <a href="https://zako945.github.io/maximum-binary-tree">654. Maximum Binary Tree</a> 類似, 只是可以先遍歷 inorder, 紀錄 inorder 元素的 idx, 讓後續遍歷 preorder 元素時可快速定位, 將時間複雜度降到 $O(n)$</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        cur = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 紀錄 inorder 元素的 idx, 方便 preorder 快速定位</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; inorder.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            index[inorder[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(preorder, <span class="number">0</span>, preorder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> cur; <span class="comment">// preorder 當前要拜訪的 idx</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; index; <span class="comment">// &#123;inorder[i], i&#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, <span class="type">int</span> left, <span class="type">int</span> right)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 快速取得 preorder 元素在 inorder 中的 idx</span></span><br><span class="line">        <span class="type">int</span> idx = index[preorder[cur]];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 建立 root 後, cur 往下一個</span></span><br><span class="line">        TreeNode *root = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[cur++]);</span><br><span class="line">        root-&gt;left = <span class="built_in">dfs</span>(preorder, left, idx - <span class="number">1</span>);</span><br><span class="line">        root-&gt;right = <span class="built_in">dfs</span>(preorder, idx + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>preorder</code> 和 <code>inorder</code></li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
+            <tag> Microsoft </tag>
+            
         </tags>
       
     </entry>
@@ -66,32 +97,32 @@
     
     
     <entry>
-      <title>143. Reorder List</title>
-      <link href="/post/reorder-list/"/>
-      <url>/post/reorder-list/</url>
+      <title>1448. Count Good Nodes in Binary Tree</title>
+      <link href="/post/count-good-nodes-in-binary-tree/"/>
+      <url>/post/count-good-nodes-in-binary-tree/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/reorder-list/">https://leetcode.cn/problems/reorder-list/</a></strong></p><p><strong>題意：</strong>給一單向 linked list 的起始節點 <code>head</code>, 該 linked list 可表示為</p><p><code>L0 → L1 → … → Ln - 1 → Ln</code></p><p>將其重新排序為</p><p><code>L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …</code></p><p>不能只是單純改變節點內部的值, 必須進行實際的節點交換。</p></blockquote><p><img src="https://i.imgur.com/HgeYnkh.png"></p><p><img src="https://i.imgur.com/IblLtsI.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：分成以下步驟</strong></p><ul><li><strong>找到 linked list 的中點, 按照 <a href="https://zako945.github.io/post/linked-list-cycle/">141. Linked List Cycle</a> 的方法</strong><ul><li>奇數時, <code>mid</code> 指向中點</li><li>偶數時, <code>mid</code> 指向右中點</li><li>因此, 最一開始要先讓 <code>fast</code> 先走一步, 這樣不管是奇偶數, <code>mid</code> 都會指向左中點</li></ul></li><li><strong>重要：截斷兩個 list ➔ <code>mid-&gt;next = nullptr</code>（容易忘記這步）</strong></li><li><strong>reverse 右半部分 <code>Ln → Ln - 1 → Ln - 2 → ...</code></strong></li><li><strong>merge 左半和右半</strong></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *mid = <span class="built_in">get_mid</span>(head); <span class="comment">// 得到第一個中點</span></span><br><span class="line">        ListNode *right = mid-&gt;next; <span class="comment">// 得到右半部分</span></span><br><span class="line">        mid-&gt;next = <span class="literal">nullptr</span>; <span class="comment">// **重要** 截斷兩個 list</span></span><br><span class="line">        right = <span class="built_in">reverse</span>(right); <span class="comment">// reverse 右半部分</span></span><br><span class="line">        <span class="built_in">merge</span>(head, right); <span class="comment">// merge 左半和右半</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// // 找到中點; 若為偶數, 則返回第一個中點</span></span><br><span class="line">    <span class="function">ListNode* <span class="title">get_mid</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 先讓 fast 先走一步, 這樣偶數時, slow 才會是第一個中點</span></span><br><span class="line">        ListNode *slow = head, *fast = head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span> (fast &amp;&amp; fast-&gt;next) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        ListNode *tail = head;</span><br><span class="line">        ListNode *prev = <span class="literal">nullptr</span>, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> (tail) &#123;</span><br><span class="line">            nxt = tail-&gt;next;</span><br><span class="line">            tail-&gt;next = prev;</span><br><span class="line">            prev = tail;</span><br><span class="line">            tail = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="comment">// 先儲存各自的 next</span></span><br><span class="line">            ListNode *n1 = l1-&gt;next;</span><br><span class="line">            ListNode *n2 = l2-&gt;next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// l1 下一個指向當前的 l2, 然後 l2 下一個指向 n1</span></span><br><span class="line">            l1-&gt;next = l2;</span><br><span class="line">            l2-&gt;next = n1;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 各自前進到下一個</span></span><br><span class="line">            l1 = n1;</span><br><span class="line">            l2 = n2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/count-good-nodes-in-binary-tree/">https://leetcode.cn/problems/count-good-nodes-in-binary-tree/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>root</code>, 返回 BT 中 <strong>Good node</strong> 的個數。</p><p><strong>Good node <code>x</code> 的定義：</strong>從 <code>root</code> 到 <code>x</code> 所經過的 node 中, 沒有任何 <code>node.val</code> 大於 <code>x.val</code>。</p></blockquote><p><img src="https://i.imgur.com/kV85ofD.png"></p><p><img src="https://i.imgur.com/D6kkvFh.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 在 DFS 過程中維護當前路徑的最大值 <code>curMax</code>。若 <code>node-&gt;val ≥ curMax</code>, 則更新 <code>maxCur</code>, 並返回 <code>1 + 左子樹的 good node 數 + 右子樹的 good node 數</code>, 那個 1 是把當前 node 視為 good node</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">goodNodes</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// dfs(root, curMax) 返回 root 到 node 的 path 上總共有幾個 good node</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="type">int</span> curMax)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;val &gt;= curMax) &#123;</span><br><span class="line">            curMax = <span class="built_in">max</span>(curMax, node-&gt;val);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span> + <span class="built_in">dfs</span>(node-&gt;left, curMax) + <span class="built_in">dfs</span>(node-&gt;right, curMax);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(node-&gt;left, curMax) + <span class="built_in">dfs</span>(node-&gt;right, curMax);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 取決於遞迴深度, worse case：skew tree</li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Linked List </category>
+          <category> Tree </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
+            <tag> Microsoft </tag>
+            
         </tags>
       
     </entry>
@@ -99,62 +130,62 @@
     
     
     <entry>
-      <title>19. Remove Nth Node From End of List</title>
-      <link href="/post/remove-nth-node-from-end-of-list/"/>
-      <url>/post/remove-nth-node-from-end-of-list/</url>
+      <title>230. Kth Smallest Element in a BST</title>
+      <link href="/post/kth-smallest-element-in-a-bst/"/>
+      <url>/post/kth-smallest-element-in-a-bst/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">https://leetcode.cn/problems/remove-nth-node-from-end-of-list/</a></strong></p><p><strong>題意：</strong>給一 linked list, 請刪除倒數第 <code>n</code> 個 node, 並返回 linked list 的 head。</p><p><strong>進階：</strong>試著用一次掃描就完成。</p></blockquote><p><img src="https://i.imgur.com/o9Lnn8T.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 slow &amp; fast pointers, 用 <code>dummy</code> 是因為有可能第一個 node 被刪, 所以需要有 ptr 指著第一個 node 的前一個 node。首先 <code>fast</code> 先從 head 走 <code>n</code> 步（讓 <code>fast</code> 領先）, 然後 <code>slow</code> 才從 <code>dummy</code> 開始往前走, 直到 <code>fast</code> 變成 <code>NULL</code></strong></p><ul><li><strong>為什麼 <code>fast</code> 是初始化為 <code>head</code>, 而 <code>slow</code> 初始化為 <code>dummy</code> ?</strong><br>因為若 <code>fast</code> 和 <code>slow</code> 都初始化為 <code>head</code>, 則當 <code>fast</code> 為 <code>NULL</code> 時, <code>slow</code> 恰好在倒數第 <code>n</code> 個 node(因為 <code>fast</code> 領先 <code>n</code> 步), 但是我們是要<strong>刪除</strong>倒數第 <code>n</code> 個 node, <strong>要取得的是倒數第 <code>n</code> 個 node 的前一個節點</strong>(倒數第 <code>n + 1</code> 的 node), 故讓 slow 在初始化時就慢 <code>fast</code> 一步, 讓 <code>fast</code> 領先 <code>n + 1</code> 步, 這樣 <code>slow</code> 最後才會是倒數第 <code>n + 1</code> 的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        ListNode *slow = dummy, *fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow-&gt;next = slow-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(L)$ ➔ 遍歷 linked list, 其中 <code>L</code> 為 linked list 的長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/">https://leetcode.cn/problems/kth-smallest-element-in-a-bst/</a></strong></p><p><strong>題意：</strong>給一 BST 的 <code>root</code> 和一整數 <code>k</code>, 返回 BST 中第 <code>k</code> 小的元素（從 <code>1</code> 開始計數）。</p></blockquote><p><img src="https://i.imgur.com/FNXlEpo.png"></p><p><img src="https://i.imgur.com/qQJ4RXw.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS（inorder）, 不斷取當前 node 的 <code>left</code> 直到 <code>node-&gt;left</code> 為 <code>null</code>, 由於 <code>left child</code> 是「後進先出」, 故要使用 stack。將這些 <code>left</code> 一個一個 pop 掉, 並將 <code>k</code> 減去 <code>1</code></strong></p><ul><li>若 <code>k == 0</code>, 代表當前 <code>node</code> 為第 <code>k</code> 小的數</li><li>若 <code>k &gt; 0</code>, 代表當前的數還太小, 故要嘗試其右子樹中的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; stk;</span><br><span class="line">        stk.<span class="built_in">emplace</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="comment">// 不斷加入 left child, 直到 left child 為 null</span></span><br><span class="line">            <span class="keyword">while</span> (root) &#123;</span><br><span class="line">                stk.<span class="built_in">emplace</span>(root);</span><br><span class="line">                root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 取出最左邊的 node</span></span><br><span class="line">            root = stk.<span class="built_in">top</span>();</span><br><span class="line">            stk.<span class="built_in">pop</span>();</span><br><span class="line">            --k; <span class="comment">// 扣除 root 本身</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// k == 0, 代表當前 root 為第 k 小的</span></span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 嘗試最左邊的 node 之 right subtree</span></span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ worse case：skew tree, 其中 <code>n</code> 為 node 數</li><li><strong>space：</strong>$O(n)$ ➔ 取決於 stack 長度, 最大長度為 <code>n</code></li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Linked List </category>
+          <category> Tree </category>
           
       </categories>
       
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>98. Validate Binary Search Tree</title>
+      <link href="/post/validate-binary-search-tree/"/>
+      <url>/post/validate-binary-search-tree/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/validate-binary-search-tree/">https://leetcode.cn/problems/validate-binary-search-tree/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>root</code>, 返回其是否為 BST。</p></blockquote><p><img src="https://i.imgur.com/hCHWtfq.png"></p><p><img src="https://i.imgur.com/9gNOLMq.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 當前 node 必須判斷是否在目前的上、下界中, 因此要不斷維護當前的上、下界。若 node-&gt;val 滿足當前上下界：</strong></p><ul><li>遞迴遍歷 <code>node-&gt;left</code>, 並把 <code>node-&gt;val</code> 設為上界</li><li>遞迴遍歷 <code>node-&gt;right</code>, 並把 <code>node-&gt;val</code> 設為下界</li></ul><p>下圖中雖然 <code>7  &gt; 4</code>, 但它卻位於 <code>5</code> 的左子樹中（此時的 <code>lower = 4</code>, <code>upper = 5</code>）, 故要返回 <code>false</code></p><p><img src="https://i.imgur.com/3laL2XQ.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 要用 long 而非 int, 因為若用 int, 當 root = [INT_MAX] 時, 會返回 false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, LONG_MIN, LONG_MAX);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="type">long</span> lower, <span class="type">long</span> upper)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 若 tree 為空樹, 也是合法的 BST</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;val &lt;= lower || node-&gt;val &gt;= upper) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 當前 node 是合法的, 故遞迴判斷左、右子樹是否合法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(node-&gt;left, lower, node-&gt;val) &amp;&amp; </span><br><span class="line">                <span class="built_in">dfs</span>(node-&gt;right, node-&gt;val, upper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>138. Copy List with Random Pointer</title>
-      <link href="/post/copy-list-with-random-pointer/"/>
-      <url>/post/copy-list-with-random-pointer/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/copy-list-with-random-pointer/">https://leetcode.cn/problems/copy-list-with-random-pointer/</a></strong></p><p><strong>題意：</strong>給一長度為 <code>n</code> 的 linked list, 每個節點包含一個額外增加的隨機 pointer <code>random</code>, 該 pointer 可以指向 linked list 中的任何節點 or 空節點。</p><p>建構該 linked list 的 deep copy, 它由 <code>n</code> 個新節點組成, 其中每個新節點的值都設為其對應的 <code>node.val</code>。</p><p>新節點的 <code>next</code> 和 <code>random</code> 也都應指向新 linked list 中的其他節點, 使原 linked list 和新 linked list 能夠表示成相同的 linked list。</p><p>e.g. 如果原 linked list 中有 <code>X</code> 和 <code>Y</code> 兩個節點, 其中 <code>X.random --&gt; Y</code>。則新 linked list 中對應的兩個節點 <code>x</code> 和 <code>y</code>, 同樣有 <code>x.random --&gt; y</code>。</p><p>返回新 linked list 的 <code>head</code>。</p></blockquote><p><img src="https://i.imgur.com/pfPzZ9u.png"></p><p><img src="https://i.imgur.com/a0gJl5X.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 hash table, 先遍歷原 linked list, 並在遍歷的同時不斷創建新節點, 將 <code>原節點</code> 作為 <code>key</code>、<code>新節點</code> 作為 <code>value</code> 放入 hash table 中。最後, 再遍歷一次原 linked list, 並設置新 linked list 的 <code>next</code> 和 <code>random</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        Node *cur = head;</span><br><span class="line">        unordered_map&lt;Node*, Node*&gt; oldToNew; <span class="comment">// &#123;old, new&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            oldToNew[cur] = newNode;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            oldToNew[cur]-&gt;next = oldToNew[cur-&gt;next];</span><br><span class="line">            oldToNew[cur]-&gt;random = oldToNew[cur-&gt;random];</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oldToNew[head];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(n)$ ➔ <code>oldToNew</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：分成三個步驟</strong></p><ul><li>根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面<br>e.g. <code>1 -&gt; 1&#39; -&gt; 2 -&gt; 2&#39; -&gt; 3 -&gt; 3&#39;</code></li><li>設置新節點的 <code>random</code><br>➔ 新節點的 <code>random</code> 為原節點的 <code>random-&gt;next</code> (原 <code>random</code> 對應的新節點)</li><li>將兩個 linked list 分開</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面</span></span><br><span class="line">        Node *cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            newNode-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = newNode;</span><br><span class="line">            cur = newNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 設置新節點的 random</span></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            <span class="comment">// 不用判斷 cur-&gt;next 是否為 null, 是因為 cur 為原 linked list 的節點</span></span><br><span class="line">            <span class="comment">// cur-&gt;next 為對應的新節點, 在 cur != null 的前提下, cur-&gt;next 必不為 null</span></span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;random) &#123;</span><br><span class="line">                cur-&gt;next-&gt;random = cur-&gt;random-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 將兩個 linked list 分開</span></span><br><span class="line">        cur = head;</span><br><span class="line">        Node *dummy = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">0</span>), *tail = dummy;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            tail-&gt;next = cur-&gt;next; <span class="comment">// 將新節點加到新 linked list</span></span><br><span class="line">            tail = tail-&gt;next; <span class="comment">// 更新 tail</span></span><br><span class="line">            cur-&gt;next = tail-&gt;next; <span class="comment">// 將 cur 指向下一個原 linked list 的 node</span></span><br><span class="line">            cur = cur-&gt;next; <span class="comment">// 將 cur 更新成下一個原 linked list 的 node</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 若不考慮要 copy 的 node, 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Linked List </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Amazon </tag>
-            
             <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
             
         </tags>
       
@@ -181,13 +212,44 @@
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>138. Copy List with Random Pointer</title>
+      <link href="/post/copy-list-with-random-pointer/"/>
+      <url>/post/copy-list-with-random-pointer/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/copy-list-with-random-pointer/">https://leetcode.cn/problems/copy-list-with-random-pointer/</a></strong></p><p><strong>題意：</strong>給一長度為 <code>n</code> 的 linked list, 每個節點包含一個額外增加的隨機 pointer <code>random</code>, 該 pointer 可以指向 linked list 中的任何節點 or 空節點。</p><p>建構該 linked list 的 deep copy, 它由 <code>n</code> 個新節點組成, 其中每個新節點的值都設為其對應的 <code>node.val</code>。</p><p>新節點的 <code>next</code> 和 <code>random</code> 也都應指向新 linked list 中的其他節點, 使原 linked list 和新 linked list 能夠表示成相同的 linked list。</p><p>e.g. 如果原 linked list 中有 <code>X</code> 和 <code>Y</code> 兩個節點, 其中 <code>X.random --&gt; Y</code>。則新 linked list 中對應的兩個節點 <code>x</code> 和 <code>y</code>, 同樣有 <code>x.random --&gt; y</code>。</p><p>返回新 linked list 的 <code>head</code>。</p></blockquote><p><img src="https://i.imgur.com/pfPzZ9u.png"></p><p><img src="https://i.imgur.com/a0gJl5X.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 hash table, 先遍歷原 linked list, 並在遍歷的同時不斷創建新節點, 將 <code>原節點</code> 作為 <code>key</code>、<code>新節點</code> 作為 <code>value</code> 放入 hash table 中。最後, 再遍歷一次原 linked list, 並設置新 linked list 的 <code>next</code> 和 <code>random</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        Node *cur = head;</span><br><span class="line">        unordered_map&lt;Node*, Node*&gt; oldToNew; <span class="comment">// &#123;old, new&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            oldToNew[cur] = newNode;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            oldToNew[cur]-&gt;next = oldToNew[cur-&gt;next];</span><br><span class="line">            oldToNew[cur]-&gt;random = oldToNew[cur-&gt;random];</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> oldToNew[head];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(n)$ ➔ <code>oldToNew</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：分成三個步驟</strong></p><ul><li>根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面<br>e.g. <code>1 -&gt; 1&#39; -&gt; 2 -&gt; 2&#39; -&gt; 3 -&gt; 3&#39;</code></li><li>設置新節點的 <code>random</code><br>➔ 新節點的 <code>random</code> 為原節點的 <code>random-&gt;next</code> (原 <code>random</code> 對應的新節點)</li><li>將兩個 linked list 分開</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">Node* <span class="title">copyRandomList</span><span class="params">(Node* head)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 根據遍歷到的原節點來創建對應的新節點, 並把每個新節點放在原節點後面</span></span><br><span class="line">        Node *cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            Node *newNode = <span class="keyword">new</span> <span class="built_in">Node</span>(cur-&gt;val);</span><br><span class="line">            newNode-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = newNode;</span><br><span class="line">            cur = newNode-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 設置新節點的 random</span></span><br><span class="line">        cur = head;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            <span class="comment">// 不用判斷 cur-&gt;next 是否為 null, 是因為 cur 為原 linked list 的節點</span></span><br><span class="line">            <span class="comment">// cur-&gt;next 為對應的新節點, 在 cur != null 的前提下, cur-&gt;next 必不為 null</span></span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;random) &#123;</span><br><span class="line">                cur-&gt;next-&gt;random = cur-&gt;random-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            cur = cur-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 將兩個 linked list 分開</span></span><br><span class="line">        cur = head;</span><br><span class="line">        Node *dummy = <span class="keyword">new</span> <span class="built_in">Node</span>(<span class="number">0</span>), *tail = dummy;</span><br><span class="line">        <span class="keyword">while</span> (cur) &#123;</span><br><span class="line">            tail-&gt;next = cur-&gt;next; <span class="comment">// 將新節點加到新 linked list</span></span><br><span class="line">            tail = tail-&gt;next; <span class="comment">// 更新 tail</span></span><br><span class="line">            cur-&gt;next = tail-&gt;next; <span class="comment">// 將 cur 指向下一個原 linked list 的 node</span></span><br><span class="line">            cur = cur-&gt;next; <span class="comment">// 將 cur 更新成下一個原 linked list 的 node</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 若不考慮要 copy 的 node, 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Medium </tag>
             
-            <tag> Google </tag>
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -214,46 +276,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>146. LRU Cache</title>
-      <link href="/post/lru-cache/"/>
-      <url>/post/lru-cache/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/lru-cache/">https://leetcode.cn/problems/lru-cache/</a></strong></p><p><strong>題意：</strong>設計並實現一個滿足 <strong>LRU（Least Recently Used）</strong>的資料結構。</p><p><strong>實現 <code>LRUCache</code> class：</strong></p><ul><li><code>LRUCache(int capacity)</code>：以 <code>capacity</code> 初始化 LRU cache 的大小。</li><li><code>int get(int key)</code>：若 <code>key</code> 存在於 cache 中, 則返回其對應的 <code>val</code>, 否則返回 <code>1</code>。</li><li><code>void put(int key, int value)</code>：<ul><li>若 <code>key</code> 已經存在, 則變更其 <code>value</code></li><li>若不存在, 則將該組 <code>key-value</code> insert 到 cache 中</li><li>若 insert 操作導致 pair 數量超過 <code>capacity</code>, 則移除最久未使用的 <code>key-value</code> pair</li></ul></li></ul><p><strong>注意：</strong><code>get()</code> 和 <code>put()</code> 必須是 $O(1)$ time</p></blockquote><p><img src="https://i.imgur.com/xxJOpVQ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution</strong>：</h2><blockquote><p><strong>想法：利用 hash table + list, 其中 <code>cache</code> 用來存放所有的 <code>key</code>, 用來記錄哪個 <code>key</code> 最近被使用、最久沒被使用。用 list 而非 forward_list 的原因是：「當 <code>get()</code> 訪問的是處於中間位置的節點時, 可以直接獲取其前一個節點和後一個節點, 從而省去了遍歷整個 linked list的時間」。若用 forward_list, 要獲取前一個節點和後一個節點必須從 linked list 的 head 開始遍歷</strong></p><ul><li><code>cache.begin()</code> : 最久未用的 key</li><li><code>--cache.end()</code> : 最近使用的 key</li></ul><p><strong>而 <code>key2val</code> 和 <code>key2iter</code> 分別存放 <code>key</code> 所對應到的 <code>val</code> 和 <code>iterator</code></strong></p><ul><li><strong><code>get(key)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則將其放到 <code>cache</code> 尾部</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則返回 <code>1</code></li></ul></li><li><strong><code>put(key, value)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則更新其對應的 val</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則要新增該 key。若 <code>capacity</code> 已滿, 則要移除 <code>cache.begin()</code></li></ul></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">LRUCache</span>(<span class="type">int</span> capacity) &#123;</span><br><span class="line">        capacity_ = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 若 cache 已存在該 key, 則將其放到 cache 尾部</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">find</span>(key) != key2val.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = key2val[key];</span><br><span class="line">            <span class="keyword">auto</span> it = key2iter[key];</span><br><span class="line">            cache.<span class="built_in">erase</span>(it);</span><br><span class="line">            cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">            key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// key not found</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">put</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// cache 已存在該 key, 則更新其對應的 val</span></span><br><span class="line">        <span class="comment">// 直接調用 get(key), 若存在 key, 則 get 會將其放到 cache 尾端, 然後更新 val 即可</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(key) != <span class="number">-1</span>) &#123;</span><br><span class="line">            key2val[key] = value;</span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// key 已存在, 因此 put 後 size 不變, 不會超過 cap, 所以直接返回</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// cache 不存在該 key, 則要新增該 key</span></span><br><span class="line">        <span class="comment">// 若 cache 已滿, 則要先移除 cache.begin()</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">size</span>() == capacity_) &#123;</span><br><span class="line">            <span class="type">int</span> keyDel = *cache.<span class="built_in">begin</span>();</span><br><span class="line">            cache.<span class="built_in">erase</span>(cache.<span class="built_in">begin</span>());</span><br><span class="line">            key2val.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">            key2iter.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">        key2val[key] = value;</span><br><span class="line">        key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> capacity_;</span><br><span class="line">    list&lt;<span class="type">int</span>&gt; cache; <span class="comment">// 存放 &quot;key&quot; 的 list</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; key2val; <span class="comment">// &#123;key, val&#125;</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, list&lt;<span class="type">int</span>&gt;::iterator&gt; key2iter; <span class="comment">// &#123;key, iterator&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(1)$</li><li><strong>space：</strong>$O(capacity)$ ➔ <code>cache</code>, <code>key2val</code>, <code>key2iter</code> 的元素個數不超過 <code>capacity</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Linked List </category>
-          
-      </categories>
-      
-      
-        <tags>
             
             <tag> Amazon </tag>
             
-            <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
-            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -280,9 +309,9 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
@@ -291,31 +320,31 @@
     
     
     <entry>
-      <title>42. Trapping Rain Water</title>
-      <link href="/post/trapping-rain-water/"/>
-      <url>/post/trapping-rain-water/</url>
+      <title>146. LRU Cache</title>
+      <link href="/post/lru-cache/"/>
+      <url>/post/lru-cache/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/trapping-rain-water/">https://leetcode.cn/problems/trapping-rain-water/</a></strong></p><p><strong>題意：</strong>給 <code>n</code> 個非負整數, 代表每個寬度為 <code>1</code> 的柱子之高度圖, 計算按此排列的柱子, 在下雨後能接多少雨水。</p></blockquote><p><img src="https://i.imgur.com/YA2gsx4.png" alt="Untitled"></p><h2 id="Solution-1：（TLE-無法通過）"><a href="#Solution-1：（TLE-無法通過）" class="headerlink" title="Solution 1：（TLE 無法通過）"></a><strong>Solution 1：（TLE 無法通過）</strong></h2><blockquote><p><strong>想法：利用暴力法, 我們計算每個 col 所能接住的水量, 因此對於每個 <code>i</code> 我們要在 <code>height[0 ~ i]</code> 和 <code>height[i ~ (n - 1)]</code> 中分別找出最大值 <code>leftMax</code> 和 <code>rightMax</code>, 則該 col 所能接住的水量 &#x3D; <code>min(leftMax, rightMax) - height[i]</code></strong></p><p><img src="https://i.imgur.com/uRPc5KE.png" alt="Untitled"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, n = height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = height.<span class="built_in">begin</span>();</span><br><span class="line">            <span class="type">int</span> leftMax = *<span class="built_in">max_element</span>(it, it + i + <span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> rightMax = *<span class="built_in">max_element</span>(it + i, it + n);</span><br><span class="line">            res += <span class="built_in">min</span>(leftMax, rightMax) - height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n^2)$ ➔ 每計算一次需找出 <code>leftMax</code> 和 <code>rightMax</code>, 此過程需 $O(n)$, 總共要計算 <code>n</code> 次</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 DP, 概念同 Solution 1, 只是我們用兩個 array <code>leftMax</code> 和 <code>rightMax</code> 來記錄, 其中 <code>leftMax[i]</code> 和 <code>rightMax[i]</code> 分別代表 <code>height[0 ~ i]</code> 和 <code>height[(n - 1) ~ i]</code> 之最大值</strong></p><ul><li>由左往右遍歷 <code>height</code> 得到每一個 <code>leftMax[i]</code></li><li>由右往左遍歷 <code>height</code> 得到每一個 <code>rightMax[i]</code></li><li>最後計算每個 col 所能接住的雨水</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, n = height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">leftMax</span><span class="params">(n, height.front())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightMax</span><span class="params">(n, height.back())</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            leftMax[i] = <span class="built_in">max</span>(height[i], leftMax[i - <span class="number">1</span>]);</span><br><span class="line">            rightMax[n - <span class="number">1</span> - i] = <span class="built_in">max</span>(height[n - <span class="number">1</span> - i], rightMax[n - i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            res += <span class="built_in">min</span>(leftMax[i], rightMax[i]) - height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>leftMax</code>, <code>rightMax</code></li></ul><h2 id="Solution-3："><a href="#Solution-3：" class="headerlink" title="Solution 3："></a><strong>Solution 3：</strong></h2><blockquote><p><strong>想法：利用 Two Pointers, 改進 Solution 2, 因為 <code>leftMax[i]</code> 和 <code>rightMax[i]</code> 只會用到一次, 然後就再也不會用到了, 因此我們用一個變數記住即可。我們定義以下變數：</strong></p><ul><li><code>leftMax</code>：左邊的最大值, 它是由左往右遍歷得到的</li><li><code>rightMax</code>：右邊的最大值, 它是由右往左遍歷得到的</li><li><code>left</code>：由左往右處理的當前 idx</li><li><code>right</code>：由右往左處理的當前 idx</li></ul><p><strong>我們有以下定理可使用：</strong></p><ul><li><p><strong>定理一</strong>：在 <code>idx = i</code> 時能接住的水量是取決於左右兩邊的最大值中<strong>較小</strong>的那一個</p></li><li><p><strong>定理二</strong>：</p><ul><li>當我們由左往右處理到 <code>left</code> 時, 左邊的最大值 <code>leftMax</code> 對它而言是可信的, 但 <code>rightMax</code> 對它而言是不可信的</li><li>當我們由右往左處理到 <code>right</code> 時, 右邊的最大值 <code>rightMax</code> 對它而言是可信的, 但 <code>leftMax</code> 對它而言是不可信的</li></ul><p>  <img src="https://i.imgur.com/qwYcmK4.png" alt="Untitled"></p></li></ul><p><strong>由上述定理, 我們可以得到：</strong></p><ul><li>對於 <code>left</code> 而言, 它左邊最大值一定是 <code>leftMax</code>, 就算 <code>右邊實際最大值 ≥ rightMax</code>, 只要 <code>leftMax &lt; rightMax</code> 成立, 就能知道 <code>left</code> 能接住多少水(<strong>定理一</strong>), 無論右邊將來是否會出現更大的 <code>rightMax</code>, 都不會影響到這個結果。反之, <code>right</code> 也是同樣道理。</li></ul><p><strong>while loop 的條件為何是 <code>left &lt;= right</code>, 而非 <code>left &lt; right</code> ?</strong></p><p>因為是先計算當前 ptr, 再移動 ptr 的</p><p>e.g. <code>height = [1, 0, 3]</code></p><ul><li>一開始 <code>leftMax(0) &lt; rightMax(0)</code> 不成立, 故處理 <code>right</code> ➔ 得 <code>rightMax = 3</code>, <code>res = 0</code>, <code>right = 1</code></li><li><code>leftMax(0) &lt; rightMax(3)</code> 成立, 故處理 <code>left</code> ➔ 得 <code>leftMax = 1</code>, <code>res = 0</code>, <code>left = 1</code></li><li>此時, <code>left = 1 = right</code>, 若 while loop 條件為 <code>left &lt; right</code>, 則無法計算到 <code>idx = 1</code> 位置的水量</li><li><code>leftMax(1) &lt; rightMax(3)</code>成立, 故處理 <code>left</code> ➔ 得 <code>leftMax = 1</code>, <code>res = 1</code>, <code>left = 2</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> leftMax = <span class="number">0</span>, rightMax = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = height.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (leftMax &lt; rightMax) &#123;</span><br><span class="line">                leftMax = <span class="built_in">max</span>(leftMax, height[left]); <span class="comment">// 得到左邊最大值(含自身)</span></span><br><span class="line">                res += leftMax - height[left];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                rightMax = <span class="built_in">max</span>(rightMax, height[right]); <span class="comment">// 得到右邊最大值(含自身)</span></span><br><span class="line">                res += rightMax - height[right];</span><br><span class="line">                --right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ while loop 遍歷 <code>height</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/lru-cache/">https://leetcode.cn/problems/lru-cache/</a></strong></p><p><strong>題意：</strong>設計並實現一個滿足 <strong>LRU（Least Recently Used）</strong>的資料結構。</p><p><strong>實現 <code>LRUCache</code> class：</strong></p><ul><li><code>LRUCache(int capacity)</code>：以 <code>capacity</code> 初始化 LRU cache 的大小。</li><li><code>int get(int key)</code>：若 <code>key</code> 存在於 cache 中, 則返回其對應的 <code>val</code>, 否則返回 <code>1</code>。</li><li><code>void put(int key, int value)</code>：<ul><li>若 <code>key</code> 已經存在, 則變更其 <code>value</code></li><li>若不存在, 則將該組 <code>key-value</code> insert 到 cache 中</li><li>若 insert 操作導致 pair 數量超過 <code>capacity</code>, 則移除最久未使用的 <code>key-value</code> pair</li></ul></li></ul><p><strong>注意：</strong><code>get()</code> 和 <code>put()</code> 必須是 $O(1)$ time</p></blockquote><p><img src="https://i.imgur.com/xxJOpVQ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution</strong>：</h2><blockquote><p><strong>想法：利用 hash table + list, 其中 <code>cache</code> 用來存放所有的 <code>key</code>, 用來記錄哪個 <code>key</code> 最近被使用、最久沒被使用。用 list 而非 forward_list 的原因是：「當 <code>get()</code> 訪問的是處於中間位置的節點時, 可以直接獲取其前一個節點和後一個節點, 從而省去了遍歷整個 linked list的時間」。若用 forward_list, 要獲取前一個節點和後一個節點必須從 linked list 的 head 開始遍歷</strong></p><ul><li><code>cache.begin()</code> : 最久未用的 key</li><li><code>--cache.end()</code> : 最近使用的 key</li></ul><p><strong>而 <code>key2val</code> 和 <code>key2iter</code> 分別存放 <code>key</code> 所對應到的 <code>val</code> 和 <code>iterator</code></strong></p><ul><li><strong><code>get(key)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則將其放到 <code>cache</code> 尾部</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則返回 <code>1</code></li></ul></li><li><strong><code>put(key, value)</code> :</strong><ul><li>若 <code>key</code> 已在 <code>cache</code> 中, 則更新其對應的 val</li><li>若 <code>key</code> 不在 <code>cache</code> 中, 則要新增該 key。若 <code>capacity</code> 已滿, 則要移除 <code>cache.begin()</code></li></ul></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">LRUCache</span>(<span class="type">int</span> capacity) &#123;</span><br><span class="line">        capacity_ = capacity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 若 cache 已存在該 key, 則將其放到 cache 尾部</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">find</span>(key) != key2val.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="type">int</span> val = key2val[key];</span><br><span class="line">            <span class="keyword">auto</span> it = key2iter[key];</span><br><span class="line">            cache.<span class="built_in">erase</span>(it);</span><br><span class="line">            cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">            key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">            <span class="keyword">return</span> val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// key not found</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">put</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// cache 已存在該 key, 則更新其對應的 val</span></span><br><span class="line">        <span class="comment">// 直接調用 get(key), 若存在 key, 則 get 會將其放到 cache 尾端, 然後更新 val 即可</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">get</span>(key) != <span class="number">-1</span>) &#123;</span><br><span class="line">            key2val[key] = value;</span><br><span class="line">            <span class="keyword">return</span>; <span class="comment">// key 已存在, 因此 put 後 size 不變, 不會超過 cap, 所以直接返回</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// cache 不存在該 key, 則要新增該 key</span></span><br><span class="line">        <span class="comment">// 若 cache 已滿, 則要先移除 cache.begin()</span></span><br><span class="line">        <span class="keyword">if</span> (key2val.<span class="built_in">size</span>() == capacity_) &#123;</span><br><span class="line">            <span class="type">int</span> keyDel = *cache.<span class="built_in">begin</span>();</span><br><span class="line">            cache.<span class="built_in">erase</span>(cache.<span class="built_in">begin</span>());</span><br><span class="line">            key2val.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">            key2iter.<span class="built_in">erase</span>(keyDel);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        cache.<span class="built_in">push_back</span>(key);</span><br><span class="line">        key2val[key] = value;</span><br><span class="line">        key2iter[key] = --cache.<span class="built_in">end</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> capacity_;</span><br><span class="line">    list&lt;<span class="type">int</span>&gt; cache; <span class="comment">// 存放 &quot;key&quot; 的 list</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; key2val; <span class="comment">// &#123;key, val&#125;</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, list&lt;<span class="type">int</span>&gt;::iterator&gt; key2iter; <span class="comment">// &#123;key, iterator&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(1)$</li><li><strong>space：</strong>$O(capacity)$ ➔ <code>cache</code>, <code>key2val</code>, <code>key2iter</code> 的元素個數不超過 <code>capacity</code></li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Two Pointers </category>
+          <category> Linked List </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Amazon </tag>
+            <tag> Medium </tag>
             
-            <tag> Microsoft </tag>
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
-            <tag> Hard </tag>
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -324,29 +353,124 @@
     
     
     <entry>
-      <title>739. Daily Temperatures</title>
-      <link href="/post/daily-temperatures/"/>
-      <url>/post/daily-temperatures/</url>
+      <title>19. Remove Nth Node From End of List</title>
+      <link href="/post/remove-nth-node-from-end-of-list/"/>
+      <url>/post/remove-nth-node-from-end-of-list/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/daily-temperatures/">https://leetcode.cn/problems/daily-temperatures/</a></strong></p><p><strong>題意:</strong> 給一整數 array <code>temperatures</code> 代表每天的溫度。請返回 array <code>res</code>, 其中 <code>res[i]</code> 是指對於第 <code>i</code> 天, 下一個更高溫度是出現在幾天後。如果氣溫在這之後都不會升高, 則該位置用 <code>0</code> 來代替。</p></blockquote><p><img src="https://i.imgur.com/NEFqBSZ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Stack, 使用 Monotonic（遞減） Stack <code>stk</code> 紀錄 <code>&#123;temperature, idx&#125;</code>, 一旦當前溫度 <code>temperatures[i]</code> 比 <code>stk.top().first</code> 還高, 則不斷將 <code>stk.top()</code> 取出, 並計算 <code>res[idx]</code>, 直到 <code>stk.top().first &gt; temperatures[i]</code> 才把 <code>temperatures[i]</code> push 到 <code>stk</code> 中</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = temperatures.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">0</span>)</span></span>; <span class="comment">// 若最後 stk 不為空, 則剩餘元素的 res[idx] 皆為 0</span></span><br><span class="line">        stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; stk; <span class="comment">// &#123;temperature, idx&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="comment">// 一旦當前溫度 &gt; top, 則不斷將 top 給 pop 掉, 並計算 res[idx]</span></span><br><span class="line">            <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>() &amp;&amp; temperatures[i] &gt; stk.<span class="built_in">top</span>().first) &#123;</span><br><span class="line">                <span class="keyword">auto</span> [temperature, idx] = stk.<span class="built_in">top</span>();</span><br><span class="line">                stk.<span class="built_in">pop</span>();</span><br><span class="line">                res[idx] = i - idx;</span><br><span class="line">            &#125;</span><br><span class="line">            stk.<span class="built_in">emplace</span>(pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&#123;temperatures[i], i&#125;); <span class="comment">// push 當前元素</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>stk</code> 中的元素個數不超過 <code>n</code></li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">https://leetcode.cn/problems/remove-nth-node-from-end-of-list/</a></strong></p><p><strong>題意：</strong>給一 linked list, 請刪除倒數第 <code>n</code> 個 node, 並返回 linked list 的 head。</p><p><strong>進階：</strong>試著用一次掃描就完成。</p></blockquote><p><img src="https://i.imgur.com/o9Lnn8T.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 slow &amp; fast pointers, 用 <code>dummy</code> 是因為有可能第一個 node 被刪, 所以需要有 ptr 指著第一個 node 的前一個 node。首先 <code>fast</code> 先從 head 走 <code>n</code> 步（讓 <code>fast</code> 領先）, 然後 <code>slow</code> 才從 <code>dummy</code> 開始往前走, 直到 <code>fast</code> 變成 <code>NULL</code></strong></p><ul><li><strong>為什麼 <code>fast</code> 是初始化為 <code>head</code>, 而 <code>slow</code> 初始化為 <code>dummy</code> ?</strong><br>因為若 <code>fast</code> 和 <code>slow</code> 都初始化為 <code>head</code>, 則當 <code>fast</code> 為 <code>NULL</code> 時, <code>slow</code> 恰好在倒數第 <code>n</code> 個 node(因為 <code>fast</code> 領先 <code>n</code> 步), 但是我們是要<strong>刪除</strong>倒數第 <code>n</code> 個 node, <strong>要取得的是倒數第 <code>n</code> 個 node 的前一個節點</strong>(倒數第 <code>n + 1</code> 的 node), 故讓 slow 在初始化時就慢 <code>fast</code> 一步, 讓 <code>fast</code> 領先 <code>n + 1</code> 步, 這樣 <code>slow</code> 最後才會是倒數第 <code>n + 1</code> 的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeNthFromEnd</span><span class="params">(ListNode* head, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> <span class="built_in">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        ListNode *slow = dummy, *fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (fast) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        slow-&gt;next = slow-&gt;next-&gt;next;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(L)$ ➔ 遍歷 linked list, 其中 <code>L</code> 為 linked list 的長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Stack </category>
+          <category> Linked List </category>
           
       </categories>
       
       
         <tags>
             
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>143. Reorder List</title>
+      <link href="/post/reorder-list/"/>
+      <url>/post/reorder-list/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/reorder-list/">https://leetcode.cn/problems/reorder-list/</a></strong></p><p><strong>題意：</strong>給一單向 linked list 的起始節點 <code>head</code>, 該 linked list 可表示為</p><p><code>L0 → L1 → … → Ln - 1 → Ln</code></p><p>將其重新排序為</p><p><code>L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …</code></p><p>不能只是單純改變節點內部的值, 必須進行實際的節點交換。</p></blockquote><p><img src="https://i.imgur.com/HgeYnkh.png"></p><p><img src="https://i.imgur.com/IblLtsI.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：分成以下步驟</strong></p><ul><li><strong>找到 linked list 的中點, 按照 <a href="https://zako945.github.io/post/linked-list-cycle/">141. Linked List Cycle</a> 的方法</strong><ul><li>奇數時, <code>mid</code> 指向中點</li><li>偶數時, <code>mid</code> 指向右中點</li><li>因此, 最一開始要先讓 <code>fast</code> 先走一步, 這樣不管是奇偶數, <code>mid</code> 都會指向左中點</li></ul></li><li><strong>重要：截斷兩個 list ➔ <code>mid-&gt;next = nullptr</code>（容易忘記這步）</strong></li><li><strong>reverse 右半部分 <code>Ln → Ln - 1 → Ln - 2 → ...</code></strong></li><li><strong>merge 左半和右半</strong></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">reorderList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *mid = <span class="built_in">get_mid</span>(head); <span class="comment">// 得到第一個中點</span></span><br><span class="line">        ListNode *right = mid-&gt;next; <span class="comment">// 得到右半部分</span></span><br><span class="line">        mid-&gt;next = <span class="literal">nullptr</span>; <span class="comment">// **重要** 截斷兩個 list</span></span><br><span class="line">        right = <span class="built_in">reverse</span>(right); <span class="comment">// reverse 右半部分</span></span><br><span class="line">        <span class="built_in">merge</span>(head, right); <span class="comment">// merge 左半和右半</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// // 找到中點; 若為偶數, 則返回第一個中點</span></span><br><span class="line">    <span class="function">ListNode* <span class="title">get_mid</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        <span class="comment">// 先讓 fast 先走一步, 這樣偶數時, slow 才會是第一個中點</span></span><br><span class="line">        ListNode *slow = head, *fast = head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span> (fast &amp;&amp; fast-&gt;next) &#123;</span><br><span class="line">            slow = slow-&gt;next;</span><br><span class="line">            fast = fast-&gt;next-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">ListNode* <span class="title">reverse</span><span class="params">(ListNode* head)</span></span>&#123;</span><br><span class="line">        ListNode *tail = head;</span><br><span class="line">        ListNode *prev = <span class="literal">nullptr</span>, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span> (tail) &#123;</span><br><span class="line">            nxt = tail-&gt;next;</span><br><span class="line">            tail-&gt;next = prev;</span><br><span class="line">            prev = tail;</span><br><span class="line">            tail = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(ListNode* l1, ListNode* l2)</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="comment">// 先儲存各自的 next</span></span><br><span class="line">            ListNode *n1 = l1-&gt;next;</span><br><span class="line">            ListNode *n2 = l2-&gt;next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// l1 下一個指向當前的 l2, 然後 l2 下一個指向 n1</span></span><br><span class="line">            l1-&gt;next = l2;</span><br><span class="line">            l2-&gt;next = n1;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 各自前進到下一個</span></span><br><span class="line">            l1 = n1;</span><br><span class="line">            l2 = n2;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Linked List </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>33. Search in Rotated Sorted Array</title>
+      <link href="/post/search-in-rotated-sorted-array/"/>
+      <url>/post/search-in-rotated-sorted-array/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-in-rotated-sorted-array/">https://leetcode.cn/problems/search-in-rotated-sorted-array/</a></strong></p><p><strong>題意</strong>: 有一整數 array <code>nums</code> 按升序排列, 其中的值<strong>互不相同</strong>。</p><p>給一<strong>旋轉後</strong>的 array <code>nums</code> 和一整數 <code>target</code>, 如果 <code>nums</code> 中存在 <code>target</code>, 則返回其 index; 否則, 返回 <code>-1</code>。</p><p>請設計 $O(log(n))$ time 的演算法。</p></blockquote><p><img src="https://i.imgur.com/oxWfuYg.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 將 <code>nums</code> 從中間分開成左右兩部分的時候, 一定有一部分是有序的。</strong></p><p><strong>e.g. <code>nums = [4,5,6,7,0,1,2]</code>, 從 <code>6</code> 切割, 可分成 <code>[4,5,6]</code> 和 <code>[7,0,1,2]</code> 兩個部分, 其中左邊 <code>[4,5,6]</code> 是有序的</strong></p><p>因此我們可以在 Binary Search 時查看當前 <code>mid</code> 分割的兩個部分 <code>[left, mid]</code> 和 <code>[mid + 1, right]</code> 中哪個是有序的, 藉此來縮小左邊界 or 右邊界。</p><ul><li>若 <code>target == nums[mid]</code>, 則直接返回 <code>mid</code></li><li>若 <code>[left, mid]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>[nums[left], nums[mid])</code></strong> 間, 則縮小搜索範圍為 <code>[left, mid - 1]</code>; 否則, 縮小搜索範圍為 <code>[mid + 1, right]</code></li><li>若 <code>[mid + 1, right]</code> 是有序的, 且 <code>target</code> 界於 <strong><code>(nums[mid], nums[right]]</code></strong> 間, 則縮小搜索範圍為 <code>[mid + 1, right]</code>; 否則, 縮小搜索範圍為 <code>[left, mid - 1]</code></li></ul><p>當 <code>[left, mid]</code> 區間恰好只有一個元素時, 也滿足左半邊已排序的定義</p><p>e.g. <code>nums = [3, 1]</code>, <code>target = 1</code></p><ul><li><code>left = 0</code>, <code>right = 1</code>, <code>mid = 0</code> ➔ <code>[left, mid]</code> 區間恰好只有一個元素, 使得 <code>nums[left] == nums[mid]</code>, 這時 <code>target</code> 應跟左半邊中的元素比較, 然後才縮小邊界</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">search</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 這種特殊的 Binary Search 建議搜到就返回</span></span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 左半邊是被排序過的, e.g. [4,5,6,7,0,1,2], mid = 7</span></span><br><span class="line">            <span class="comment">// nums[left] == nums[mid] 也滿足左半邊是排序的定義（有可能 left == mid）</span></span><br><span class="line">            <span class="keyword">if</span> (nums[left] &lt;= nums[mid]) &#123;</span><br><span class="line">                <span class="comment">// 因為 target != nums[mid], 故用 &lt; 即可</span></span><br><span class="line">                <span class="keyword">if</span> (nums[left] &lt;= target &amp;&amp; target &lt; nums[mid]) &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 右半邊是被排序過的, e.g. [7,0,1,2,4,5,6], mid = 2</span></span><br><span class="line">                <span class="keyword">if</span> (nums[mid] &lt; target &amp;&amp; target &lt;= nums[right]) &#123;</span><br><span class="line">                    left = mid + <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    right = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>981. Time Based Key-Value Store</title>
+      <link href="/post/time-based-key-value-store/"/>
+      <url>/post/time-based-key-value-store/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/time-based-key-value-store/">https://leetcode.cn/problems/time-based-key-value-store/</a></strong></p><p><strong>題意：</strong>設計一個基於時間的 key-value 的資料結構, 它可以在不同 timestamp 儲存對應同一個 key 的多個值, 並針對特定 timestamp 得到相對應的 key 的 value。</p><p>實作 <code>TimeMap</code> class：</p><ul><li><code>TimeMap()</code> : 初始化 instance</li><li><code>void set(String key, String value, int timestamp)</code> : 儲存 <code>key</code>、 <code>value</code>, 以及 <code>timestamp</code>。</li><li><code>String get(String key, int timestamp)</code> :<ul><li>返回 <code>timestamp_prev</code> 對應的 value, 其中 <code>timestamp_prev &lt;= timestamp</code></li><li>如果存在多個值, 則返回對應<strong>最大</strong>的 <code>timestamp_prev</code> 的 value。</li><li>如果不存在, 則返回 <code>&quot;&quot;</code>。</li></ul></li></ul><p><strong>注意:</strong> <code>set(key, value, timestamp)</code> 中的 <code>timestamp</code> 都是嚴格遞增的。</p></blockquote><p><img src="https://i.imgur.com/9V7VWMN.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：題目的意思如下圖, <code>key</code> 裡面會儲存 <code>values</code>, 而 <code>values</code> 裡面可以有多個 <code>&#123;value, timestmap&#125;</code> pair。由於 <code>values</code> 裡面的 <code>timestamp</code> 都是嚴格遞增的(已排序), 所以我們可直接使用 Binary Search</strong></p></blockquote><p><img src="https://i.imgur.com/PdkaQmt.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TimeMap</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TimeMap</span>() &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">set</span><span class="params">(string key, string value, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        m[key].<span class="built_in">emplace_back</span>(pair&lt;string, <span class="type">int</span>&gt;&#123;value, timestamp&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">string <span class="title">get</span><span class="params">(string key, <span class="type">int</span> timestamp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m.<span class="built_in">find</span>(key) == m.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = m[key].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (m[key][mid].second &gt; timestamp) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// left 為 &gt; timestamp 的位置, 故 left - 1 為 &lt;= timestamp 的位置</span></span><br><span class="line">        <span class="keyword">return</span> (left - <span class="number">1</span> &gt;= <span class="number">0</span>) ? m[key][left - <span class="number">1</span>].first : <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    unordered_map&lt;string, vector&lt;pair&lt;string, <span class="type">int</span>&gt;&gt;&gt; m;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(n))$ ➔ Binary Search, 其中 <code>n</code> 為 <code>m[key]</code> 的長度</li><li><strong>space：</strong>$O(n)$ ➔ 其中 <code>n</code> 為 <code>set()</code> 的次數</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
@@ -386,31 +510,31 @@
     
     
     <entry>
-      <title>74. Search a 2D Matrix</title>
-      <link href="/post/search-a-2d-matrix/"/>
-      <url>/post/search-a-2d-matrix/</url>
+      <title>739. Daily Temperatures</title>
+      <link href="/post/daily-temperatures/"/>
+      <url>/post/daily-temperatures/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-a-2d-matrix/">https://leetcode.cn/problems/search-a-2d-matrix/</a></strong></p><p><strong>題意</strong>: 設計一高效演算法來搜索 <code>m x n</code> matrix 中是否存在整數 <code>target</code>, matrix 滿足以下特性:</p><ul><li>每列的元素由左到右按升序排列</li><li>每列的第一個元素 &gt; 前一列的最後一個元素</li></ul></blockquote><p><img src="https://i.imgur.com/1iXww8t.png"></p><p><img src="https://i.imgur.com/PJveiV8.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, <code>matrix</code> 其實就是 1D 已排序的 array, 只是改成用 2D array 表達而已, 故將 <code>matrix</code> 看成 1D array, 然後還原回 2D array 座標來做 Binary Search</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = m * n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (matrix[mid / n][mid % n] &gt;= target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (left &lt; m * n &amp;&amp; matrix[left / n][left % n] == target) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(mn))$ ➔ Binary Search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/daily-temperatures/">https://leetcode.cn/problems/daily-temperatures/</a></strong></p><p><strong>題意:</strong> 給一整數 array <code>temperatures</code> 代表每天的溫度。請返回 array <code>res</code>, 其中 <code>res[i]</code> 是指對於第 <code>i</code> 天, 下一個更高溫度是出現在幾天後。如果氣溫在這之後都不會升高, 則該位置用 <code>0</code> 來代替。</p></blockquote><p><img src="https://i.imgur.com/NEFqBSZ.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Stack, 使用 Monotonic（遞減） Stack <code>stk</code> 紀錄 <code>&#123;temperature, idx&#125;</code>, 一旦當前溫度 <code>temperatures[i]</code> 比 <code>stk.top().first</code> 還高, 則不斷將 <code>stk.top()</code> 取出, 並計算 <code>res[idx]</code>, 直到 <code>stk.top().first &gt; temperatures[i]</code> 才把 <code>temperatures[i]</code> push 到 <code>stk</code> 中</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; temperatures)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = temperatures.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">0</span>)</span></span>; <span class="comment">// 若最後 stk 不為空, 則剩餘元素的 res[idx] 皆為 0</span></span><br><span class="line">        stack&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; stk; <span class="comment">// &#123;temperature, idx&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="comment">// 一旦當前溫度 &gt; top, 則不斷將 top 給 pop 掉, 並計算 res[idx]</span></span><br><span class="line">            <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>() &amp;&amp; temperatures[i] &gt; stk.<span class="built_in">top</span>().first) &#123;</span><br><span class="line">                <span class="keyword">auto</span> [temperature, idx] = stk.<span class="built_in">top</span>();</span><br><span class="line">                stk.<span class="built_in">pop</span>();</span><br><span class="line">                res[idx] = i - idx;</span><br><span class="line">            &#125;</span><br><span class="line">            stk.<span class="built_in">emplace</span>(pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&#123;temperatures[i], i&#125;); <span class="comment">// push 當前元素</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>stk</code> 中的元素個數不超過 <code>n</code></li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Binary Search </category>
+          <category> Stack </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -437,9 +561,9 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
@@ -468,13 +592,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -483,29 +607,64 @@
     
     
     <entry>
-      <title>637. Average of Levels in Binary Tree</title>
-      <link href="/post/average-of-levels-in-binary-tree/"/>
-      <url>/post/average-of-levels-in-binary-tree/</url>
+      <title>74. Search a 2D Matrix</title>
+      <link href="/post/search-a-2d-matrix/"/>
+      <url>/post/search-a-2d-matrix/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/average-of-levels-in-binary-tree/">https://leetcode.cn/problems/average-of-levels-in-binary-tree/</a></strong></p><p><strong>題意：</strong>給一 Binary Tree(BT), 計算每一層的平均值。</p></blockquote><p><img src="https://i.imgur.com/I7IRJWJ.png" alt="Untitled"></p><p><img src="https://i.imgur.com/cZP2nAa.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">averageOfLevels</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">double</span>&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">double</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                TreeNode* node = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                sum += node-&gt;val;</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(sum / size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 取決於樹的高度, worse case 為 skew tree, tree</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/search-a-2d-matrix/">https://leetcode.cn/problems/search-a-2d-matrix/</a></strong></p><p><strong>題意</strong>: 設計一高效演算法來搜索 <code>m x n</code> matrix 中是否存在整數 <code>target</code>, matrix 滿足以下特性:</p><ul><li>每列的元素由左到右按升序排列</li><li>每列的第一個元素 &gt; 前一列的最後一個元素</li></ul></blockquote><p><img src="https://i.imgur.com/1iXww8t.png"></p><p><img src="https://i.imgur.com/PJveiV8.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, <code>matrix</code> 其實就是 1D 已排序的 array, 只是改成用 2D array 表達而已, 故將 <code>matrix</code> 看成 1D array, 然後還原回 2D array 座標來做 Binary Search</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">searchMatrix</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix, <span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> m = matrix.<span class="built_in">size</span>(), n = matrix[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = m * n - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (matrix[mid / n][mid % n] &gt;= target) &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (left &lt; m * n &amp;&amp; matrix[left / n][left % n] == target) ? <span class="literal">true</span> : <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(log(mn))$ ➔ Binary Search</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Tree </category>
+          <category> Binary Search </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Easy </tag>
+            <tag> Medium </tag>
             
             <tag> Amazon </tag>
             
+            <tag> Google </tag>
+            
             <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>42. Trapping Rain Water</title>
+      <link href="/post/trapping-rain-water/"/>
+      <url>/post/trapping-rain-water/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/trapping-rain-water/">https://leetcode.cn/problems/trapping-rain-water/</a></strong></p><p><strong>題意：</strong>給 <code>n</code> 個非負整數, 代表每個寬度為 <code>1</code> 的柱子之高度圖, 計算按此排列的柱子, 在下雨後能接多少雨水。</p></blockquote><p><img src="https://i.imgur.com/YA2gsx4.png" alt="Untitled"></p><h2 id="Solution-1：（TLE-無法通過）"><a href="#Solution-1：（TLE-無法通過）" class="headerlink" title="Solution 1：（TLE 無法通過）"></a><strong>Solution 1：（TLE 無法通過）</strong></h2><blockquote><p><strong>想法：利用暴力法, 我們計算每個 col 所能接住的水量, 因此對於每個 <code>i</code> 我們要在 <code>height[0 ~ i]</code> 和 <code>height[i ~ (n - 1)]</code> 中分別找出最大值 <code>leftMax</code> 和 <code>rightMax</code>, 則該 col 所能接住的水量 &#x3D; <code>min(leftMax, rightMax) - height[i]</code></strong></p><p><img src="https://i.imgur.com/uRPc5KE.png" alt="Untitled"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, n = height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">auto</span> it = height.<span class="built_in">begin</span>();</span><br><span class="line">            <span class="type">int</span> leftMax = *<span class="built_in">max_element</span>(it, it + i + <span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> rightMax = *<span class="built_in">max_element</span>(it + i, it + n);</span><br><span class="line">            res += <span class="built_in">min</span>(leftMax, rightMax) - height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n^2)$ ➔ 每計算一次需找出 <code>leftMax</code> 和 <code>rightMax</code>, 此過程需 $O(n)$, 總共要計算 <code>n</code> 次</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 DP, 概念同 Solution 1, 只是我們用兩個 array <code>leftMax</code> 和 <code>rightMax</code> 來記錄, 其中 <code>leftMax[i]</code> 和 <code>rightMax[i]</code> 分別代表 <code>height[0 ~ i]</code> 和 <code>height[(n - 1) ~ i]</code> 之最大值</strong></p><ul><li>由左往右遍歷 <code>height</code> 得到每一個 <code>leftMax[i]</code></li><li>由右往左遍歷 <code>height</code> 得到每一個 <code>rightMax[i]</code></li><li>最後計算每個 col 所能接住的雨水</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, n = height.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">leftMax</span><span class="params">(n, height.front())</span></span>;</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">rightMax</span><span class="params">(n, height.back())</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            leftMax[i] = <span class="built_in">max</span>(height[i], leftMax[i - <span class="number">1</span>]);</span><br><span class="line">            rightMax[n - <span class="number">1</span> - i] = <span class="built_in">max</span>(height[n - <span class="number">1</span> - i], rightMax[n - i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            res += <span class="built_in">min</span>(leftMax[i], rightMax[i]) - height[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(n)$ ➔ <code>leftMax</code>, <code>rightMax</code></li></ul><h2 id="Solution-3："><a href="#Solution-3：" class="headerlink" title="Solution 3："></a><strong>Solution 3：</strong></h2><blockquote><p><strong>想法：利用 Two Pointers, 改進 Solution 2, 因為 <code>leftMax[i]</code> 和 <code>rightMax[i]</code> 只會用到一次, 然後就再也不會用到了, 因此我們用一個變數記住即可。我們定義以下變數：</strong></p><ul><li><code>leftMax</code>：左邊的最大值, 它是由左往右遍歷得到的</li><li><code>rightMax</code>：右邊的最大值, 它是由右往左遍歷得到的</li><li><code>left</code>：由左往右處理的當前 idx</li><li><code>right</code>：由右往左處理的當前 idx</li></ul><p><strong>我們有以下定理可使用：</strong></p><ul><li><p><strong>定理一</strong>：在 <code>idx = i</code> 時能接住的水量是取決於左右兩邊的最大值中<strong>較小</strong>的那一個</p></li><li><p><strong>定理二</strong>：</p><ul><li>當我們由左往右處理到 <code>left</code> 時, 左邊的最大值 <code>leftMax</code> 對它而言是可信的, 但 <code>rightMax</code> 對它而言是不可信的</li><li>當我們由右往左處理到 <code>right</code> 時, 右邊的最大值 <code>rightMax</code> 對它而言是可信的, 但 <code>leftMax</code> 對它而言是不可信的</li></ul><p>  <img src="https://i.imgur.com/qwYcmK4.png" alt="Untitled"></p></li></ul><p><strong>由上述定理, 我們可以得到：</strong></p><ul><li>對於 <code>left</code> 而言, 它左邊最大值一定是 <code>leftMax</code>, 就算 <code>右邊實際最大值 ≥ rightMax</code>, 只要 <code>leftMax &lt; rightMax</code> 成立, 就能知道 <code>left</code> 能接住多少水(<strong>定理一</strong>), 無論右邊將來是否會出現更大的 <code>rightMax</code>, 都不會影響到這個結果。反之, <code>right</code> 也是同樣道理。</li></ul><p><strong>while loop 的條件為何是 <code>left &lt;= right</code>, 而非 <code>left &lt; right</code> ?</strong></p><p>因為是先計算當前 ptr, 再移動 ptr 的</p><p>e.g. <code>height = [1, 0, 3]</code></p><ul><li>一開始 <code>leftMax(0) &lt; rightMax(0)</code> 不成立, 故處理 <code>right</code> ➔ 得 <code>rightMax = 3</code>, <code>res = 0</code>, <code>right = 1</code></li><li><code>leftMax(0) &lt; rightMax(3)</code> 成立, 故處理 <code>left</code> ➔ 得 <code>leftMax = 1</code>, <code>res = 0</code>, <code>left = 1</code></li><li>此時, <code>left = 1 = right</code>, 若 while loop 條件為 <code>left &lt; right</code>, 則無法計算到 <code>idx = 1</code> 位置的水量</li><li><code>leftMax(1) &lt; rightMax(3)</code>成立, 故處理 <code>left</code> ➔ 得 <code>leftMax = 1</code>, <code>res = 1</code>, <code>left = 2</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">trap</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; height)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> leftMax = <span class="number">0</span>, rightMax = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">0</span>, right = height.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="keyword">if</span> (leftMax &lt; rightMax) &#123;</span><br><span class="line">                leftMax = <span class="built_in">max</span>(leftMax, height[left]); <span class="comment">// 得到左邊最大值(含自身)</span></span><br><span class="line">                res += leftMax - height[left];</span><br><span class="line">                ++left;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                rightMax = <span class="built_in">max</span>(rightMax, height[right]); <span class="comment">// 得到右邊最大值(含自身)</span></span><br><span class="line">                res += rightMax - height[right];</span><br><span class="line">                --right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ while loop 遍歷 <code>height</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Two Pointers </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+            <tag> Hard </tag>
             
         </tags>
       
@@ -532,13 +691,44 @@
       
         <tags>
             
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>637. Average of Levels in Binary Tree</title>
+      <link href="/post/average-of-levels-in-binary-tree/"/>
+      <url>/post/average-of-levels-in-binary-tree/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/average-of-levels-in-binary-tree/">https://leetcode.cn/problems/average-of-levels-in-binary-tree/</a></strong></p><p><strong>題意：</strong>給一 Binary Tree(BT), 計算每一層的平均值。</p></blockquote><p><img src="https://i.imgur.com/I7IRJWJ.png" alt="Untitled"></p><p><img src="https://i.imgur.com/cZP2nAa.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">averageOfLevels</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">double</span>&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">double</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                TreeNode* node = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                sum += node-&gt;val;</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(sum / size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 取決於樹的高度, worse case 為 skew tree, tree</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Medium </tag>
-            
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -565,11 +755,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -596,9 +786,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -625,13 +815,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -658,13 +848,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -691,13 +881,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -724,13 +914,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -757,13 +947,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -790,9 +980,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -819,11 +1009,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -850,11 +1040,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -881,9 +1071,9 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
@@ -910,13 +1100,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -943,9 +1133,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -972,9 +1162,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1001,13 +1191,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -1034,13 +1224,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -1067,11 +1257,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1098,9 +1288,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1127,13 +1317,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1160,9 +1350,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1189,9 +1379,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1218,11 +1408,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1249,13 +1439,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -1282,9 +1472,9 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
             <tag> Google </tag>
             
@@ -1313,13 +1503,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -1346,13 +1536,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1379,13 +1569,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1412,11 +1602,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1443,11 +1633,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1474,13 +1664,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1507,13 +1697,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1540,13 +1730,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1573,11 +1763,11 @@
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
             
         </tags>
       
@@ -1604,9 +1794,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1633,13 +1823,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1666,42 +1856,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>112. Path Sum</title>
-      <link href="/post/path-sum/"/>
-      <url>/post/path-sum/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/path-sum/">https://leetcode.cn/problems/path-sum/</a></strong></p><p><strong>題意：</strong>給一 BT 和一整數 <code>targetSum</code>, 返回是否存在 <strong>root-to-leaf</strong> 之路徑總和為 <code>targetSum</code> 的 path。</p></blockquote><p><img src="https://i.imgur.com/i0rjjOX.png" alt="Untitled"></p><p><img src="https://i.imgur.com/8XRgIUG.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 DFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="type">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val == targetSum &amp;&amp; !root-&gt;left &amp;&amp; !root-&gt;right)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, targetSum - root-&gt;val)</span><br><span class="line">            || <span class="built_in">hasPathSum</span>(root-&gt;right, targetSum - root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度最大長度為 <code>n</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="type">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        queue&lt;pair&lt;TreeNode*, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(&#123;root, <span class="number">0</span>&#125;); <span class="comment">// sum 初始設 0, 而非 root-&gt;val, 因為等等會加上 root-&gt;val</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="keyword">auto</span> front = q.<span class="built_in">front</span>();</span><br><span class="line">            TreeNode *curNode = front.first;</span><br><span class="line">            <span class="type">int</span> curSum = front.second + curNode-&gt;val;</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若為 leaf</span></span><br><span class="line">            <span class="keyword">if</span>(!curNode-&gt;left &amp;&amp; !curNode-&gt;right)&#123;</span><br><span class="line">                <span class="keyword">if</span>(curSum == targetSum)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(curNode-&gt;left)</span><br><span class="line">                    q.<span class="built_in">push</span>(&#123;curNode-&gt;left, curSum&#125;);</span><br><span class="line">                <span class="keyword">if</span>(curNode-&gt;right)</span><br><span class="line">                    q.<span class="built_in">push</span>(&#123;curNode-&gt;right, curSum&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ <code>q</code> 中的元素不超過 <code>n</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Tree </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
             <tag> Easy </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
             
         </tags>
       
@@ -1728,13 +1887,44 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
+            <tag> Easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>112. Path Sum</title>
+      <link href="/post/path-sum/"/>
+      <url>/post/path-sum/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/path-sum/">https://leetcode.cn/problems/path-sum/</a></strong></p><p><strong>題意：</strong>給一 BT 和一整數 <code>targetSum</code>, 返回是否存在 <strong>root-to-leaf</strong> 之路徑總和為 <code>targetSum</code> 的 path。</p></blockquote><p><img src="https://i.imgur.com/i0rjjOX.png" alt="Untitled"></p><p><img src="https://i.imgur.com/8XRgIUG.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 DFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="type">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(root-&gt;val == targetSum &amp;&amp; !root-&gt;left &amp;&amp; !root-&gt;right)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">hasPathSum</span>(root-&gt;left, targetSum - root-&gt;val)</span><br><span class="line">            || <span class="built_in">hasPathSum</span>(root-&gt;right, targetSum - root-&gt;val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度最大長度為 <code>n</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">hasPathSum</span><span class="params">(TreeNode* root, <span class="type">int</span> targetSum)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        queue&lt;pair&lt;TreeNode*, <span class="type">int</span>&gt;&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(&#123;root, <span class="number">0</span>&#125;); <span class="comment">// sum 初始設 0, 而非 root-&gt;val, 因為等等會加上 root-&gt;val</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="keyword">auto</span> front = q.<span class="built_in">front</span>();</span><br><span class="line">            TreeNode *curNode = front.first;</span><br><span class="line">            <span class="type">int</span> curSum = front.second + curNode-&gt;val;</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若為 leaf</span></span><br><span class="line">            <span class="keyword">if</span>(!curNode-&gt;left &amp;&amp; !curNode-&gt;right)&#123;</span><br><span class="line">                <span class="keyword">if</span>(curSum == targetSum)</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(curNode-&gt;left)</span><br><span class="line">                    q.<span class="built_in">push</span>(&#123;curNode-&gt;left, curSum&#125;);</span><br><span class="line">                <span class="keyword">if</span>(curNode-&gt;right)</span><br><span class="line">                    q.<span class="built_in">push</span>(&#123;curNode-&gt;right, curSum&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ <code>q</code> 中的元素不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1761,11 +1951,11 @@
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
             
         </tags>
       
@@ -1792,44 +1982,11 @@
       
         <tags>
             
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
             <tag> Easy </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>238. Product of Array Except Self</title>
-      <link href="/post/product-of-array-except-self/"/>
-      <url>/post/product-of-array-except-self/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/product-of-array-except-self/">https://leetcode.cn/problems/product-of-array-except-self/</a></strong></p><p><strong>題意：</strong>給一 array <code>nums</code>, 返回一 array <code>answer</code>, 其中 <code>answer[i]</code> 為 <code>nums</code> 中除了 <code>nums[i]</code> 以外其餘元素的乘積, 乘積保證在 32-bit 整數的範圍內（不用考慮 overflow）。</p><p><strong>注意：請不要使用除法</strong>, 並在 $O(n)$ time 內解決此問題</p><p><strong>進階：</strong>請設計 $O(1)$ space 的演算法, 其中 output array 不算額外空間</p></blockquote><p><img src="https://i.imgur.com/CDIeTxS.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 prefix 和 postfix, 以 <code>index = i</code> 為分界, <code>prefix[i]</code> 記錄區間 <code>[0, i - 1]</code> 之乘積, <code>postfix[i]</code> 記錄區間 <code>[i + 1, n - 1]</code> 之乘積, 最後 <code>nums[i] = prefix[i] * postfix[i]</code> 即為題目所求</strong></p><ul><li><strong>prefix：</strong><code>prefix[i]</code> 紀錄 <code>num[0] ~ nums[i - 1]</code> 的乘積（由前往後填）</li><li><strong>postfix：</strong><code>postfix[n - i - 1]</code> 紀錄 <code>nums[n - 1] ~ nums[n - i]</code> 的乘積（由後往前填）</li><li><strong>nums：</strong><code>nums[i]</code> 紀錄 <code>prefix[i] * postfix[i]</code>, 也就是除了位置 <code>i</code> 剩餘其他數的乘積</li></ul><p>e.g. <code>nums = [1,2,3,4]</code></p><table><thead><tr><th>nums</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>prefix</td><td>1</td><td>1</td><td>2</td><td>6</td></tr><tr><td>postfix</td><td>24</td><td>12</td><td>4</td><td>1</td></tr><tr><td>nums</td><td>24</td><td>12</td><td>8</td><td>6</td></tr></tbody></table></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">productExceptSelf</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">prefix</span><span class="params">(n, <span class="number">1</span>)</span>, <span class="title">postfix</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            prefix[i] = prefix[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>];</span><br><span class="line">            postfix[n - i - <span class="number">1</span>] = nums[n - i] * postfix[n - i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            nums[i] = prefix[i] * postfix[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(n)$ ➔ <code>prefix</code>, <code>postfix</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：改進 Solution 1, 將 <code>postfix</code> 直接儲存在 <code>res</code> 中, 然後計算出 <code>prefix</code> 後乘上對應的 <code>postfix</code></strong></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">nums:   [ <span class="number">1</span>,  <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">➔ res: [<span class="number">24</span>, <span class="number">12</span>, <span class="number">4</span>, <span class="number">1</span>] <span class="comment">// postfix 做完</span></span><br><span class="line">➔ res: [<span class="number">24</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">6</span>] <span class="comment">// prefix 做完</span></span><br></pre></td></tr></table></figure></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">productExceptSelf</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 計算 postfix</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            res[n - i - <span class="number">1</span>] = res[n - i] * nums[n - i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> prefix = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            res[i] *= prefix;</span><br><span class="line">            prefix *= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(1)$ ➔ 撇除要返回的 output array <code>res</code>, 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Array </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
-            
-            <tag> Google </tag>
             
         </tags>
       
@@ -1856,9 +2013,42 @@
       
         <tags>
             
+            <tag> Amazon </tag>
+            
             <tag> Easy </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>238. Product of Array Except Self</title>
+      <link href="/post/product-of-array-except-self/"/>
+      <url>/post/product-of-array-except-self/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/product-of-array-except-self/">https://leetcode.cn/problems/product-of-array-except-self/</a></strong></p><p><strong>題意：</strong>給一 array <code>nums</code>, 返回一 array <code>answer</code>, 其中 <code>answer[i]</code> 為 <code>nums</code> 中除了 <code>nums[i]</code> 以外其餘元素的乘積, 乘積保證在 32-bit 整數的範圍內（不用考慮 overflow）。</p><p><strong>注意：請不要使用除法</strong>, 並在 $O(n)$ time 內解決此問題</p><p><strong>進階：</strong>請設計 $O(1)$ space 的演算法, 其中 output array 不算額外空間</p></blockquote><p><img src="https://i.imgur.com/CDIeTxS.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 prefix 和 postfix, 以 <code>index = i</code> 為分界, <code>prefix[i]</code> 記錄區間 <code>[0, i - 1]</code> 之乘積, <code>postfix[i]</code> 記錄區間 <code>[i + 1, n - 1]</code> 之乘積, 最後 <code>nums[i] = prefix[i] * postfix[i]</code> 即為題目所求</strong></p><ul><li><strong>prefix：</strong><code>prefix[i]</code> 紀錄 <code>num[0] ~ nums[i - 1]</code> 的乘積（由前往後填）</li><li><strong>postfix：</strong><code>postfix[n - i - 1]</code> 紀錄 <code>nums[n - 1] ~ nums[n - i]</code> 的乘積（由後往前填）</li><li><strong>nums：</strong><code>nums[i]</code> 紀錄 <code>prefix[i] * postfix[i]</code>, 也就是除了位置 <code>i</code> 剩餘其他數的乘積</li></ul><p>e.g. <code>nums = [1,2,3,4]</code></p><table><thead><tr><th>nums</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td>prefix</td><td>1</td><td>1</td><td>2</td><td>6</td></tr><tr><td>postfix</td><td>24</td><td>12</td><td>4</td><td>1</td></tr><tr><td>nums</td><td>24</td><td>12</td><td>8</td><td>6</td></tr></tbody></table></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">productExceptSelf</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">prefix</span><span class="params">(n, <span class="number">1</span>)</span>, <span class="title">postfix</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            prefix[i] = prefix[i - <span class="number">1</span>] * nums[i - <span class="number">1</span>];</span><br><span class="line">            postfix[n - i - <span class="number">1</span>] = nums[n - i] * postfix[n - i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            nums[i] = prefix[i] * postfix[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(n)$ ➔ <code>prefix</code>, <code>postfix</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：改進 Solution 1, 將 <code>postfix</code> 直接儲存在 <code>res</code> 中, 然後計算出 <code>prefix</code> 後乘上對應的 <code>postfix</code></strong></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">nums:   [ <span class="number">1</span>,  <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line">➔ res: [<span class="number">24</span>, <span class="number">12</span>, <span class="number">4</span>, <span class="number">1</span>] <span class="comment">// postfix 做完</span></span><br><span class="line">➔ res: [<span class="number">24</span>, <span class="number">12</span>, <span class="number">8</span>, <span class="number">6</span>] <span class="comment">// prefix 做完</span></span><br></pre></td></tr></table></figure></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">productExceptSelf</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">res</span><span class="params">(n, <span class="number">1</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 計算 postfix</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            res[n - i - <span class="number">1</span>] = res[n - i] * nums[n - i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> prefix = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            res[i] *= prefix;</span><br><span class="line">            prefix *= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(1)$ ➔ 撇除要返回的 output array <code>res</code>, 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Array </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -1885,13 +2075,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1918,9 +2108,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1947,11 +2137,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -1978,13 +2168,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2011,13 +2201,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2044,11 +2234,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2075,11 +2265,11 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2106,9 +2296,9 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2135,13 +2325,13 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
             <tag> Medium </tag>
             
+            <tag> Amazon </tag>
+            
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -2168,13 +2358,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2201,11 +2391,11 @@
       
         <tags>
             
+            <tag> Medium </tag>
+            
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
-            
-            <tag> Medium </tag>
             
         </tags>
       
@@ -2232,13 +2422,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2265,13 +2455,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2298,13 +2488,13 @@
       
         <tags>
             
-            <tag> Easy </tag>
-            
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Microsoft </tag>
             
-            <tag> Google </tag>
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2331,9 +2521,9 @@
       
         <tags>
             
-            <tag> Amazon </tag>
-            
             <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
             
         </tags>
       
