@@ -81,6 +81,41 @@
   </entry>
   
   <entry>
+    <title>39. Combination Sum</title>
+    <link href="http://zako945.github.io/post/combination-sum/"/>
+    <id>http://zako945.github.io/post/combination-sum/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T13:39:19.009Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/combination-sum/&quot;&gt;https://leetcode.cn/problems/combination-sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一無重複數的 array &lt;code&gt;candidates&lt;/code&gt; 和一整數 &lt;code&gt;target&lt;/code&gt;, 找出</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Backtracking" scheme="http://zako945.github.io/categories/Leetcode/Backtracking/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
     <title>105. Construct Binary Tree from Preorder and Inorder Traversal</title>
     <link href="http://zako945.github.io/post/construct-binary-tree-from-preorder-and-inorder-traversal/"/>
     <id>http://zako945.github.io/post/construct-binary-tree-from-preorder-and-inorder-traversal/</id>
@@ -150,74 +185,6 @@
   </entry>
   
   <entry>
-    <title>230. Kth Smallest Element in a BST</title>
-    <link href="http://zako945.github.io/post/kth-smallest-element-in-a-bst/"/>
-    <id>http://zako945.github.io/post/kth-smallest-element-in-a-bst/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T00:26:37.883Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/kth-smallest-element-in-a-bst/&quot;&gt;https://leetcode.cn/problems/kth-smallest-element-in-a-bst/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BST 的 &lt;code&gt;root&lt;/code&gt; 和一整數 &lt;code&gt;k&lt;/code&gt;, 返回</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>98. Validate Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/validate-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/validate-binary-search-tree/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T00:23:54.340Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/validate-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/validate-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回其是否為</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
     <title>211. Design Add and Search Words Data Structure</title>
     <link href="http://zako945.github.io/post/design-add-and-search-words-data-structure/"/>
     <id>http://zako945.github.io/post/design-add-and-search-words-data-structure/</id>
@@ -247,6 +214,39 @@
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>355. Design Twitter</title>
+    <link href="http://zako945.github.io/post/design-twitter/"/>
+    <id>http://zako945.github.io/post/design-twitter/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T13:34:26.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/design-twitter/&quot;&gt;https://leetcode.cn/problems/design-twitter/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;設計一個簡化版的 Twitter, 可以讓用戶實現發送推文、關注 &amp;#x2F; 取消關注 其他用戶, 以及能夠看見關注人（包括自己）的最近</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   

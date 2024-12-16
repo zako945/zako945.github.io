@@ -64,6 +64,39 @@
     
     
     <entry>
+      <title>39. Combination Sum</title>
+      <link href="/post/combination-sum/"/>
+      <url>/post/combination-sum/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/combination-sum/">https://leetcode.cn/problems/combination-sum/</a></strong></p><p><strong>題意：</strong>給一無重複數的 array <code>candidates</code> 和一整數 <code>target</code>, 找出 <code>candidates</code> 中可以使數字和等於 <code>target</code> 的所有不同組合, 以<strong>任意順序</strong>返回。</p><p>其中, <code>candidates[i]</code> 皆 <code>&gt; 0</code></p><p><strong>注意：</strong><code>candidates</code> 同一個數字可以<strong>無限次重複選取</strong>, 如果至少一個數字的被選數量不同, 則兩種組合是不同的</p></blockquote><p><img src="https://i.imgur.com/R8ihvki.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 DFS + Backtracking, 其中每個元素 <code>candidates[i]</code> 有兩種選擇：</strong></p><ul><li><p>選, 並從此位置 <code>i</code> 繼續選要不要重複選取</p></li><li><p>不選, 從下一個位置 <code>i + 1</code> 的元素繼續開始</p><p>  <img src="https://i.imgur.com/1te9bt9.png"></p></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">combinationSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, <span class="number">0</span>, candidates.<span class="built_in">size</span>(), target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; cur;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> i, <span class="type">int</span> n, <span class="type">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(cur);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (target &lt; <span class="number">0</span> || i == n) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">dfs</span>(candidates, i + <span class="number">1</span>, n, target); <span class="comment">// 不取</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取, 由於可重複取同一數, 故 idx 仍是從 i 開始取</span></span><br><span class="line">        cur.<span class="built_in">emplace_back</span>(candidates[i]);</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, i, n, target - candidates[i]);</span><br><span class="line">        cur.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot 2^n)$ ➔ 每個元素都有兩種選擇, 故最多有 $2^n$ 種選擇, 而每一種選擇皆需花 $O(n)$</li><li><strong>space：</strong>$O(target)$ ➔ worse case 下, <code>dfs()</code> 最大遞迴深度為 $O(target)$</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：同 Solution 1, 只是透過 pruning 來做優化, 一旦當前元素超過 <code>target</code>, 則直接跳過。for loop 中之所以沒有不取元素的部分, 是因為：</strong></p><ul><li>若取, 則會遞迴執行 <code>dfs(j, target - candidates[j])</code></li><li>若不取, 則在下一輪 for loop 中 <code>dfs(j + 1, target)</code> 是不會有 <code>nums[j]</code> 的, 因為上一輪的 <code>cur</code> 有做 backtracking, 會將狀態還原回加入 <code>nums[j]</code> 前的狀態後, 才進到下一輪的 <code>j + 1</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">combinationSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, <span class="number">0</span>, candidates.<span class="built_in">size</span>(), target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; cur;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> i, <span class="type">int</span> n, <span class="type">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="number">0</span>) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(cur);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 若要取, 則會遞迴執行；若不取, 則 for loop 迭代到 j + 1</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (candidates[j] &gt; target) &#123;</span><br><span class="line">                <span class="keyword">continue</span>; <span class="comment">// 剪枝, 一旦超過 target 則跳過</span></span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            cur.<span class="built_in">emplace_back</span>(candidates[j]);</span><br><span class="line">            <span class="built_in">dfs</span>(candidates, j, n, target - candidates[j]);</span><br><span class="line">            cur.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot 2^n)$ ➔ worse case 仍為 $O(n \cdot 2^n)$, 透過使用 pruning, 實際運行情況應該是<strong>遠小於</strong> $O(n \cdot 2^n)$ 的</li><li><strong>space：</strong>$O(target)$ ➔ worse case 下, <code>dfs()</code> 最大遞迴深度為 $O(target)$</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Backtracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>105. Construct Binary Tree from Preorder and Inorder Traversal</title>
       <link href="/post/construct-binary-tree-from-preorder-and-inorder-traversal/"/>
       <url>/post/construct-binary-tree-from-preorder-and-inorder-traversal/</url>
@@ -130,70 +163,6 @@
     
     
     <entry>
-      <title>230. Kth Smallest Element in a BST</title>
-      <link href="/post/kth-smallest-element-in-a-bst/"/>
-      <url>/post/kth-smallest-element-in-a-bst/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/">https://leetcode.cn/problems/kth-smallest-element-in-a-bst/</a></strong></p><p><strong>題意：</strong>給一 BST 的 <code>root</code> 和一整數 <code>k</code>, 返回 BST 中第 <code>k</code> 小的元素（從 <code>1</code> 開始計數）。</p></blockquote><p><img src="https://i.imgur.com/FNXlEpo.png"></p><p><img src="https://i.imgur.com/qQJ4RXw.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS（inorder）, 不斷取當前 node 的 <code>left</code> 直到 <code>node-&gt;left</code> 為 <code>null</code>, 由於 <code>left child</code> 是「後進先出」, 故要使用 stack。將這些 <code>left</code> 一個一個 pop 掉, 並將 <code>k</code> 減去 <code>1</code></strong></p><ul><li>若 <code>k == 0</code>, 代表當前 <code>node</code> 為第 <code>k</code> 小的數</li><li>若 <code>k &gt; 0</code>, 代表當前的數還太小, 故要嘗試其右子樹中的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; stk;</span><br><span class="line">        stk.<span class="built_in">emplace</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="comment">// 不斷加入 left child, 直到 left child 為 null</span></span><br><span class="line">            <span class="keyword">while</span> (root) &#123;</span><br><span class="line">                stk.<span class="built_in">emplace</span>(root);</span><br><span class="line">                root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 取出最左邊的 node</span></span><br><span class="line">            root = stk.<span class="built_in">top</span>();</span><br><span class="line">            stk.<span class="built_in">pop</span>();</span><br><span class="line">            --k; <span class="comment">// 扣除 root 本身</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// k == 0, 代表當前 root 為第 k 小的</span></span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 嘗試最左邊的 node 之 right subtree</span></span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ worse case：skew tree, 其中 <code>n</code> 為 node 數</li><li><strong>space：</strong>$O(n)$ ➔ 取決於 stack 長度, 最大長度為 <code>n</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Tree </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>98. Validate Binary Search Tree</title>
-      <link href="/post/validate-binary-search-tree/"/>
-      <url>/post/validate-binary-search-tree/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/validate-binary-search-tree/">https://leetcode.cn/problems/validate-binary-search-tree/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>root</code>, 返回其是否為 BST。</p></blockquote><p><img src="https://i.imgur.com/hCHWtfq.png"></p><p><img src="https://i.imgur.com/9gNOLMq.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 當前 node 必須判斷是否在目前的上、下界中, 因此要不斷維護當前的上、下界。若 node-&gt;val 滿足當前上下界：</strong></p><ul><li>遞迴遍歷 <code>node-&gt;left</code>, 並把 <code>node-&gt;val</code> 設為上界</li><li>遞迴遍歷 <code>node-&gt;right</code>, 並把 <code>node-&gt;val</code> 設為下界</li></ul><p>下圖中雖然 <code>7  &gt; 4</code>, 但它卻位於 <code>5</code> 的左子樹中（此時的 <code>lower = 4</code>, <code>upper = 5</code>）, 故要返回 <code>false</code></p><p><img src="https://i.imgur.com/3laL2XQ.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 要用 long 而非 int, 因為若用 int, 當 root = [INT_MAX] 時, 會返回 false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, LONG_MIN, LONG_MAX);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="type">long</span> lower, <span class="type">long</span> upper)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 若 tree 為空樹, 也是合法的 BST</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;val &lt;= lower || node-&gt;val &gt;= upper) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 當前 node 是合法的, 故遞迴判斷左、右子樹是否合法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(node-&gt;left, lower, node-&gt;val) &amp;&amp; </span><br><span class="line">                <span class="built_in">dfs</span>(node-&gt;right, node-&gt;val, upper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Tree </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-            <tag> Microsoft </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>211. Design Add and Search Words Data Structure</title>
       <link href="/post/design-add-and-search-words-data-structure/"/>
       <url>/post/design-add-and-search-words-data-structure/</url>
@@ -217,6 +186,37 @@
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>355. Design Twitter</title>
+      <link href="/post/design-twitter/"/>
+      <url>/post/design-twitter/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/design-twitter/">https://leetcode.cn/problems/design-twitter/</a></strong></p><p><strong>題意：</strong>設計一個簡化版的 Twitter, 可以讓用戶實現發送推文、關注 &#x2F; 取消關注 其他用戶, 以及能夠看見關注人（包括自己）的最近 <code>10</code> 條推文。</p><ul><li><code>Twitter()</code>：初始化 twitter instance。</li><li><code>void postTweet(int userId, int tweetId)</code>：根據給定的 <code>tweetId</code> 和 <code>userId</code> 創建一條新推文。每次調用此函數都會使用一個不同的 <code>tweetId</code>。</li><li><code>List&lt;Integer&gt; getNewsFeed(int userId)</code>：檢索當前用戶新聞推送中最近 <code>10</code> 條推文的 ID。<ul><li>新聞推送中的每一項都必須是由用戶關注的人 or 用戶自己發布的推文。</li><li>推文必須按照時間順序由<strong>最近到最遠排序</strong>。</li></ul></li><li><code>void follow(int followerId, int followeeId)</code>：ID 為 <code>followerId</code> 的用戶開始關注 ID 為 <code>followeeId</code> 的用戶。</li><li><code>void unfollow(int followerId, int followeeId)</code>：ID 為 <code>followerId</code> 的用戶取消關注 ID 為 <code>followeeId</code> 的用戶。</li></ul></blockquote><p><img src="https://i.imgur.com/sSGB6Yx.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1</strong>：</h2><blockquote><p><strong>想法：利用 hash table, 利用兩個 hash table <code>friends</code>、<code>tweets</code> 來分別記錄每一位用戶的好友、每一位用戶發的推文。<code>getNewsFeed()</code> 獲取自己和好友的最近 10 條推文, 首先要將自己添增到自己的好友列表中, 然後依序遍歷每個好友的所有推文, 並維護一個大小為 10 的 min heap</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Twitter</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Twitter</span>() &#123;</span><br><span class="line">        ts = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">postTweet</span><span class="params">(<span class="type">int</span> userId, <span class="type">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">        tweets[userId].<span class="built_in">emplace_back</span>(pii&#123;++ts, tweetId&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">getNewsFeed</span><span class="params">(<span class="type">int</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">follow</span>(userId, userId); <span class="comment">// 先 follow 自己</span></span><br><span class="line"></span><br><span class="line">        priority_queue&lt;pii, vector&lt;pii&gt;, greater&lt;&gt;&gt; pq; <span class="comment">// min heap</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> i : friends[userId]) &#123;</span><br><span class="line">            <span class="comment">// 遍歷該好友「最新 -&gt; 最舊」的推文</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = tweets[i].<span class="built_in">size</span>() - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                pq.<span class="built_in">emplace</span>(tweets[i][j]);</span><br><span class="line">                <span class="keyword">if</span> (pq.<span class="built_in">size</span>() &gt; <span class="number">10</span>) &#123; <span class="comment">// 若大於 10 則, 則 pop 掉 ts 最小的, 以維持 10 則</span></span><br><span class="line">                    pq.<span class="built_in">pop</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取出 的 tweetId 是根據 ts 由小到大排序, 故取出後要 reverse</span></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">while</span> (!pq.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(pq.<span class="built_in">top</span>().second);</span><br><span class="line">            pq.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">follow</span><span class="params">(<span class="type">int</span> followerId, <span class="type">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        friends[followerId].<span class="built_in">emplace</span>(followeeId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">unfollow</span><span class="params">(<span class="type">int</span> followerId, <span class="type">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (friends[followerId].<span class="built_in">find</span>(followeeId) != friends[followerId].<span class="built_in">end</span>()) &#123;</span><br><span class="line">            friends[followerId].<span class="built_in">erase</span>(followeeId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ts; <span class="comment">// timestamp, ts 越大代表該推文越新</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, vector&lt;pii&gt;&gt; tweets; <span class="comment">// userId -&gt; &#123;ts, tweetId&#125;</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, unordered_set&lt;<span class="type">int</span>&gt;&gt; friends; <span class="comment">// &#123;follower, set of followee&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong><ul><li><code>Twitter()</code><strong>：</strong>$O(1)$</li><li><code>postTweet()</code><strong>：</strong>$O(1)$</li><li><code>getNewsFeed()</code><strong>：</strong>$O(f \cdot t)$ ➔ $O(f \cdot t \cdot log(10))$, 遍歷該用戶每個好友的所有推文<ul><li><code>f</code> 為該用戶的好友數</li><li><code>t</code> 為每位好友的平均推文數</li><li>$O(log(10))$ 為 heap 中 insert &#x2F; erase 一個元素所需的時間</li></ul></li><li><code>follow()</code><strong>：</strong>$O(1)$</li><li><code>unfollow()</code><strong>：</strong>$O(1)$</li></ul></li><li><strong>space：</strong>$O(u \cdot t)$ ➔ <code>tweets</code>, 其中 <code>u</code> 為所有用戶數, <code>t</code> 為所有用戶的平均推文數</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：同 Solution 1, 只是 <code>getNewsFeed()</code> 改成維護一個大小為 10 的 set, 並做 pruning 來優化。每個好友的推文是根據 <code>ts</code> 「大(新) -&gt; 小(舊)」來遍歷, 一旦當前好友 <code>f1</code> 的推文比 <code>news</code> 中最舊推文的 <code>ts</code> 還要小, 則 <code>f1</code> 剩餘的推文都不必遍歷（因為 <code>ts</code> 只會更小）, 可直接跳到下一個好友</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Twitter</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Twitter</span>() &#123;</span><br><span class="line">        ts = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">postTweet</span><span class="params">(<span class="type">int</span> userId, <span class="type">int</span> tweetId)</span> </span>&#123;</span><br><span class="line">        tweets[userId].<span class="built_in">emplace_back</span>(pii&#123;++ts, tweetId&#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">getNewsFeed</span><span class="params">(<span class="type">int</span> userId)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">follow</span>(userId, userId); <span class="comment">// 先 follow 自己</span></span><br><span class="line"></span><br><span class="line">        set&lt;pii&gt; news;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> i : friends[userId]) &#123;</span><br><span class="line">            <span class="comment">// 遍歷該好友「最新 -&gt; 最舊」的推文</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = tweets[i].<span class="built_in">size</span>() - <span class="number">1</span>; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">                <span class="comment">// 不足 10 則, 直接加入到 news 中</span></span><br><span class="line">                <span class="keyword">if</span> (news.<span class="built_in">size</span>() &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                    news.<span class="built_in">emplace</span>(tweets[i][j]);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tweets[i][j].first &gt; news.<span class="built_in">begin</span>()-&gt;first) &#123; <span class="comment">// 若該推文比 news 中最舊的推文還新, 則加入該推文, 並移除最舊的推文</span></span><br><span class="line">                    news.<span class="built_in">erase</span>(news.<span class="built_in">begin</span>());</span><br><span class="line">                    news.<span class="built_in">emplace</span>(tweets[i][j]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123; <span class="comment">// 該推文比 news 中最舊的推文還舊, 則該好友不必再繼續往下遍歷</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取出 news 中的 tweetId, 由於 news 是根據 ts 由小到大排序, 故取出後要 reverse</span></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; [ts, tweetId] : news) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(tweetId);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">follow</span><span class="params">(<span class="type">int</span> followerId, <span class="type">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        friends[followerId].<span class="built_in">emplace</span>(followeeId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">unfollow</span><span class="params">(<span class="type">int</span> followerId, <span class="type">int</span> followeeId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (friends[followerId].<span class="built_in">find</span>(followeeId) != friends[followeeId].<span class="built_in">end</span>()) &#123;</span><br><span class="line">            friends[followerId].<span class="built_in">erase</span>(followeeId);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> ts; <span class="comment">// timestamp, ts 越大代表該推文越新</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, vector&lt;pii&gt;&gt; tweets; <span class="comment">// userId -&gt; &#123;ts, tweetId&#125;</span></span><br><span class="line">    unordered_map&lt;<span class="type">int</span>, unordered_set&lt;<span class="type">int</span>&gt;&gt; friends; <span class="comment">// &#123;follower, set of followee&#125;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong><ul><li><code>Twitter()</code>：$O(1)$</li><li><code>postTweet()</code>：$O(1)$</li><li><code>getNewsFeed()</code>：$O(f \cdot t)$ ➔ $O(f \cdot t \cdot log(10))$, 遍歷該用戶每個好友的所有推文<ul><li><code>f</code> 為該用戶的好友數</li><li><code>t</code> 為每位好友的平均推文數</li><li>$O(log(10))$ 為 set 中 insert &#x2F; erase 一個元素所需的時間</li></ul></li><li><code>follow()</code> : $O(1)$</li><li><code>unfollow()</code> : $O(1)$</li></ul></li><li><strong>space：</strong>$O(u \cdot t)$ ➔ <code>tweets</code>, 其中 <code>u</code> 為所有用戶數, <code>t</code> 為所有用戶的平均推文數</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Heap </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -322,6 +322,134 @@
     
     
     <entry>
+      <title>230. Kth Smallest Element in a BST</title>
+      <link href="/post/kth-smallest-element-in-a-bst/"/>
+      <url>/post/kth-smallest-element-in-a-bst/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/kth-smallest-element-in-a-bst/">https://leetcode.cn/problems/kth-smallest-element-in-a-bst/</a></strong></p><p><strong>題意：</strong>給一 BST 的 <code>root</code> 和一整數 <code>k</code>, 返回 BST 中第 <code>k</code> 小的元素（從 <code>1</code> 開始計數）。</p></blockquote><p><img src="https://i.imgur.com/FNXlEpo.png"></p><p><img src="https://i.imgur.com/qQJ4RXw.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS（inorder）, 不斷取當前 node 的 <code>left</code> 直到 <code>node-&gt;left</code> 為 <code>null</code>, 由於 <code>left child</code> 是「後進先出」, 故要使用 stack。將這些 <code>left</code> 一個一個 pop 掉, 並將 <code>k</code> 減去 <code>1</code></strong></p><ul><li>若 <code>k == 0</code>, 代表當前 <code>node</code> 為第 <code>k</code> 小的數</li><li>若 <code>k &gt; 0</code>, 代表當前的數還太小, 故要嘗試其右子樹中的 node</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode* root, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; stk;</span><br><span class="line">        stk.<span class="built_in">emplace</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!stk.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="comment">// 不斷加入 left child, 直到 left child 為 null</span></span><br><span class="line">            <span class="keyword">while</span> (root) &#123;</span><br><span class="line">                stk.<span class="built_in">emplace</span>(root);</span><br><span class="line">                root = root-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 取出最左邊的 node</span></span><br><span class="line">            root = stk.<span class="built_in">top</span>();</span><br><span class="line">            stk.<span class="built_in">pop</span>();</span><br><span class="line">            --k; <span class="comment">// 扣除 root 本身</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// k == 0, 代表當前 root 為第 k 小的</span></span><br><span class="line">            <span class="keyword">if</span> (k == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 嘗試最左邊的 node 之 right subtree</span></span><br><span class="line">            root = root-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> root-&gt;val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ worse case：skew tree, 其中 <code>n</code> 為 node 數</li><li><strong>space：</strong>$O(n)$ ➔ 取決於 stack 長度, 最大長度為 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>46. Permutations</title>
+      <link href="/post/permutations/"/>
+      <url>/post/permutations/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/permutations/">https://leetcode.cn/problems/permutations/</a></strong></p><p><strong>題意：</strong>給一不含重複數字的 array <code>nums</code>, 求所有可能的排列, 以<strong>任意順序</strong>返回。</p></blockquote><p><img src="https://i.imgur.com/adGJ3ij.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：DFS, <code>nums[i]</code> 輪流當頭</strong></p><p>e.g. <code>nums = [1, 2, 3]</code></p><ul><li><p><code>1</code> 當頭 : <code>[1, 2, 3], [1, 3, 2]</code></p></li><li><p><code>2</code> 當頭 : <code>[2, 1, 3], [2, 3, 1]</code></p></li><li><p><code>3</code> 當頭 : <code>[3, 2, 1], [3, 1, 2]</code></p><p>  <img src="https://i.imgur.com/rC0P6Cu.png"></p></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">permute</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> i, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == n) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(nums);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; n; ++j) &#123;</span><br><span class="line">            <span class="built_in">swap</span>(nums[i], nums[j]);</span><br><span class="line">            <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, n); <span class="comment">// 跟開頭 nums[i] 做 swap, 排序 i + 1 (開頭以後)</span></span><br><span class="line">            <span class="built_in">swap</span>(nums[i], nums[j]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot n!)$ ➔ 總共 $n!$ 種排列, 建構每一種排列皆需花 $O(n)$ time</li><li><strong>space：</strong>$O(n)$ ➔ 若不考慮要返回的 array, 則取決於遞迴的最大深度</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Backtracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>78. Subsets</title>
+      <link href="/post/subsets/"/>
+      <url>/post/subsets/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/subsets/">https://leetcode.cn/problems/subsets/</a></strong></p><p><strong>題意：</strong>給一 array <code>nums</code>, 當中的元素互不相同, 返回所有可能的 subset。</p></blockquote><p><img src="https://i.imgur.com/sASUAcK.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS + Backtracking, 每個元素都有取 or 不取兩種選擇</strong></p><p><img src="https://i.imgur.com/1JtQlEc.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">subsets</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; cur;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> i, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == n) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(cur);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, n); <span class="comment">// 不取</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取</span></span><br><span class="line">        cur.<span class="built_in">emplace_back</span>(nums[i]);</span><br><span class="line">        <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, n);</span><br><span class="line">        cur.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot 2^n)$<ul><li>有 $2^n$ 種 subset</li><li>建每一種 subset 需 $O(n)$ time, 因為 <code>i</code> 從 <code>[0, n]</code></li></ul></li><li><strong>space：</strong>$O(n)$ ➔ 若不考慮要返回的 array, 則只需 $O(n)$<ul><li>$O(n)$<strong>：</strong><code>dfs()</code> 遞迴最大深度、<code>cur</code> 中的元素個數</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Backtracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>90. Subsets II</title>
+      <link href="/post/subsets-ii/"/>
+      <url>/post/subsets-ii/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/subsets-ii/">https://leetcode.cn/problems/subsets-ii/</a></strong></p><p><strong>題意：</strong>給一 array <code>nums</code>, 當中的元素可能會重複, 返回所有可能的 subset <code>res</code>。</p><p><strong>注意：</strong><code>res</code> 不能包含重複的 subset, 可以按<strong>順序任意</strong>排列</p></blockquote><p><img src="https://i.imgur.com/Fp3brwo.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 先將 <code>nums</code> 排序（讓相同值的數相鄰）, 然後跟 <a href="https://zako945.github.io/post/subsets/">78. Subsets</a> 一樣</strong></p><ul><li>不一樣的是, <code>res</code> 中不能有重複的 subset</li><li>只是若不取, 則後面跟當前值一樣的數, 都要跳過, 從值不一樣的繼續</li></ul><p>e.g. <code>nums = [1, 2, 2, 3]</code><br>下圖中紅色圈起來的部分, 即是選 1 之後不選 2, 所以後面值為 2 的都要跳過, 下一個從 3 開始取</p><p><img src="https://i.imgur.com/eeaaTX2.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">subsetsWithDup</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">dfs</span>(nums, <span class="number">0</span>, nums.<span class="built_in">size</span>());</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; cur;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> i, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i == n) &#123;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(cur);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 取</span></span><br><span class="line">        cur.<span class="built_in">emplace_back</span>(nums[i]);</span><br><span class="line">        <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, n);</span><br><span class="line">        cur.<span class="built_in">pop_back</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不取</span></span><br><span class="line">        <span class="keyword">while</span> (i + <span class="number">1</span> &lt; n &amp;&amp; nums[i] == nums[i + <span class="number">1</span>]) &#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot 2^n)$ ➔ $O(n \cdot log(n)) + O(n \cdot 2^n)$<ul><li>$O(n \cdot log(n))$<strong>：</strong>sorting</li><li>$O(n \cdot 2^n)$<strong>：</strong>最多 $2^n$ 種 subset, 建每一種 subset 需 $O(n)$ time</li></ul></li><li><strong>space：</strong>$O(n)$ ➔ 若不考慮要返回的 array, 則取決於遞迴的最大深度</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Backtracking </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>621. Task Scheduler</title>
       <link href="/post/task-scheduler/"/>
       <url>/post/task-scheduler/</url>
@@ -334,6 +462,39 @@
           <category> Leetcode </category>
           
           <category> Heap </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>98. Validate Binary Search Tree</title>
+      <link href="/post/validate-binary-search-tree/"/>
+      <url>/post/validate-binary-search-tree/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/validate-binary-search-tree/">https://leetcode.cn/problems/validate-binary-search-tree/</a></strong></p><p><strong>題意：</strong>給一 BT 的 <code>root</code>, 返回其是否為 BST。</p></blockquote><p><img src="https://i.imgur.com/hCHWtfq.png"></p><p><img src="https://i.imgur.com/9gNOLMq.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 DFS, 當前 node 必須判斷是否在目前的上、下界中, 因此要不斷維護當前的上、下界。若 node-&gt;val 滿足當前上下界：</strong></p><ul><li>遞迴遍歷 <code>node-&gt;left</code>, 並把 <code>node-&gt;val</code> 設為上界</li><li>遞迴遍歷 <code>node-&gt;right</code>, 並把 <code>node-&gt;val</code> 設為下界</li></ul><p>下圖中雖然 <code>7  &gt; 4</code>, 但它卻位於 <code>5</code> 的左子樹中（此時的 <code>lower = 4</code>, <code>upper = 5</code>）, 故要返回 <code>false</code></p><p><img src="https://i.imgur.com/3laL2XQ.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 要用 long 而非 int, 因為若用 int, 當 root = [INT_MAX] 時, 會返回 false</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, LONG_MIN, LONG_MAX);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(TreeNode* node, <span class="type">long</span> lower, <span class="type">long</span> upper)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!node) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 若 tree 為空樹, 也是合法的 BST</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (node-&gt;val &lt;= lower || node-&gt;val &gt;= upper) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 當前 node 是合法的, 故遞迴判斷左、右子樹是否合法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(node-&gt;left, lower, node-&gt;val) &amp;&amp; </span><br><span class="line">                <span class="built_in">dfs</span>(node-&gt;right, node-&gt;val, upper);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 遞迴深度不超過 <code>n</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
           
       </categories>
       
@@ -704,37 +865,6 @@
     
     
     <entry>
-      <title>875. Koko Eating Bananas</title>
-      <link href="/post/koko-eating-bananas/"/>
-      <url>/post/koko-eating-bananas/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/koko-eating-bananas/">https://leetcode.cn/problems/koko-eating-bananas/</a></strong></p><p><strong>題意:</strong> Koko 喜歡吃香蕉。這里有 <code>n</code> 堆香蕉, 第 <code>i</code> 堆中有 <code>piles[i]</code> 根香蕉。警衛已經離開了, 並且將在 <code>h</code> 小時後回來。</p><p>Koko 可以決定她吃香蕉的速度 <code>k</code> （單位：根 &#x2F; 小時）。每個小時, 她將會選擇其中一堆的香蕉, 並從中吃掉 <code>k</code> 根。如果這堆香蕉少於 <code>k</code> 根, 她將吃掉這堆所有的香蕉, 然後這一小時內都不會再吃更多的香蕉。  </p><p>Koko 喜歡慢慢吃, 但仍然想在警衛回來前吃掉所有的香蕉。</p><p>返回她可以在 <code>h</code> 小時內吃掉所有香蕉的最小速度 <code>k</code>, 其中 <code>k</code> 為整數。</p></blockquote><p><img src="https://i.imgur.com/8vBcc5O.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 其中 <code>k</code> 的區間為 <code>[1,  max(piles)]</code>, 因為 Koko 吃掉該堆所有的香蕉後, 這一小時內都不會再吃更多的香蕉, 所以 <code>k</code> 取到 <code>max(piles)</code> 即可。此外, <code>left</code> 不能為 <code>0</code>, 否則 <code>mid</code> 有可能為 <code>0</code>, 這會導致計算 <code>time += ceil(1.0 * pile / mid)</code> 時發生錯誤</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minEatingSpeed</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; piles, <span class="type">int</span> h)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">1</span>, right = *<span class="built_in">max_element</span>(piles.<span class="built_in">begin</span>(), piles.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>; <span class="comment">// speed</span></span><br><span class="line"></span><br><span class="line">            <span class="type">long</span> cost = <span class="number">0</span>; <span class="comment">// 加總有可能會 overflow, 故取 long</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp; pile : piles) &#123;</span><br><span class="line">                cost += <span class="built_in">ceil</span>(<span class="number">1.0</span> * pile / mid); <span class="comment">// 先轉成 float 再運算, 最後取 ceiling</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (cost &lt;= h) &#123; <span class="comment">// 速度過快, 往左區間繼續搜尋</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(m))$ ➔ 其中 <code>n</code> 為 <code>piles</code> 的長度, <code>m</code> 為 <code>piles</code> 中的最大值<ul><li>$O(log(m))$ : Binary Search 的次數</li><li>$O(n \cdot log(m))$ : 每一次 Binary Search 皆須 $O(n)$, 因為計算出 mid 後, 皆須遍歷 <code>piles</code></li></ul></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Binary Search </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>153. Find Minimum in Rotated Sorted Array</title>
       <link href="/post/find-minimum-in-rotated-sorted-array/"/>
       <url>/post/find-minimum-in-rotated-sorted-array/</url>
@@ -760,6 +890,37 @@
             <tag> Google </tag>
             
             <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>875. Koko Eating Bananas</title>
+      <link href="/post/koko-eating-bananas/"/>
+      <url>/post/koko-eating-bananas/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址: <a href="https://leetcode.cn/problems/koko-eating-bananas/">https://leetcode.cn/problems/koko-eating-bananas/</a></strong></p><p><strong>題意:</strong> Koko 喜歡吃香蕉。這里有 <code>n</code> 堆香蕉, 第 <code>i</code> 堆中有 <code>piles[i]</code> 根香蕉。警衛已經離開了, 並且將在 <code>h</code> 小時後回來。</p><p>Koko 可以決定她吃香蕉的速度 <code>k</code> （單位：根 &#x2F; 小時）。每個小時, 她將會選擇其中一堆的香蕉, 並從中吃掉 <code>k</code> 根。如果這堆香蕉少於 <code>k</code> 根, 她將吃掉這堆所有的香蕉, 然後這一小時內都不會再吃更多的香蕉。  </p><p>Koko 喜歡慢慢吃, 但仍然想在警衛回來前吃掉所有的香蕉。</p><p>返回她可以在 <code>h</code> 小時內吃掉所有香蕉的最小速度 <code>k</code>, 其中 <code>k</code> 為整數。</p></blockquote><p><img src="https://i.imgur.com/8vBcc5O.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Binary Search, 其中 <code>k</code> 的區間為 <code>[1,  max(piles)]</code>, 因為 Koko 吃掉該堆所有的香蕉後, 這一小時內都不會再吃更多的香蕉, 所以 <code>k</code> 取到 <code>max(piles)</code> 即可。此外, <code>left</code> 不能為 <code>0</code>, 否則 <code>mid</code> 有可能為 <code>0</code>, 這會導致計算 <code>time += ceil(1.0 * pile / mid)</code> 時發生錯誤</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minEatingSpeed</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; piles, <span class="type">int</span> h)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> left = <span class="number">1</span>, right = *<span class="built_in">max_element</span>(piles.<span class="built_in">begin</span>(), piles.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> mid = left + (right - left) / <span class="number">2</span>; <span class="comment">// speed</span></span><br><span class="line"></span><br><span class="line">            <span class="type">long</span> cost = <span class="number">0</span>; <span class="comment">// 加總有可能會 overflow, 故取 long</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span> &amp; pile : piles) &#123;</span><br><span class="line">                cost += <span class="built_in">ceil</span>(<span class="number">1.0</span> * pile / mid); <span class="comment">// 先轉成 float 再運算, 最後取 ceiling</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (cost &lt;= h) &#123; <span class="comment">// 速度過快, 往左區間繼續搜尋</span></span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(m))$ ➔ 其中 <code>n</code> 為 <code>piles</code> 的長度, <code>m</code> 為 <code>piles</code> 中的最大值<ul><li>$O(log(m))$ : Binary Search 的次數</li><li>$O(n \cdot log(m))$ : 每一次 Binary Search 皆須 $O(n)$, 因為計算出 mid 後, 皆須遍歷 <code>piles</code></li></ul></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Binary Search </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
         </tags>
       
@@ -867,37 +1028,6 @@
     
     
     <entry>
-      <title>637. Average of Levels in Binary Tree</title>
-      <link href="/post/average-of-levels-in-binary-tree/"/>
-      <url>/post/average-of-levels-in-binary-tree/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/average-of-levels-in-binary-tree/">https://leetcode.cn/problems/average-of-levels-in-binary-tree/</a></strong></p><p><strong>題意：</strong>給一 Binary Tree(BT), 計算每一層的平均值。</p></blockquote><p><img src="https://i.imgur.com/I7IRJWJ.png" alt="Untitled"></p><p><img src="https://i.imgur.com/cZP2nAa.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">averageOfLevels</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">double</span>&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">double</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                TreeNode* node = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                sum += node-&gt;val;</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(sum / size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 取決於樹的高度, worse case 為 skew tree, tree</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Tree </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Microsoft </tag>
-            
-            <tag> Easy </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>844. Backspace String Compare</title>
       <link href="/post/backspace-string-compare/"/>
       <url>/post/backspace-string-compare/</url>
@@ -948,6 +1078,37 @@
         <tags>
             
             <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>637. Average of Levels in Binary Tree</title>
+      <link href="/post/average-of-levels-in-binary-tree/"/>
+      <url>/post/average-of-levels-in-binary-tree/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/average-of-levels-in-binary-tree/">https://leetcode.cn/problems/average-of-levels-in-binary-tree/</a></strong></p><p><strong>題意：</strong>給一 Binary Tree(BT), 計算每一層的平均值。</p></blockquote><p><img src="https://i.imgur.com/I7IRJWJ.png" alt="Untitled"></p><p><img src="https://i.imgur.com/cZP2nAa.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 BFS</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">double</span>&gt; <span class="title">averageOfLevels</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">double</span>&gt; res;</span><br><span class="line">        queue&lt;TreeNode*&gt; q;</span><br><span class="line">        q.<span class="built_in">push</span>(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            <span class="type">double</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="type">int</span> size = q.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; size; ++i)&#123;</span><br><span class="line">                TreeNode* node = q.<span class="built_in">front</span>();</span><br><span class="line">                q.<span class="built_in">pop</span>();</span><br><span class="line">                sum += node-&gt;val;</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;left) q.<span class="built_in">push</span>(node-&gt;left);</span><br><span class="line">                <span class="keyword">if</span>(node-&gt;right) q.<span class="built_in">push</span>(node-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">emplace_back</span>(sum / size);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 BT</li><li><strong>space：</strong>$O(n)$ ➔ 取決於樹的高度, worse case 為 skew tree, tree</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Tree </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Microsoft </tag>
             
             <tag> Easy </tag>
             
@@ -2156,35 +2317,6 @@
     
     
     <entry>
-      <title>303. Range Sum Query - Immutable</title>
-      <link href="/post/range-sum-query-immutable/"/>
-      <url>/post/range-sum-query-immutable/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/range-sum-query-immutable/">https://leetcode.cn/problems/range-sum-query-immutable/</a></strong></p><p><strong>題意：</strong>給一 array, 多次輸入不同的 <code>left</code> 和 <code>right</code>, 求 array 中從 <code>idx = left</code> 到 <code>idx = right</code> 之和。</p></blockquote><p><img src="https://i.imgur.com/JfAhPC1.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法: 每一次 query 都去計算</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumArray</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        nums_ = <span class="built_in">move</span>(nums); <span class="comment">// 複製 nums</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sumRange</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt;= right; ++i)</span><br><span class="line">            sum += nums_[i];</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>令 <code>query</code> 次數<strong>：</strong><code>m</code> 次, <code>nums</code> 中元素個數<strong>：</strong><code>n</code></p><ul><li><strong>time：</strong>$O(m \cdot n)$ ➔ <code>m</code> 次 query，每次 query 需 $O(n)$ 時間</li><li><strong>space：</strong>$O(n)$ ➔ <code>nums_</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 Prefix Sum, 事先計算前 <code>i</code> 個數之和</strong></p></blockquote><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sums</span> 紀錄前 i 個數之和</span><br><span class="line"><span class="attribute">nums</span>:<span class="meta"> [-2,  0, 3, -5,  2, -1]</span></span><br><span class="line"><span class="attribute">sums</span>:<span class="meta"> [-2, -2, 1, -4, -2, -3]</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">range</span>(left, right):</span><br><span class="line">    <span class="attribute">if</span>(left == <span class="number">0</span>) sum = sums[right] // e.g. range(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="attribute">else</span> sum = sums[right] - sums[left-<span class="number">1</span>] // e.g. range(<span class="number">2</span>, <span class="number">5</span>) -&gt; -<span class="number">3</span> - (-<span class="number">2</span>) = <span class="number">1</span></span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumArray</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        sums = <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n, nums[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">            sums[i] = sums[i<span class="number">-1</span>] + nums[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sumRange</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">0</span>) <span class="keyword">return</span> sums[right];</span><br><span class="line">        <span class="keyword">return</span> sums[right] - sums[left<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; sums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>令 <code>query</code> 次數<strong>：</strong><code>m</code> 次, <code>nums</code> 中元素個數<strong>：</strong><code>n</code></p><ul><li><strong>time：</strong>$O(m+n)$ ➔ $O(n)$ + $m * O(1)$<ul><li>$O(n)$ : 計算 prefix sum 的時間</li><li>$m * O(1)$ : <code>m</code> 次 query, 每次 query 只需 $O(1)$ 時間</li></ul></li><li><strong>space：</strong>$O(n)$ ➔ <code>sums</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Dynamic Programming </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Easy </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>238. Product of Array Except Self</title>
       <link href="/post/product-of-array-except-self/"/>
       <url>/post/product-of-array-except-self/</url>
@@ -2210,6 +2342,35 @@
             <tag> Google </tag>
             
             <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>303. Range Sum Query - Immutable</title>
+      <link href="/post/range-sum-query-immutable/"/>
+      <url>/post/range-sum-query-immutable/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/range-sum-query-immutable/">https://leetcode.cn/problems/range-sum-query-immutable/</a></strong></p><p><strong>題意：</strong>給一 array, 多次輸入不同的 <code>left</code> 和 <code>right</code>, 求 array 中從 <code>idx = left</code> 到 <code>idx = right</code> 之和。</p></blockquote><p><img src="https://i.imgur.com/JfAhPC1.png" alt="Untitled"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法: 每一次 query 都去計算</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumArray</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; nums_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        nums_ = <span class="built_in">move</span>(nums); <span class="comment">// 複製 nums</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sumRange</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = left; i &lt;= right; ++i)</span><br><span class="line">            sum += nums_[i];</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>令 <code>query</code> 次數<strong>：</strong><code>m</code> 次, <code>nums</code> 中元素個數<strong>：</strong><code>n</code></p><ul><li><strong>time：</strong>$O(m \cdot n)$ ➔ <code>m</code> 次 query，每次 query 需 $O(n)$ 時間</li><li><strong>space：</strong>$O(n)$ ➔ <code>nums_</code></li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：利用 Prefix Sum, 事先計算前 <code>i</code> 個數之和</strong></p></blockquote><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sums</span> 紀錄前 i 個數之和</span><br><span class="line"><span class="attribute">nums</span>:<span class="meta"> [-2,  0, 3, -5,  2, -1]</span></span><br><span class="line"><span class="attribute">sums</span>:<span class="meta"> [-2, -2, 1, -4, -2, -3]</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">range</span>(left, right):</span><br><span class="line">    <span class="attribute">if</span>(left == <span class="number">0</span>) sum = sums[right] // e.g. range(<span class="number">0</span>, <span class="number">2</span>)</span><br><span class="line">    <span class="attribute">else</span> sum = sums[right] - sums[left-<span class="number">1</span>] // e.g. range(<span class="number">2</span>, <span class="number">5</span>) -&gt; -<span class="number">3</span> - (-<span class="number">2</span>) = <span class="number">1</span></span><br></pre></td></tr></table></figure><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumArray</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">NumArray</span>(vector&lt;<span class="type">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="type">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        sums = <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n, nums[<span class="number">0</span>]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; ++i)</span><br><span class="line">            sums[i] = sums[i<span class="number">-1</span>] + nums[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sumRange</span><span class="params">(<span class="type">int</span> left, <span class="type">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="number">0</span>) <span class="keyword">return</span> sums[right];</span><br><span class="line">        <span class="keyword">return</span> sums[right] - sums[left<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; sums;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>令 <code>query</code> 次數<strong>：</strong><code>m</code> 次, <code>nums</code> 中元素個數<strong>：</strong><code>n</code></p><ul><li><strong>time：</strong>$O(m+n)$ ➔ $O(n)$ + $m * O(1)$<ul><li>$O(n)$ : 計算 prefix sum 的時間</li><li>$m * O(1)$ : <code>m</code> 次 query, 每次 query 只需 $O(1)$ 時間</li></ul></li><li><strong>space：</strong>$O(n)$ ➔ <code>sums</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Dynamic Programming </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Easy </tag>
             
         </tags>
       
@@ -2311,39 +2472,6 @@
     
     
     <entry>
-      <title>206. Reverse Linked List</title>
-      <link href="/post/reverse-linked-list/"/>
-      <url>/post/reverse-linked-list/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/reverse-linked-list/">https://leetcode.cn/problems/reverse-linked-list/</a></strong></p><p><strong>題意：</strong>反轉 linked-list。</p></blockquote><p><img src="https://i.imgur.com/JN4Kd2M.png" alt="Untitled"></p><p><img src="https://i.imgur.com/l7LB6ZU.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：必須要有 <code>prev</code>, <code>nxt</code> 來記住前一個 node 和 下一個 node</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *prev = <span class="literal">nullptr</span>, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span>(head)&#123;</span><br><span class="line">            nxt = head-&gt;next;</span><br><span class="line">            head-&gt;next = prev;</span><br><span class="line">            prev = head;</span><br><span class="line">            head = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Linked List </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-            <tag> Microsoft </tag>
-            
-            <tag> Easy </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>100. Same Tree</title>
       <link href="/post/same-tree/"/>
       <url>/post/same-tree/</url>
@@ -2377,18 +2505,18 @@
     
     
     <entry>
-      <title>136. Single Number</title>
-      <link href="/post/single-number/"/>
-      <url>/post/single-number/</url>
+      <title>206. Reverse Linked List</title>
+      <link href="/post/reverse-linked-list/"/>
+      <url>/post/reverse-linked-list/</url>
       
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/single-number/">https://leetcode.cn/problems/single-number/</a></strong></p><p><strong>題意：</strong>給一非空的 array <code>nums</code>, 當中只有一個數 <code>n1</code> 只出現一次, 找出 <code>n1</code>。</p></blockquote><p><img src="https://i.imgur.com/jhihJCU.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 XOR 的特性, <code>a ^ a = 0</code> 且 <code>0 ^ b = b</code>, 還有交換性<br>e.g. <code>b ^ a ^ b = a ^ (b ^ b) = a ^ 0 = a</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; num : nums)</span><br><span class="line">            res ^= num;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/reverse-linked-list/">https://leetcode.cn/problems/reverse-linked-list/</a></strong></p><p><strong>題意：</strong>反轉 linked-list。</p></blockquote><p><img src="https://i.imgur.com/JN4Kd2M.png" alt="Untitled"></p><p><img src="https://i.imgur.com/l7LB6ZU.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：必須要有 <code>prev</code>, <code>nxt</code> 來記住前一個 node 和 下一個 node</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode *prev = <span class="literal">nullptr</span>, *nxt = <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="keyword">while</span>(head)&#123;</span><br><span class="line">            nxt = head-&gt;next;</span><br><span class="line">            head-&gt;next = prev;</span><br><span class="line">            prev = head;</span><br><span class="line">            head = nxt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷整個 linked list</li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
       
       
       <categories>
           
           <category> Leetcode </category>
           
-          <category> Bit Manipulation </category>
+          <category> Linked List </category>
           
       </categories>
       
@@ -2398,6 +2526,8 @@
             <tag> Amazon </tag>
             
             <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
             <tag> Easy </tag>
             
@@ -2429,6 +2559,37 @@
             <tag> Amazon </tag>
             
             <tag> Microsoft </tag>
+            
+            <tag> Easy </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>136. Single Number</title>
+      <link href="/post/single-number/"/>
+      <url>/post/single-number/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/single-number/">https://leetcode.cn/problems/single-number/</a></strong></p><p><strong>題意：</strong>給一非空的 array <code>nums</code>, 當中只有一個數 <code>n1</code> 只出現一次, 找出 <code>n1</code>。</p></blockquote><p><img src="https://i.imgur.com/jhihJCU.png" alt="Untitled"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 XOR 的特性, <code>a ^ a = 0</code> 且 <code>0 ^ b = b</code>, 還有交換性<br>e.g. <code>b ^ a ^ b = a ^ (b ^ b) = a ^ 0 = a</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; num : nums)</span><br><span class="line">            res ^= num;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>nums</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需要常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Bit Manipulation </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
             <tag> Easy </tag>
             
