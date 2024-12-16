@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-12-16 22:57:47'
+  postUpdate: '2024-12-16 23:34:48'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -173,72 +173,97 @@ window.addEventListener('load',()=> { preloader.endLoading() })
 if (true) {
   document.addEventListener('pjax:send', () => { preloader.initLoading() })
   document.addEventListener('pjax:complete', () => { preloader.endLoading() })
-}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zako's Blog"><span class="site-name">Zako's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Zako's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/car-fleet/" title="853. Car Fleet">853. Car Fleet</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-10T16:00:00.000Z" title="發表於 2024-12-11 00:00:00">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Stack/">Stack</a></span></div><div class="content">
-題目網址: https://leetcode.cn/problems/car-fleet/
-題意: 在一條單行道上, 有 n 輛車開往同一目的地, 目的地是幾英里外的 target。
-給兩個整數 array position、speed, 其中 position[i] 是第 i 輛車的位置, speed[i] 是第 i 輛車的時速(英里&#x2F;小時)。
-一輛車永遠不會超過前面的另一輛車, 但它可以追上去, 並與前車以相同的速度緊接著行駛。此時, 我們可忽略這兩輛車之間的距離, 也就是說, 它們被假定處於相同的位置。
-車隊是一些由行駛在相同位置、具有相同速度的車組成的非空集合。注意, 一輛車也可以是一個車隊。
-即便一輛車在目的地才趕上了一個車隊, 它們仍然會被視作是同一個車隊。
-返回到達目的地的車隊數量。
-
-
-Solution：
-想法：利用 Monotonic（遞減） Stack, 先使用 map 根據 position[i] 「由小到大」排序, 然後依序取出, 並計算 position[i] 到 target 所需的時間。如果當前所需的時間 time ≥ stk.top(), 則 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/daily-temperatures/" title="739. Daily Temperatures">739. Daily Temperatures</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-10T16:00:00.000Z" title="發表於 2024-12-11 00:00:00">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Stack/">Stack</a></span></div><div class="content">
-題目網址: https://leetcode.cn/problems/daily-temperatures/
-題意: 給一整數 array temperatures 代表每天的溫度。請返回 array res, 其中 res[i] 是指對於第 i 天, 下一個更高溫度是出現在幾天後。如果氣溫在這之後都不會升高, 則該位置用 0 來代替。
-
-
-Solution：
-想法：利用 Stack, 使用 Monotonic（遞減） Stack stk 紀錄 &#123;temperature, idx&#125;, 一旦當前溫度 temperatures[i] 比 stk.top().first 還高, 則不斷將 stk.top() 取出, 並計算 res[idx], 直到 stk.top().first &gt; temperatures[i] 才把 temperatures[i] push 到 stk 中
-
-class Solution &#123;public:    vector&lt;int&gt; dailyTemperatures(vector&lt;int&gt;&amp; te ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/find-minimum-in-rotated-sorted-array/" title="153. Find Minimum in Rotated Sorted Array">153. Find Minimum in Rotated Sorted Array</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-10T16:00:00.000Z" title="發表於 2024-12-11 00:00:00">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Binary-Search/">Binary Search</a></span></div><div class="content">
-題目網址: https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/
-題意: 給一長度為 n 的 array, 已照升序排列, 經過 1 到 n 次旋轉後得到 input array。
-e.g. nums = [0,1,2,4,5,6,7] 經過變化後可得到:
-
-若旋轉 4 次, 可得到 [4,5,6,7,0,1,2]
-若旋轉 7 次, 可得到 [0,1,2,4,5,6,7]
-
-給一元素互不相同的 array nums, 已照升序排列, 並進行多次旋轉, 返回 nums 中最小的元素。
-注意: 請設計 $O(log(n))$ time 的演算法
-
-
-Solution：
-想法：利用 Binary Search, 根據比較左、中、右三個位置的值來縮小左邊界 or 右邊界, 有以下幾種情況：
-
-(左 &lt; 中) 且 (中 &lt; 右), e.g. [1,2,3,4,5]。代表沒有旋轉 ➔ min 在左半邊, 故縮小右邊界。
-(左 &gt; 中) 且 (中 &lt; 右), e.g. [5,1,2,3,4]。代 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/koko-eating-bananas/" title="875. Koko Eating Bananas">875. Koko Eating Bananas</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-10T16:00:00.000Z" title="發表於 2024-12-11 00:00:00">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Binary-Search/">Binary Search</a></span></div><div class="content">
-題目網址: https://leetcode.cn/problems/koko-eating-bananas/
-題意: Koko 喜歡吃香蕉。這里有 n 堆香蕉, 第 i 堆中有 piles[i] 根香蕉。警衛已經離開了, 並且將在 h 小時後回來。
-Koko 可以決定她吃香蕉的速度 k （單位：根 &#x2F; 小時）。每個小時, 她將會選擇其中一堆的香蕉, 並從中吃掉 k 根。如果這堆香蕉少於 k 根, 她將吃掉這堆所有的香蕉, 然後這一小時內都不會再吃更多的香蕉。  
-Koko 喜歡慢慢吃, 但仍然想在警衛回來前吃掉所有的香蕉。
-返回她可以在 h 小時內吃掉所有香蕉的最小速度 k, 其中 k 為整數。
-
-
-Solution：
-想法：利用 Binary Search, 其中 k 的區間為 [1,  max(piles)], 因為 Koko 吃掉該堆所有的香蕉後, 這一小時內都不會再吃更多的香蕉, 所以 k 取到 max(piles) 即可。此外, left 不能為 0, 否則 mid 有可能為 0, 這會導致計算 time += ceil(1.0 * pile / mid) 時發 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/search-a-2d-matrix/" title="74. Search a 2D Matrix">74. Search a 2D Matrix</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-10T16:00:00.000Z" title="發表於 2024-12-11 00:00:00">2024-12-11</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Binary-Search/">Binary Search</a></span></div><div class="content">
-題目網址: https://leetcode.cn/problems/search-a-2d-matrix/
-題意: 設計一高效演算法來搜索 m x n matrix 中是否存在整數 target, matrix 滿足以下特性:
-
-每列的元素由左到右按升序排列
-每列的第一個元素 &gt; 前一列的最後一個元素
-
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">106</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">16</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zako's Blog"><span class="site-name">Zako's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Zako's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/lowest-common-ancestor-of-a-binary-search-tree/" title="235. Lowest Common Ancestor of a Binary Search Tree">235. Lowest Common Ancestor of a Binary Search Tree</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-12T16:00:00.000Z" title="發表於 2024-12-13 00:00:00">2024-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Tree/">Tree</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/
+題意：給一 BT 和兩個節點 p, q, 求兩節點之最低共同祖先(LCA)
 
 
 
 Solution：
-想法：利用 Binary Search, matrix 其實就是 1D 已排序的 array, 只是改成用 2D array 表達而已, 故將 matrix 看成 1D array, 然後還原回 2D array 座標來做 Binary Search
+想法：利用 DFS 和 BST 的性質, 找到一 node 滿足 node.val 介於 p、q 之間
 
-class Solution &#123;public:    bool searchMatrix(vector&lt;vector&lt;int&gt;&gt;&amp; matrix, int target) &#123;        const int m = matrix.size(), n = matrix[0].size();        int left = 0, right = m ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/7/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#content-inner">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/#content-inner">20</a><a class="extend next" rel="next" href="/page/9/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zako945</div><div class="author-info__description">Ciallo～(∠·ω<)⌒★</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">100</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">16</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+p-&gt;val ≤ node.val ≤ q-&gt;val 或
+q-&gt;val ≤ node.val ≤ p-&gt;val
+
+BST 性質:
+
+root 左子樹中所有 node.val 皆小於 root.val
+root 右子樹中所有 node.val 皆大於 root.val
+
+
+class Solution &#123;public:    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) &#123;        if (p-&gt;val &gt; root-&gt;val &amp;&amp; q-& ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/lru-cache/" title="146. LRU Cache">146. LRU Cache</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-12T16:00:00.000Z" title="發表於 2024-12-13 00:00:00">2024-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Linked-List/">Linked List</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/lru-cache/
+題意：設計並實現一個滿足 LRU（Least Recently Used）的資料結構。
+實現 LRUCache class：
+
+LRUCache(int capacity)：以 capacity 初始化 LRU cache 的大小。
+int get(int key)：若 key 存在於 cache 中, 則返回其對應的 val, 否則返回 1。
+void put(int key, int value)：
+若 key 已經存在, 則變更其 value
+若不存在, 則將該組 key-value insert 到 cache 中
+若 insert 操作導致 pair 數量超過 capacity, 則移除最久未使用的 key-value pair
+
+
+
+注意：get() 和 put() 必須是 $O(1)$ time
+
+
+Solution：
+想法：利用 hash table + list, 其中 cache 用來存放所有的 key, 用來記錄哪個 key 最近被使用、最久沒被使用。用 list 而非 f ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/remove-nth-node-from-end-of-list/" title="19. Remove Nth Node From End of List">19. Remove Nth Node From End of List</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-12T16:00:00.000Z" title="發表於 2024-12-13 00:00:00">2024-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Linked-List/">Linked List</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/remove-nth-node-from-end-of-list/
+題意：給一 linked list, 請刪除倒數第 n 個 node, 並返回 linked list 的 head。
+進階：試著用一次掃描就完成。
+
+
+Solution：
+想法：利用 slow &amp; fast pointers, 用 dummy 是因為有可能第一個 node 被刪, 所以需要有 ptr 指著第一個 node 的前一個 node。首先 fast 先從 head 走 n 步（讓 fast 領先）, 然後 slow 才從 dummy 開始往前走, 直到 fast 變成 NULL
+
+為什麼 fast 是初始化為 head, 而 slow 初始化為 dummy ?因為若 fast 和 slow 都初始化為 head, 則當 fast 為 NULL 時, slow 恰好在倒數第 n 個 node(因為 fast 領先 n 步), 但是我們是要刪除倒數第 n 個 node, 要取得的是倒數第 n 個 node 的前一個節點(倒數第 n +  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/reorder-list/" title="143. Reorder List">143. Reorder List</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-12T16:00:00.000Z" title="發表於 2024-12-13 00:00:00">2024-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Linked-List/">Linked List</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/reorder-list/
+題意：給一單向 linked list 的起始節點 head, 該 linked list 可表示為
+L0 → L1 → … → Ln - 1 → Ln
+將其重新排序為
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+不能只是單純改變節點內部的值, 必須進行實際的節點交換。
+
+
+
+Solution：
+想法：分成以下步驟
+
+找到 linked list 的中點, 按照 141. Linked List Cycle 的方法
+奇數時, mid 指向中點
+偶數時, mid 指向右中點
+因此, 最一開始要先讓 fast 先走一步, 這樣不管是奇偶數, mid 都會指向左中點
+
+
+重要：截斷兩個 list ➔ mid-&gt;next = nullptr（容易忘記這步）
+reverse 右半部分 Ln → Ln - 1 → Ln - 2 → ...
+merge 左半和右半
+
+
+class Solution &#123;public:    void reorderLis ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/search-in-rotated-sorted-array/" title="33. Search in Rotated Sorted Array">33. Search in Rotated Sorted Array</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-12T16:00:00.000Z" title="發表於 2024-12-13 00:00:00">2024-12-13</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Binary-Search/">Binary Search</a></span></div><div class="content">
+題目網址: https://leetcode.cn/problems/search-in-rotated-sorted-array/
+題意: 有一整數 array nums 按升序排列, 其中的值互不相同。
+給一旋轉後的 array nums 和一整數 target, 如果 nums 中存在 target, 則返回其 index; 否則, 返回 -1。
+請設計 $O(log(n))$ time 的演算法。
+
+
+Solution：
+想法：利用 Binary Search, 將 nums 從中間分開成左右兩部分的時候, 一定有一部分是有序的。
+e.g. nums = [4,5,6,7,0,1,2], 從 6 切割, 可分成 [4,5,6] 和 [7,0,1,2] 兩個部分, 其中左邊 [4,5,6] 是有序的
+因此我們可以在 Binary Search 時查看當前 mid 分割的兩個部分 [left, mid] 和 [mid + 1, right] 中哪個是有序的, 藉此來縮小左邊界 or 右邊界。
+
+若 target == nums[mid], 則直接返回 mid
+若 [left, m ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/7/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#content-inner">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/#content-inner">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/#content-inner">22</a><a class="extend next" rel="next" href="/page/9/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zako945</div><div class="author-info__description">Ciallo～(∠·ω<)⌒★</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">106</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">16</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分類</span>
             <a class="card-more-btn" href="/categories/" title="檢視更多">
     <i class="fas fa-angle-right"></i></a>
             </div>
             <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/"><span class="card-category-list-name">Leetcode</span><span class="card-category-list-count">100</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Array/"><span class="card-category-list-name">Array</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Backtracking/"><span class="card-category-list-name">Backtracking</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Binary-Search/"><span class="card-category-list-name">Binary Search</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Bit-Manipulation/"><span class="card-category-list-name">Bit Manipulation</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Dynamic-Programming/"><span class="card-category-list-name">Dynamic Programming</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Graph/"><span class="card-category-list-name">Graph</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Heap/"><span class="card-category-list-name">Heap</span><span class="card-category-list-count">7</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/Hard/" style="font-size: 1.1em; color: #999">Hard</a> <a href="/tags/Microsoft/" style="font-size: 1.34em; color: #99a3b0">Microsoft</a> <a href="/tags/Medium/" style="font-size: 1.26em; color: #999fa8">Medium</a> <a href="/tags/Easy/" style="font-size: 1.18em; color: #999ca1">Easy</a> <a href="/tags/Google/" style="font-size: 1.42em; color: #99a6b7">Google</a> <a href="/tags/Amazon/" style="font-size: 1.5em; color: #99a9bf">Amazon</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>彙整</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">2024 十二月</span><span class="card-archive-list-count">41</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">2024 四月</span><span class="card-archive-list-count">59</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章數目 :</div><div class="item-count">100</div></div><div class="webinfo-item"><div class="item-name">已執行時間 :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-04-12T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站總字數 :</div><div class="item-count">36.9k</div></div><div class="webinfo-item"><div class="item-name">最後更新時間 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-16T14:57:47.184Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Zako945</div><div class="footer_custom_text">There is only one corner of the universe you can be certain of improving, and that's your own self.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="簡繁轉換">簡</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/rightMenu.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/"><span class="card-category-list-name">Leetcode</span><span class="card-category-list-count">106</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Array/"><span class="card-category-list-name">Array</span><span class="card-category-list-count">11</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Backtracking/"><span class="card-category-list-name">Backtracking</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Binary-Search/"><span class="card-category-list-name">Binary Search</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Bit-Manipulation/"><span class="card-category-list-name">Bit Manipulation</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Dynamic-Programming/"><span class="card-category-list-name">Dynamic Programming</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Graph/"><span class="card-category-list-name">Graph</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Heap/"><span class="card-category-list-name">Heap</span><span class="card-category-list-count">7</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/Microsoft/" style="font-size: 1.34em; color: #99a3b0">Microsoft</a> <a href="/tags/Hard/" style="font-size: 1.1em; color: #999">Hard</a> <a href="/tags/Amazon/" style="font-size: 1.5em; color: #99a9bf">Amazon</a> <a href="/tags/Google/" style="font-size: 1.42em; color: #99a6b7">Google</a> <a href="/tags/Medium/" style="font-size: 1.26em; color: #999fa8">Medium</a> <a href="/tags/Easy/" style="font-size: 1.18em; color: #999ca1">Easy</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>彙整</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">2024 十二月</span><span class="card-archive-list-count">47</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">2024 四月</span><span class="card-archive-list-count">59</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章數目 :</div><div class="item-count">106</div></div><div class="webinfo-item"><div class="item-name">已執行時間 :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-04-12T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站總字數 :</div><div class="item-count">41.8k</div></div><div class="webinfo-item"><div class="item-name">最後更新時間 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-16T15:34:47.783Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Zako945</div><div class="footer_custom_text">There is only one corner of the universe you can be certain of improving, and that's your own self.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="簡繁轉換">簡</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/rightMenu.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',

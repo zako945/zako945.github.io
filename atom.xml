@@ -248,6 +248,74 @@
   </entry>
   
   <entry>
+    <title>207. Course Schedule</title>
+    <link href="http://zako945.github.io/post/course-schedule/"/>
+    <id>http://zako945.github.io/post/course-schedule/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T15:06:58.683Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/course-schedule/&quot;&gt;https://leetcode.cn/problems/course-schedule/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;你這學期必須選修 &lt;code&gt;numCourses&lt;/code&gt; 門課程, 標記為 &lt;code&gt;0&lt;/code&gt; 到 &lt;code&gt;numCourses -</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Graph" scheme="http://zako945.github.io/categories/Leetcode/Graph/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>210. Course Schedule II</title>
+    <link href="http://zako945.github.io/post/course-schedule-ii/"/>
+    <id>http://zako945.github.io/post/course-schedule-ii/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T15:13:04.992Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/course-schedule-ii/&quot;&gt;https://leetcode.cn/problems/course-schedule-ii/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;你這學期必須選修 &lt;code&gt;numCourses&lt;/code&gt; 門課程, 標記為 &lt;code&gt;0&lt;/code&gt; 到</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Graph" scheme="http://zako945.github.io/categories/Leetcode/Graph/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
     <title>211. Design Add and Search Words Data Structure</title>
     <link href="http://zako945.github.io/post/design-add-and-search-words-data-structure/"/>
     <id>http://zako945.github.io/post/design-add-and-search-words-data-structure/</id>
@@ -277,74 +345,6 @@
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>355. Design Twitter</title>
-    <link href="http://zako945.github.io/post/design-twitter/"/>
-    <id>http://zako945.github.io/post/design-twitter/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T13:34:26.255Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/design-twitter/&quot;&gt;https://leetcode.cn/problems/design-twitter/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;設計一個簡化版的 Twitter, 可以讓用戶實現發送推文、關注 &amp;#x2F; 取消關注 其他用戶, 以及能夠看見關注人（包括自己）的最近</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>208. Implement Trie (Prefix Tree)</title>
-    <link href="http://zako945.github.io/post/implement-trie-prefix-tree/"/>
-    <id>http://zako945.github.io/post/implement-trie-prefix-tree/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T12:40:57.526Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/implement-trie-prefix-tree/&quot;&gt;https://leetcode.cn/problems/implement-trie-prefix-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;Trie 也稱作 prefix tree, 是一種可以高效儲存、取得 string 中的 key</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   
