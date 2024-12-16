@@ -81,6 +81,38 @@
   </entry>
   
   <entry>
+    <title>133. Clone Graph</title>
+    <link href="http://zako945.github.io/post/clone-graph/"/>
+    <id>http://zako945.github.io/post/clone-graph/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T14:30:13.574Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/clone-graph/&quot;&gt;https://leetcode.cn/problems/clone-graph/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一無向連通圖的 node, 請返回該圖的 copy。&lt;/p&gt;
+&lt;p&gt;圖中每個 node 都包含它的 &lt;code&gt;val&lt;/code&gt; (int) 和其</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Graph" scheme="http://zako945.github.io/categories/Leetcode/Graph/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+  </entry>
+  
+  <entry>
     <title>39. Combination Sum</title>
     <link href="http://zako945.github.io/post/combination-sum/"/>
     <id>http://zako945.github.io/post/combination-sum/</id>
@@ -112,6 +144,37 @@
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>40. Combination Sum II</title>
+    <link href="http://zako945.github.io/post/combination-sum-ii/"/>
+    <id>http://zako945.github.io/post/combination-sum-ii/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T13:48:56.764Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/combination-sum-ii/&quot;&gt;https://leetcode.cn/problems/combination-sum-ii/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;candidates&lt;/code&gt; 和一整數 &lt;code&gt;target&lt;/code&gt;, 求</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Backtracking" scheme="http://zako945.github.io/categories/Leetcode/Backtracking/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
   </entry>
   
@@ -273,74 +336,6 @@
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
     <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>973. K Closest Points to Origin</title>
-    <link href="http://zako945.github.io/post/k-closest-points-to-origin/"/>
-    <id>http://zako945.github.io/post/k-closest-points-to-origin/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T12:40:57.528Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/k-closest-points-to-origin/&quot;&gt;https://leetcode.cn/problems/k-closest-points-to-origin/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;points&lt;/code&gt; 和一整數 &lt;code&gt;k&lt;/code&gt;, 其中</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>215. Kth Largest Element in an Array</title>
-    <link href="http://zako945.github.io/post/kth-largest-element-in-an-array/"/>
-    <id>http://zako945.github.io/post/kth-largest-element-in-an-array/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T12:40:57.528Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/kth-largest-element-in-an-array/&quot;&gt;https://leetcode.cn/problems/kth-largest-element-in-an-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;nums&lt;/code&gt; 和一整數</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
