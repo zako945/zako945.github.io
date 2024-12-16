@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-16T01:17:26.043Z</updated>
+  <updated>2024-12-16T01:17:26.042Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -15,39 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>199. Binary Tree Right Side View</title>
-    <link href="http://zako945.github.io/post/binary-tree-right-side-view/"/>
-    <id>http://zako945.github.io/post/binary-tree-right-side-view/</id>
-    <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.043Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/binary-tree-right-side-view/&quot;&gt;https://leetcode.cn/problems/binary-tree-right-side-view/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 想像你站在 BT 的右側, 按照從頂部到底部的順序,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-  </entry>
   
   <entry>
     <title>102. Binary Tree Level Order Traversal</title>
@@ -81,11 +48,11 @@
   </entry>
   
   <entry>
-    <title>1448. Count Good Nodes in Binary Tree</title>
-    <link href="http://zako945.github.io/post/count-good-nodes-in-binary-tree/"/>
-    <id>http://zako945.github.io/post/count-good-nodes-in-binary-tree/</id>
+    <title>199. Binary Tree Right Side View</title>
+    <link href="http://zako945.github.io/post/binary-tree-right-side-view/"/>
+    <id>http://zako945.github.io/post/binary-tree-right-side-view/</id>
     <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.044Z</updated>
+    <updated>2024-12-16T01:17:26.043Z</updated>
     
     
       
@@ -93,8 +60,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/count-good-nodes-in-binary-tree/&quot;&gt;https://leetcode.cn/problems/count-good-nodes-in-binary-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回 BT 中</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/binary-tree-right-side-view/&quot;&gt;https://leetcode.cn/problems/binary-tree-right-side-view/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 想像你站在 BT 的右側, 按照從頂部到底部的順序,</summary>
         
       
     
@@ -110,8 +77,6 @@
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
@@ -172,6 +137,109 @@
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
     <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>1448. Count Good Nodes in Binary Tree</title>
+    <link href="http://zako945.github.io/post/count-good-nodes-in-binary-tree/"/>
+    <id>http://zako945.github.io/post/count-good-nodes-in-binary-tree/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T01:17:26.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/count-good-nodes-in-binary-tree/&quot;&gt;https://leetcode.cn/problems/count-good-nodes-in-binary-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回 BT 中</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>208. Implement Trie (Prefix Tree)</title>
+    <link href="http://zako945.github.io/post/implement-trie-prefix-tree/"/>
+    <id>http://zako945.github.io/post/implement-trie-prefix-tree/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T04:30:11.624Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/implement-trie-prefix-tree/&quot;&gt;https://leetcode.cn/problems/implement-trie-prefix-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;Trie 也稱作 prefix tree, 是一種可以高效儲存、取得 string 中的 key</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>973. K Closest Points to Origin</title>
+    <link href="http://zako945.github.io/post/k-closest-points-to-origin/"/>
+    <id>http://zako945.github.io/post/k-closest-points-to-origin/</id>
+    <published>2024-12-15T16:00:00.000Z</published>
+    <updated>2024-12-16T05:16:21.761Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/k-closest-points-to-origin/&quot;&gt;https://leetcode.cn/problems/k-closest-points-to-origin/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;points&lt;/code&gt; 和一整數 &lt;code&gt;k&lt;/code&gt;, 其中</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
     
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
@@ -251,11 +319,11 @@
   </entry>
   
   <entry>
-    <title>208. Implement Trie (Prefix Tree)</title>
-    <link href="http://zako945.github.io/post/implement-trie-prefix-tree/"/>
-    <id>http://zako945.github.io/post/implement-trie-prefix-tree/</id>
+    <title>215. Kth Largest Element in an Array</title>
+    <link href="http://zako945.github.io/post/kth-largest-element-in-an-array/"/>
+    <id>http://zako945.github.io/post/kth-largest-element-in-an-array/</id>
     <published>2024-12-15T16:00:00.000Z</published>
-    <updated>2024-12-16T04:30:11.624Z</updated>
+    <updated>2024-12-16T05:20:13.287Z</updated>
     
     
       
@@ -263,8 +331,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/implement-trie-prefix-tree/&quot;&gt;https://leetcode.cn/problems/implement-trie-prefix-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;Trie 也稱作 prefix tree, 是一種可以高效儲存、取得 string 中的 key</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/kth-largest-element-in-an-array/&quot;&gt;https://leetcode.cn/problems/kth-largest-element-in-an-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;nums&lt;/code&gt; 和一整數</summary>
         
       
     
@@ -272,7 +340,7 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
+    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
     
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
@@ -282,70 +350,6 @@
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>138. Copy List with Random Pointer</title>
-    <link href="http://zako945.github.io/post/copy-list-with-random-pointer/"/>
-    <id>http://zako945.github.io/post/copy-list-with-random-pointer/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.038Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/copy-list-with-random-pointer/&quot;&gt;https://leetcode.cn/problems/copy-list-with-random-pointer/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一長度為 &lt;code&gt;n&lt;/code&gt; 的 linked list,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>235. Lowest Common Ancestor of a Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-16T01:17:26.040Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 和兩個節點</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
   </entry>
   
