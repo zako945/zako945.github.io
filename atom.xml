@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-13T00:38:09.892Z</updated>
+  <updated>2024-12-15T23:42:41.006Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://zako945.github.io/post/search-in-rotated-sorted-array/"/>
     <id>http://zako945.github.io/post/search-in-rotated-sorted-array/</id>
     <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:09.892Z</updated>
+    <updated>2024-12-15T23:42:41.006Z</updated>
     
     
       
@@ -54,7 +54,7 @@
     <link href="http://zako945.github.io/post/time-based-key-value-store/"/>
     <id>http://zako945.github.io/post/time-based-key-value-store/</id>
     <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:10.110Z</updated>
+    <updated>2024-12-15T23:42:41.206Z</updated>
     
     
       
@@ -83,171 +83,11 @@
   </entry>
   
   <entry>
-    <title>2. Add Two Numbers</title>
-    <link href="http://zako945.github.io/post/add-two-numbers/"/>
-    <id>http://zako945.github.io/post/add-two-numbers/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:10.944Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/add-two-numbers/&quot;&gt;https://leetcode.cn/problems/add-two-numbers/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給兩個&lt;strong&gt;非空&lt;/strong&gt; linked list 表示兩個非負整數, 每位數字都是按照&lt;strong&gt;逆序&lt;/strong&gt;（e.g.</summary>
-        
-      
-    
-    
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>138. Copy List with Random Pointer</title>
-    <link href="http://zako945.github.io/post/copy-list-with-random-pointer/"/>
-    <id>http://zako945.github.io/post/copy-list-with-random-pointer/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:10.751Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/copy-list-with-random-pointer/&quot;&gt;https://leetcode.cn/problems/copy-list-with-random-pointer/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一長度為 &lt;code&gt;n&lt;/code&gt; 的 linked list,</summary>
-        
-      
-    
-    
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>287. Find the Duplicate Number</title>
-    <link href="http://zako945.github.io/post/find-the-duplicate-number/"/>
-    <id>http://zako945.github.io/post/find-the-duplicate-number/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:11.134Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/find-the-duplicate-number/&quot;&gt;https://leetcode.cn/problems/find-the-duplicate-number/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一有 &lt;code&gt;n + 1&lt;/code&gt; 個數的 array &lt;code&gt;nums&lt;/code&gt;,</summary>
-        
-      
-    
-    
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>146. LRU Cache</title>
-    <link href="http://zako945.github.io/post/lru-cache/"/>
-    <id>http://zako945.github.io/post/lru-cache/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:11.403Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lru-cache/&quot;&gt;https://leetcode.cn/problems/lru-cache/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;設計並實現一個滿足 &lt;strong&gt;LRU（Least Recently Used）&lt;/strong&gt;的資料結構。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;實現</summary>
-        
-      
-    
-    
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>235. Lowest Common Ancestor of a Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/</id>
-    <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:11.485Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 和兩個節點</summary>
-        
-      
-    
-    
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Tree/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-  </entry>
-  
-  <entry>
     <title>143. Reorder List</title>
     <link href="http://zako945.github.io/post/reorder-list/"/>
     <id>http://zako945.github.io/post/reorder-list/</id>
     <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:10.287Z</updated>
+    <updated>2024-12-15T23:42:41.447Z</updated>
     
     
       
@@ -263,7 +103,9 @@
     
     
     
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
     
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
@@ -281,7 +123,7 @@
     <link href="http://zako945.github.io/post/remove-nth-node-from-end-of-list/"/>
     <id>http://zako945.github.io/post/remove-nth-node-from-end-of-list/</id>
     <published>2024-12-12T16:00:00.000Z</published>
-    <updated>2024-12-13T00:38:10.496Z</updated>
+    <updated>2024-12-15T23:42:41.660Z</updated>
     
     
       
@@ -296,7 +138,9 @@
     
     
     
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Linked-List/"/>
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
     
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
@@ -310,11 +154,181 @@
   </entry>
   
   <entry>
+    <title>138. Copy List with Random Pointer</title>
+    <link href="http://zako945.github.io/post/copy-list-with-random-pointer/"/>
+    <id>http://zako945.github.io/post/copy-list-with-random-pointer/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-15T23:42:41.930Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/copy-list-with-random-pointer/&quot;&gt;https://leetcode.cn/problems/copy-list-with-random-pointer/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一長度為 &lt;code&gt;n&lt;/code&gt; 的 linked list,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2. Add Two Numbers</title>
+    <link href="http://zako945.github.io/post/add-two-numbers/"/>
+    <id>http://zako945.github.io/post/add-two-numbers/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-15T23:42:42.165Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/add-two-numbers/&quot;&gt;https://leetcode.cn/problems/add-two-numbers/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給兩個&lt;strong&gt;非空&lt;/strong&gt; linked list 表示兩個非負整數, 每位數字都是按照&lt;strong&gt;逆序&lt;/strong&gt;（e.g.</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>287. Find the Duplicate Number</title>
+    <link href="http://zako945.github.io/post/find-the-duplicate-number/"/>
+    <id>http://zako945.github.io/post/find-the-duplicate-number/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-15T23:42:42.410Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/find-the-duplicate-number/&quot;&gt;https://leetcode.cn/problems/find-the-duplicate-number/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一有 &lt;code&gt;n + 1&lt;/code&gt; 個數的 array &lt;code&gt;nums&lt;/code&gt;,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>146. LRU Cache</title>
+    <link href="http://zako945.github.io/post/lru-cache/"/>
+    <id>http://zako945.github.io/post/lru-cache/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-15T23:42:42.649Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lru-cache/&quot;&gt;https://leetcode.cn/problems/lru-cache/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;設計並實現一個滿足 &lt;strong&gt;LRU（Least Recently Used）&lt;/strong&gt;的資料結構。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;實現</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>235. Lowest Common Ancestor of a Binary Search Tree</title>
+    <link href="http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/"/>
+    <id>http://zako945.github.io/post/lowest-common-ancestor-of-a-binary-search-tree/</id>
+    <published>2024-12-12T16:00:00.000Z</published>
+    <updated>2024-12-15T23:42:42.729Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 和兩個節點</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+  </entry>
+  
+  <entry>
     <title>42. Trapping Rain Water</title>
     <link href="http://zako945.github.io/post/trapping-rain-water/"/>
     <id>http://zako945.github.io/post/trapping-rain-water/</id>
     <published>2024-12-10T16:00:00.000Z</published>
-    <updated>2024-12-11T00:03:40.451Z</updated>
+    <updated>2024-12-15T23:42:27.292Z</updated>
     
     
       
@@ -329,7 +343,9 @@
     
     
     
-    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Two-Pointers/"/>
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
     
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
