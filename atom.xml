@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Zako&#39;s Blog</title>
+  <icon>http://zako945.github.io/icon.png</icon>
+  
+  <link href="http://zako945.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://zako945.github.io/"/>
+  <updated>2024-12-18T23:27:55.980Z</updated>
+  <id>http://zako945.github.io/</id>
+  
+  <author>
+    <name>Zako945</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>322. Coin Change</title>
+    <link href="http://zako945.github.io/post/coin-change/"/>
+    <id>http://zako945.github.io/post/coin-change/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:27:55.980Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/coin-change/&quot;&gt;https://leetcode.cn/problems/coin-change/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一整數 array &lt;code&gt;coins&lt;/code&gt;, 表示不同面額的零錢, 和一整數 &lt;code&gt;amount&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>91. Decode Ways</title>
+    <link href="http://zako945.github.io/post/decode-ways/"/>
+    <id>http://zako945.github.io/post/decode-ways/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:23:51.684Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/decode-ways/&quot;&gt;https://leetcode.cn/problems/decode-ways/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一只含數字的&lt;strong&gt;非空&lt;/strong&gt; string &lt;code&gt;s&lt;/code&gt;，計算並返回解碼的方法數&lt;/p&gt;
+&lt;p&gt;一則包含字母</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>300. Longest Increasing Subsequence</title>
+    <link href="http://zako945.github.io/post/longest-increasing-subsequence/"/>
+    <id>http://zako945.github.io/post/longest-increasing-subsequence/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:48:16.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/longest-increasing-subsequence/&quot;&gt;https://leetcode.cn/problems/longest-increasing-subsequence/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>152. Maximum Product Subarray</title>
+    <link href="http://zako945.github.io/post/maximum-product-subarray/"/>
+    <id>http://zako945.github.io/post/maximum-product-subarray/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:30:20.210Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/maximum-product-subarray/&quot;&gt;https://leetcode.cn/problems/maximum-product-subarray/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;, 找出乘積最大的非空&lt;strong&gt;連續&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>647. Palindromic Substrings</title>
+    <link href="http://zako945.github.io/post/palindromic-substrings/"/>
+    <id>http://zako945.github.io/post/palindromic-substrings/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:19:39.556Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/palindromic-substrings/&quot;&gt;https://leetcode.cn/problems/palindromic-substrings/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 string &lt;code&gt;s&lt;/code&gt;, 返回迴文 substring</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>416. Partition Equal Subset Sum</title>
+    <link href="http://zako945.github.io/post/partition-equal-subset-sum/"/>
+    <id>http://zako945.github.io/post/partition-equal-subset-sum/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:56:00.099Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/partition-equal-subset-sum/&quot;&gt;https://leetcode.cn/problems/partition-equal-subset-sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一&lt;strong&gt;只含正整數&lt;/strong&gt;的非空 array &lt;code&gt;nums&lt;/code&gt;,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>62. Unique Paths</title>
+    <link href="http://zako945.github.io/post/unique-paths/"/>
+    <id>http://zako945.github.io/post/unique-paths/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-19T00:24:39.092Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/unique-paths/&quot;&gt;https://leetcode.cn/problems/unique-paths/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：有一機器人位於 &lt;code&gt;m x n&lt;/code&gt; 網格的&lt;strong&gt;左上角&lt;/strong&gt;, 機器人每次只能往下 or 往右一步,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>139. Word Break</title>
+    <link href="http://zako945.github.io/post/word-break/"/>
+    <id>http://zako945.github.io/post/word-break/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-18T23:45:21.951Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/word-break/&quot;&gt;https://leetcode.cn/problems/word-break/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 string &lt;code&gt;s&lt;/code&gt; 和一 string list &lt;code&gt;wordDict&lt;/code&gt;, 若 &lt;code&gt;wordDict&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>787. Cheapest Flights Within K Stops</title>
+    <link href="http://zako945.github.io/post/cheapest-flights-within-k-stops/"/>
+    <id>http://zako945.github.io/post/cheapest-flights-within-k-stops/</id>
+    <published>2024-12-17T16:00:00.000Z</published>
+    <updated>2024-12-18T23:08:33.712Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/cheapest-flights-within-k-stops/&quot;&gt;https://leetcode.cn/problems/cheapest-flights-within-k-stops/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;有 &lt;code&gt;n&lt;/code&gt; 個城市通過一些航班連接。給一整數</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Advanced Graph" scheme="http://zako945.github.io/categories/Leetcode/Advanced-Graph/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>198. House Robber</title>
+    <link href="http://zako945.github.io/post/house-robber/"/>
+    <id>http://zako945.github.io/post/house-robber/</id>
+    <published>2024-12-17T16:00:00.000Z</published>
+    <updated>2024-12-18T23:08:33.714Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/house-robber/&quot;&gt;https://leetcode.cn/problems/house-robber/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;你是一名專業的強盜, 計劃搶劫沿路的房子。每棟房子都藏有一定數量的金錢, 唯一阻止你搶劫的限制是相鄰的房子都連接了安全系統,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+</feed>
