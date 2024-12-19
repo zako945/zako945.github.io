@@ -195,7 +195,7 @@
     <link href="http://zako945.github.io/post/unique-paths/"/>
     <id>http://zako945.github.io/post/unique-paths/</id>
     <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.192Z</updated>
+    <updated>2024-12-19T04:43:39.959Z</updated>
     
     
       
@@ -296,11 +296,11 @@
   </entry>
   
   <entry>
-    <title>787. Cheapest Flights Within K Stops</title>
-    <link href="http://zako945.github.io/post/cheapest-flights-within-k-stops/"/>
-    <id>http://zako945.github.io/post/cheapest-flights-within-k-stops/</id>
-    <published>2024-12-17T16:00:00.000Z</published>
-    <updated>2024-12-18T05:22:47.887Z</updated>
+    <title>309. Best Time to Buy and Sell Stock with Cooldown</title>
+    <link href="http://zako945.github.io/post/best-time-to-buy-and-sell-stock-with-cooldown/"/>
+    <id>http://zako945.github.io/post/best-time-to-buy-and-sell-stock-with-cooldown/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-19T04:50:07.345Z</updated>
     
     
       
@@ -308,8 +308,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/cheapest-flights-within-k-stops/&quot;&gt;https://leetcode.cn/problems/cheapest-flights-within-k-stops/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;有 &lt;code&gt;n&lt;/code&gt; 個城市通過一些航班連接。給一整數</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/&quot;&gt;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array</summary>
         
       
     
@@ -317,23 +317,21 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Advanced Graph" scheme="http://zako945.github.io/categories/Leetcode/Advanced-Graph/"/>
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
   </entry>
   
   <entry>
-    <title>198. House Robber</title>
-    <link href="http://zako945.github.io/post/house-robber/"/>
-    <id>http://zako945.github.io/post/house-robber/</id>
-    <published>2024-12-17T16:00:00.000Z</published>
-    <updated>2024-12-18T05:24:05.885Z</updated>
+    <title>312. Burst Balloons</title>
+    <link href="http://zako945.github.io/post/burst-balloons/"/>
+    <id>http://zako945.github.io/post/burst-balloons/</id>
+    <published>2024-12-18T16:00:00.000Z</published>
+    <updated>2024-12-19T05:04:17.404Z</updated>
     
     
       
@@ -341,8 +339,9 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/house-robber/&quot;&gt;https://leetcode.cn/problems/house-robber/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;你是一名專業的強盜, 計劃搶劫沿路的房子。每棟房子都藏有一定數量的金錢, 唯一阻止你搶劫的限制是相鄰的房子都連接了安全系統,</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/burst-balloons/&quot;&gt;https://leetcode.cn/problems/burst-balloons/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt; 表示所有氣球上的編號。&lt;/p&gt;
+&lt;p&gt;戳破第 &lt;code&gt;i&lt;/code&gt; 個氣球,</summary>
         
       
     
