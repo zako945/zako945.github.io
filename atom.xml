@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-19T04:23:16.188Z</updated>
+  <updated>2024-12-20T05:00:11.352Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -15,6 +15,105 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>435. Non-overlapping Intervals</title>
+    <link href="http://zako945.github.io/post/non-overlapping-intervals/"/>
+    <id>http://zako945.github.io/post/non-overlapping-intervals/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:00:11.352Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/non-overlapping-intervals/&quot;&gt;https://leetcode.cn/problems/non-overlapping-intervals/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一區間集合 &lt;code&gt;intervals&lt;/code&gt;, 其中 &lt;code&gt;intervals[i] =</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Intervals" scheme="http://zako945.github.io/categories/Leetcode/Intervals/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>253. Meeting Rooms II</title>
+    <link href="http://zako945.github.io/post/meeting-rooms-ii/"/>
+    <id>http://zako945.github.io/post/meeting-rooms-ii/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:08:01.333Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/meeting-rooms-ii/&quot;&gt;https://leetcode.cn/problems/meeting-rooms-ii/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array &lt;code&gt;intervals&lt;/code&gt;, 其中 &lt;code&gt;intervals[i] = [start_i,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Intervals" scheme="http://zako945.github.io/categories/Leetcode/Intervals/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>48. Rotate Image</title>
+    <link href="http://zako945.github.io/post/rotate-image/"/>
+    <id>http://zako945.github.io/post/rotate-image/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:08:03.263Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/rotate-image/&quot;&gt;https://leetcode.cn/problems/rotate-image/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 &lt;code&gt;n x n&lt;/code&gt; 的 2D array 表示一個 image, 請將 image &lt;strong&gt;順時針旋轉 90</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
   
   <entry>
     <title>322. Coin Change</title>
@@ -240,108 +339,6 @@
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/palindromic-substrings/&quot;&gt;https://leetcode.cn/problems/palindromic-substrings/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 string &lt;code&gt;s&lt;/code&gt;, 返回迴文 substring</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>139. Word Break</title>
-    <link href="http://zako945.github.io/post/word-break/"/>
-    <id>http://zako945.github.io/post/word-break/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.192Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/word-break/&quot;&gt;https://leetcode.cn/problems/word-break/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 string &lt;code&gt;s&lt;/code&gt; 和一 string list &lt;code&gt;wordDict&lt;/code&gt;, 若 &lt;code&gt;wordDict&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>309. Best Time to Buy and Sell Stock with Cooldown</title>
-    <link href="http://zako945.github.io/post/best-time-to-buy-and-sell-stock-with-cooldown/"/>
-    <id>http://zako945.github.io/post/best-time-to-buy-and-sell-stock-with-cooldown/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:50:07.345Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/&quot;&gt;https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 array</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>312. Burst Balloons</title>
-    <link href="http://zako945.github.io/post/burst-balloons/"/>
-    <id>http://zako945.github.io/post/burst-balloons/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T05:04:17.404Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/burst-balloons/&quot;&gt;https://leetcode.cn/problems/burst-balloons/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt; 表示所有氣球上的編號。&lt;/p&gt;
-&lt;p&gt;戳破第 &lt;code&gt;i&lt;/code&gt; 個氣球,</summary>
         
       
     

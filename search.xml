@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title>435. Non-overlapping Intervals</title>
+      <link href="/post/non-overlapping-intervals/"/>
+      <url>/post/non-overlapping-intervals/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/non-overlapping-intervals/">https://leetcode.cn/problems/non-overlapping-intervals/</a></strong></p><p><strong>題意：</strong>給一區間集合 <code>intervals</code>, 其中 <code>intervals[i] = [start_i, end_i]</code>, 返回需要移除的最小區間個數, 使得剩下的區間互不重疊。</p></blockquote><p><img src="https://i.imgur.com/479NCdI.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：首先, 先將 <code>intervals</code> 做排序, 然後紀錄前一天的 <code>end</code>, 當有兩天 <code>start</code> 相同時, <code>end</code> 會取較小的那一個, 這樣才能最大化避免重疊</strong></p><p><strong>以下圖為例, sorting 後的 <code>intervals = [[1,2], [1,3], [2,3], [3,4]</code>, 最一開始 <code>[1,2]</code> 和 <code>[1,3]</code> 我們會選擇捨棄 <code>[1,3]</code>, 因為 <code>[1,2]</code> 的 <code>end</code> 較小, 若保留 <code>[1,3]</code> 則會和後面的 <code>[2,3]</code> 重疊</strong></p><p><img src="https://i.imgur.com/Dmj8LLZ.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">eraseOverlapIntervals</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, prevEnd = intervals[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// prevEnd &gt; current start, 代表有重疊, 捨棄其中一個, 且 prevEnd 要更新</span></span><br><span class="line">            <span class="keyword">if</span> (prevEnd &gt; intervals[i][<span class="number">0</span>]) &#123;</span><br><span class="line">                prevEnd = <span class="built_in">min</span>(prevEnd, intervals[i][<span class="number">1</span>]);</span><br><span class="line">                ++res;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 沒重疊, 則 prevEnd 更新為當前 interval 的 end</span></span><br><span class="line">                prevEnd = intervals[i][<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ sorting</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Intervals </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>253. Meeting Rooms II</title>
+      <link href="/post/meeting-rooms-ii/"/>
+      <url>/post/meeting-rooms-ii/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/meeting-rooms-ii/">https://leetcode.cn/problems/meeting-rooms-ii/</a></strong></p><p><strong>題意：</strong>給一 array <code>intervals</code>, 其中 <code>intervals[i] = [start_i, end_i]</code>, 返回所需的最小會議室數量。</p><p><strong>注意：</strong><code>(0, 8)</code> 和 <code>(8, 10)</code> 並不衝突</p></blockquote><p><img src="https://i.imgur.com/Cl83cfU.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：利用 heap 來紀錄所有會議室的 <code>end</code>, 並每次取 heap 中最小的, 來確認跟當前 interval 是否有衝突</strong></p><ul><li>若有, 則將當前 <code>interval.end</code> 加入到 heap 中</li><li>若沒有, 則把 <code>top</code> 取代為當前 <code>interval.end</code>（先 <code>pop()</code>, 再 <code>push(newEnd)</code>）</li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minMeetingRooms</span><span class="params">(vector&lt;Interval&gt; &amp;intervals)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;&gt;&gt; pq; <span class="comment">// min heap</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>(), [](<span class="type">const</span> Interval&amp; i1, <span class="type">const</span> Interval&amp; i2) &#123;</span><br><span class="line">            <span class="keyword">return</span> i1.start &lt; i2.start;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        pq.<span class="built_in">emplace</span>(intervals[<span class="number">0</span>].end);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="keyword">auto</span> minEnd = pq.<span class="built_in">top</span>();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 有重疊, 要加開會議室</span></span><br><span class="line">            <span class="keyword">if</span> (minEnd &gt; intervals[i].start) &#123;</span><br><span class="line">                ++res;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123; <span class="comment">// 沒重疊</span></span><br><span class="line">                pq.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pq.<span class="built_in">emplace</span>(intervals[i].end);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$<ul><li>$O(n \cdot log(n))$ : sorting</li><li>$O(n \cdot log(n))$ : <code>n</code> 次從 minHeap 中取 <code>top</code>, 每次取完後會調整 heap, 需 $O(log(n))$</li></ul></li><li><strong>space：</strong>$O(n)$ ➔ heap size 最大為 <code>n</code> 個</li></ul><h2 id="Solution-2："><a href="#Solution-2：" class="headerlink" title="Solution 2："></a><strong>Solution 2：</strong></h2><blockquote><p><strong>想法：占用資源問題可看做是上下車問題, 則問題可轉化成車上最多有幾人</strong></p><p>e.g. <code>intervals = [[0,30], [5,10], [15,20]]</code></p><p>可想成<strong>：</strong></p><ul><li>第一個人從 <code>0</code> 上車, 從 <code>30</code> 下車</li><li>第二個人從 <code>5</code> 上車, 從 <code>10</code> 下車</li><li>第三個人從 <code>15</code> 上車, 從 <code>20</code> 下車</li></ul><p>問題可轉化成車上最多有幾人（最多有幾間會議室）</p><p><strong>顯然：上車, 車上人數+1；下車, 車上人數-1</strong></p><p>先把 <code>intervals</code> 拆解成<strong>：</strong></p><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">上車 : <span class="comment">[0, 1]</span>, <span class="comment">[5, 1]</span>, <span class="comment">[15, 1]</span></span><br><span class="line">下車 : <span class="comment">[10, -1]</span>, <span class="comment">[20, -1]</span>, <span class="comment">[30, -1]</span></span><br></pre></td></tr></table></figure><table><thead><tr><th>時間</th><th>0</th><th>5</th><th>10</th><th>15</th><th>20</th><th>30</th></tr></thead><tbody><tr><td>變化</td><td>+1</td><td>+1</td><td>-1</td><td>+1</td><td>-1</td><td>-1</td></tr><tr><td>人數</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>0</td></tr></tbody></table><p>➔ <strong>車上最多 <code>2</code> 人</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minMeetingRooms</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = intervals.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt; meetings;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; iv : intervals) &#123;</span><br><span class="line">            meetings.<span class="built_in">emplace_back</span>(iv[<span class="number">0</span>], <span class="number">1</span>); <span class="comment">// 上車, cnt + 1</span></span><br><span class="line">            meetings.<span class="built_in">emplace_back</span>(iv[<span class="number">1</span>], <span class="number">-1</span>); <span class="comment">// 下車, cnt - 1</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">sort</span>(meetings.<span class="built_in">begin</span>(), meetings.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>, maxVal = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">const</span> <span class="keyword">auto</span>&amp; m : meetings)&#123;</span><br><span class="line">            cnt += m.second;</span><br><span class="line">            maxVal = <span class="built_in">max</span>(maxVal, cnt);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> maxVal;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ sorting</li><li><strong>space：</strong>$O(n)$ ➔ <code>meetings</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Intervals </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>48. Rotate Image</title>
+      <link href="/post/rotate-image/"/>
+      <url>/post/rotate-image/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/rotate-image/">https://leetcode.cn/problems/rotate-image/</a></strong></p><p><strong>題意：</strong>給一 <code>n x n</code> 的 2D array 表示一個 image, 請將 image <strong>順時針旋轉 90 度</strong>。</p><p><strong>注意：</strong>請使用 <strong>in-place</strong> 演算法</p></blockquote><p><img src="https://i.imgur.com/9501ib1.png"></p><h2 id="Solution-1："><a href="#Solution-1：" class="headerlink" title="Solution 1："></a><strong>Solution 1：</strong></h2><blockquote><p><strong>想法：將 <code>matrix</code> 由外而內分成好幾層, 每一層依序交換以完成旋轉</strong></p><p><img src="https://i.imgur.com/BBcgX0W.png"></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 想像從 (0, 0) 沿著對角線往中心點前進(n為奇數時中心不用旋轉, 故為 i &lt; n / 2)</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; ++i) &#123;</span><br><span class="line">            <span class="comment">// 每層共 n-2*(i+1) 個元素, 每往內一層元素個數就會減2, 減掉最左、最右兩個數</span></span><br><span class="line">            <span class="comment">// i 為起始 idx, 則 i+n-2*(i+1) = n-i-2 為結束 idx</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt;= n - i - <span class="number">2</span>; ++j) &#123;</span><br><span class="line">                <span class="type">const</span> <span class="type">int</span> tmp = matrix[i][j];</span><br><span class="line">                matrix[i][j] = matrix[n - <span class="number">1</span> - j][i];</span><br><span class="line">                matrix[n - <span class="number">1</span> - j][i] = matrix[n - <span class="number">1</span> - i][n - <span class="number">1</span> - j];</span><br><span class="line">                matrix[n - <span class="number">1</span> - i][n - <span class="number">1</span> - j] = matrix[j][n - <span class="number">1</span> - i];</span><br><span class="line">                matrix[j][n - <span class="number">1</span> - i] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n^2)$ ➔ 遍歷 <code>matrix</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul><h2 id="Solution-2：（進階）"><a href="#Solution-2：（進階）" class="headerlink" title="Solution 2：（進階）"></a><strong>Solution 2：（進階）</strong></h2><blockquote><p><strong>想法：先將 <code>matrix</code> 做轉置（將同 row 的元素變成同 col）, 然後再每列做水平翻轉（reverse）<br>（水平翻轉：原本左邊 $1^{st}$ col 變成右邊 $1^{st}$ col, 左邊 $2^{nd}$ col 變成右邊 $2^{nd}$ col, 依此類推）</strong></p></blockquote><p><img src="https://i.imgur.com/XOzokhE.png"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">rotate</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = matrix.<span class="built_in">size</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 轉置</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; ++j) &#123;</span><br><span class="line">                <span class="built_in">swap</span>(matrix[i][j], matrix[j][i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 每一列做 reverse</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            <span class="built_in">reverse</span>(matrix[i].<span class="built_in">begin</span>(), matrix[i].<span class="built_in">end</span>());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n^2)$ ➔ 遍歷 <code>matrix</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Math &amp; Geometry </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>322. Coin Change</title>
       <link href="/post/coin-change/"/>
       <url>/post/coin-change/</url>
@@ -394,39 +487,6 @@
     
     
     <entry>
-      <title>846. Hand of Straights</title>
-      <link href="/post/hand-of-straights/"/>
-      <url>/post/hand-of-straights/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/hand-of-straights/">https://leetcode.cn/problems/hand-of-straights/</a></strong></p><p><strong>題意：</strong>Alice 手中有一堆牌, 她想要重新排列這些牌, 將其分成若干組, 使每一組的牌數都是 <code>groupSize</code>, 並且由 <code>groupSize</code> 張<strong>連續</strong>的牌組成。</p><p>給一整數 array <code>hand</code> 和一整數 <code>groupSize</code>, 其中 <code>hand[i]</code> 代表第 <code>i</code> 張牌。如果她可以重新排列這些牌, 返回 <code>true</code>；否則, 返回 <code>false</code>。</p></blockquote><p><img src="https://i.imgur.com/v90S1cr.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 首先判斷 <code>hand.size()</code> 能否被 <code>groupSize</code> 所整除, 若不行則返回 <code>false</code>。否則, 用 map 統計每張牌出現的次數, 並且根據 card value 由小到大排序。每個 group 每次都先從 map 中取出最小的 card value <code>start</code>, 則該 group 的數字範圍為 <code>[start, start + groupSize - 1]</code>, 只要缺少一個便直接返回 <code>false</code></strong></p><p>取出數字後, 要將其出現次數減一, 然後判斷是否為 <code>0</code>。若是的話, 要將其移除, 否則 <code>start</code> 會一直取到同一個數</p><p>e.g. <code>freqs = &#123;&#123;1, 1&#125;, &#123;2, 1&#125;&#125;</code>, <code>groupSize = 1</code></p><ul><li>若不移除 <code>cnt = 0</code> 的元素, 則取完第一個 group 後, <code>freqs = &#123;&#123;1, 0&#125;, &#123;2, 1&#125;&#125;</code></li><li>第二個 group 的 <code>start</code> 仍會取到 <code>1</code>, 而非 <code>2</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isNStraightHand</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; hand, <span class="type">int</span> groupSize)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hand.<span class="built_in">size</span>() % groupSize != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freqs; <span class="comment">// &#123;card value, cnt&#125;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; card : hand) &#123;</span><br><span class="line">            ++freqs[card];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!freqs.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> start = freqs.<span class="built_in">begin</span>()-&gt;first; <span class="comment">// group 開頭數字</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// group range : [start, start + groupSize - 1]</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; groupSize; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (freqs[start + i] == <span class="number">0</span>) &#123; <span class="comment">// 該 group 內有數字不存在</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取出該數字, 並將其出現次數減一, 然後判斷是否為 0</span></span><br><span class="line">                <span class="comment">// 若是的話, 要將其移除, 否則 start 會一直取到同一個數</span></span><br><span class="line">                <span class="keyword">if</span> (--freqs[start + i] == <span class="number">0</span>) &#123;</span><br><span class="line">                    freqs.<span class="built_in">erase</span>(start + i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ map 移除元素需花 $O(log(n))$, worse case：每個 <code>hand[i]</code> 都是 unique</li><li><strong>space：</strong>$O(n)$ ➔ <code>freqs</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Greedy </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-            <tag> Microsoft </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>45. Jump Game II</title>
       <link href="/post/jump-game-ii/"/>
       <url>/post/jump-game-ii/</url>
@@ -439,39 +499,6 @@
           <category> Leetcode </category>
           
           <category> Greedy </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-            <tag> Microsoft </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>57. Insert Interval</title>
-      <link href="/post/insert-interval/"/>
-      <url>/post/insert-interval/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/insert-interval/">https://leetcode.cn/problems/insert-interval/</a></strong></p><p><strong>題意：</strong>給一無重疊的 interval array <code>intervals</code>, 且 <code>intervals</code> 已根據 <code>intervals[i][0]</code> 做<strong>升序</strong>排列。</p><p>今插入一區間 <code>newInterval</code>, 必須確保插入後 <code>intervals</code> 仍升序排列且不重疊 (如果有必要的話, 可以合併區間)</p></blockquote><p><img src="https://i.imgur.com/g1p0WiU.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：先將 <code>newInterval</code> 插入 <code>intervals</code> 中的正確位置, 然後再利用 <a href="https://zako945.github.io/post/merge-intervals/">56. Merge Intervals</a> 進行 merge</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">insert</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals, vector&lt;<span class="type">int</span>&gt;&amp; newInterval) &#123;</span><br><span class="line">        <span class="keyword">auto</span> it = intervals.<span class="built_in">begin</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根據 start 將 newInterval 插入到 intervals 中</span></span><br><span class="line">        <span class="keyword">while</span> (it != intervals.<span class="built_in">end</span>() &amp;&amp; newInterval[<span class="number">0</span>] &gt; (*it)[<span class="number">0</span>]) &#123;</span><br><span class="line">            ++it;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        intervals.<span class="built_in">insert</span>(it, newInterval);</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res&#123;intervals[<span class="number">0</span>]&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 取出前一個 interval 的 end</span></span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> lastEnd = res.<span class="built_in">back</span>()[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 interval[i].start &lt;= interval[i-1].end, 則重設新的 end(合併)</span></span><br><span class="line">            <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt;= lastEnd) &#123;</span><br><span class="line">                res.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(lastEnd, intervals[i][<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(intervals[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>intervals</code></li><li><strong>space：</strong>$O(n)$ ➔ <code>res</code></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Intervals </category>
           
       </categories>
       
@@ -559,55 +586,11 @@
     
     
     <entry>
-      <title></title>
+      <title>134. Gas Station</title>
       <link href="/post/gas-station/"/>
       <url>/post/gas-station/</url>
       
         <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/gas-station/">https://leetcode.cn/problems/gas-station/</a></strong></p><p><strong>題意：</strong>在一條環路上有 <code>n</code> 個加油站, 其中第 <code>i</code> 個加油站有汽油 <code>gas[i]</code> 升。</p><p>你有一輛油箱容量無限的的汽車, 從第 <code>i</code> 個加油站開往第 <code>i + 1</code> 個加油站需要消耗 <code>cost[i]</code> 升汽油。你從其中的一個加油站出發, 開始時油箱為空。</p><p>給定兩個整數 array <code>gas</code> 和 <code>cost</code>, 如果可以繞環路行駛一圈, 則返回出發時加油站的 index, 否則返回 <code>-1</code>。如果存在解, 則<strong>保證</strong>它是<strong>唯一的</strong>。</p></blockquote><p><img src="https://i.imgur.com/MB2PiS5.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 首先判斷總油量是否小於總消耗量。如果是, 那肯定不能走完一圈。否則, 肯定能走完一圈。接下來就是遍歷 <code>nums</code>, 從第一站開始, 計算每一站剩餘的油量, 如果當走到第 <code>i</code> 站時油量為負, 則以第 <code>i + 1</code> 站作為起點重新計算。若抵達某一站時油量為負, 說明從起點到該站中間的所有站都不能到達該點</strong></p><p>e.g. <code>gas = [1, 2, 3, 4, 5]</code>, <code>cost = [3, 4, 5, 1, 2]</code> (見下圖)</p><ul><li><p>假設從 <code>i = 4</code> 出發, 此時的 <code>gas[i] = 5</code>, <code>cost[i] = 2</code></p><ul><li><code>i = 4</code> 做完, 此時 <code>curGas = 5 - 2 = 3 ≥ 0</code></li><li><code>i = 0</code> 做完, 此時 <code>curGas = 3 + 1 - 3 = 1 ≥ 0</code></li><li><code>i = 1</code> 做完, 此時 <code>curGas = 1 + 2 - 4 = -1 &lt; 0</code></li></ul><p>  ➔ 下一輪會從 <code>i = 2</code> 重新計算, 因為以 <code>i = 4、0、1</code> 為起點都無法抵達 <code>i = 2</code></p><ul><li>這是因為以 <code>i = 4</code> 為起點出發, 抵達 <code>i = 0</code> 時的油量必須 <code>≥ 0</code> 才行</li><li>若直接以 <code>i = 0</code> 為起點出發, 則起始油量會為 <code>0</code><br>  ➔ 等同從上一站抵達 <code>i = 0</code> 時的剩餘油量 &#x3D; 0 ( <code>≥ 0</code> 中的 worse case)</li><li>若從 <code>i = 4</code> 都無法抵達 <code>i = 2</code>, 則從 <code>i = 0、1</code> 更不可能抵達。</li></ul><p>  <img src="https://i.imgur.com/hRhTuVl.png"></p></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; gas, vector&lt;<span class="type">int</span>&gt;&amp; cost)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 總油量 &lt; 總消耗量, 肯定無法走完一圈</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">sum</span>(gas) &lt; <span class="built_in">sum</span>(cost)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>, curGas = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; gas.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            curGas += (gas[i] - cost[i]);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (curGas &lt; <span class="number">0</span>) &#123; <span class="comment">// 若抵達第 i 站時油量 &lt; 0, 則以第 (i + 1) 站為起點重新計算</span></span><br><span class="line">                curGas = <span class="number">0</span>;</span><br><span class="line">                res = i + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">accumulate</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>(), <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>56. Merge Intervals</title>
-      <link href="/post/merge-intervals/"/>
-      <url>/post/merge-intervals/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/merge-intervals/">https://leetcode.cn/problems/merge-intervals/</a></strong></p><p><strong>題意：</strong>給一 array <code>intervals</code>, 其中 <code>intervals[i] = [start_i, end_i]</code>, 合併所有重疊的區間, 並返回一個不重疊區間 array。</p></blockquote><p><img src="https://i.imgur.com/hPbh5w5.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p>想法<strong>：</strong>類似 <a href="https://zako945.github.io/post/meeting-rooms/">252. Meeting Rooms</a>, 先根據 <code>intervals[i].start</code> 做排序, 若 <code>interval[i].start ≤ res.back().end</code> 的話代表有重疊, 則將當前的 <code>interval.end</code> 設為兩者 <code>end</code> 中較大的（合併）; 若無重疊, 則將 <code>interval[i]</code> 加入到 <code>res</code> 中</p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">merge</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res&#123;intervals[<span class="number">0</span>]&#125;; <span class="comment">// 將第一個區間放入到 res</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 取出當前 interval 的 end</span></span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> lastEnd = res.<span class="built_in">back</span>()[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 interval[i].start &lt;= res.back().end, 則重設新的 end (合併)</span></span><br><span class="line">            <span class="comment">// e.g. [[1,4], [2,3]] -&gt; [1,4]</span></span><br><span class="line">            <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt;= lastEnd) &#123;</span><br><span class="line">                res.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(lastEnd, intervals[i][<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(intervals[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ sorting</li><li><strong>space：</strong>$O(1)$ ➔ 若不考慮要返回 array, 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Intervals </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>763. Partition Labels</title>
-      <link href="/post/partition-labels/"/>
-      <url>/post/partition-labels/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/partition-labels/">https://leetcode.cn/problems/partition-labels/</a></strong></p><p><strong>題意：</strong>給一 string <code>s</code> 由<strong>小寫</strong>字母所組成。我們要把 <code>s</code> 劃分為盡可能多的 partition, 同一字母只能出現在同一個 partition 中。返回一個表示每個 partition 的長度之 array。</p></blockquote><p><img src="https://i.imgur.com/VsVJiwl.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 首先遍歷 <code>s</code>, 並用 <code>lastIdx</code> 紀錄每個字母的最後一個 index, 然後從頭開始遍歷 <code>s</code>, 並不斷更新當前 partition 的結尾。若 <code>i == idx</code> 代表已走到 partition 結尾, 即可確定當前 partition 的 size, 因為該 partition 中的 char 都沒有出現在更後面的位置</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">partitionLabels</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; lastIdx; <span class="comment">// &#123;char, last index&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            lastIdx[s[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="type">int</span> curSize = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            ++curSize;</span><br><span class="line">            end = <span class="built_in">max</span>(end, lastIdx[s[i]]); <span class="comment">// 更新當前 partition 的結尾</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 抵達該 partition 的結尾</span></span><br><span class="line">            <span class="keyword">if</span> (i == end) &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(curSize);</span><br><span class="line">                curSize = <span class="number">0</span>; <span class="comment">// 下一個 partition 的長度從 0 開始算</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(1)$ ➔ <code>lastIdx</code> 中的元素不超過 26 個</li></ul>]]></content>
       
       
       <categories>
@@ -624,6 +607,10 @@
             <tag> Medium </tag>
             
             <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
             
         </tags>
       
@@ -644,64 +631,6 @@
           <category> Leetcode </category>
           
           <category> Dynamic Programming </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Amazon </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>1899. Merge Triplets to Form Target Triplet</title>
-      <link href="/post/merge-triplets-to-form-target-triplet/"/>
-      <url>/post/merge-triplets-to-form-target-triplet/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/merge-triplets-to-form-target-triplet/">https://leetcode.cn/problems/merge-triplets-to-form-target-triplet/</a></strong></p><p><strong>題意：triplet</strong> 是由三個整數所組成的 array。給一 2D 整數 array <code>triplets</code>, 其中 <code>triplets[i] = [ai, bi, ci]</code> 表示第 <code>i</code> 個 triplet。並給一整數 array <code>target = [x, y, z]</code>, 表示你想要得到的 triplet。</p><p>為了得到 <code>target</code>, 你需要對 <code>triplets</code> 進行下面的操作<strong>任意次</strong>（也可能是 <code>0</code> 次）：</p><ul><li>選出兩個 index（index 從 <code>0</code> 開始）<code>i</code> 和 <code>j</code>（<code>i != j</code>）, 並更新 <code>triplets[j]</code> 為 <code>[max(ai, aj), max(bi, bj), max(ci, cj)]</code></li></ul><p>e.g. <code>triplets[i] = [2, 5, 3]</code> 且 <code>triplets[j] = [1, 7, 5]</code></p><p>➔ 則 <code>triplets[j]</code> 將會更新為 <code>[max(2, 1), max(5, 7), max(3, 5)] = [2, 7, 5]</code>。</p><p>若透過上述操作可使得 <code>target</code> 成為 <code>triplets</code> 中的元素, 則返回 <code>true</code>；否則, 返回 <code>false</code>。</p></blockquote><p><img src="https://i.imgur.com/EuddNK2.png"></p><p><img src="https://i.imgur.com/c5eJ7vA.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 令 <code>x = target[0]</code>, <code>y = target[1]</code>, <code>z = target[2]</code>, 且 <code>ai = triplet[0]</code>, <code>bi = triplet[1]</code>, <code>ci = triplet[2]</code>。若 <code>ai &gt; x</code> 或 <code>bi &gt; y</code> 或 <code>ci &gt; z</code>, 則跳過該 triplet, 因為若拿該 triplet 做運算 <code>(a, b, c)</code> 一定不等於 <code>(x, y, z)</code>。否則, 更新 <code>a, b, c</code>。最後判斷 <code>(a, b, c)</code> 是否等於 <code>(x, y, z)</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">mergeTriplets</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; triplets, vector&lt;<span class="type">int</span>&gt;&amp; target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>, c = <span class="number">0</span>;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> x = target[<span class="number">0</span>], y = target[<span class="number">1</span>], z = target[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; triplet : triplets) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> ai = triplet[<span class="number">0</span>], bi = triplet[<span class="number">1</span>], ci = triplet[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 ai &gt; x 或 bi &gt; y 或 ci &gt; z, 則跳過該 triplet</span></span><br><span class="line">            <span class="keyword">if</span> (ai &lt;= x &amp;&amp; bi &lt;= y &amp;&amp; ci &lt;= z) &#123;</span><br><span class="line">                a = <span class="built_in">max</span>(a, ai);</span><br><span class="line">                b = <span class="built_in">max</span>(b, bi);</span><br><span class="line">                c = <span class="built_in">max</span>(c, ci);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// tie 可用於比較 struct</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">tie</span>(a, b, c) == <span class="built_in">tie</span>(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>triplets</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Greedy </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Medium </tag>
-            
-            <tag> Google </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>678. Valid Parenthesis String</title>
-      <link href="/post/valid-parenthesis-string/"/>
-      <url>/post/valid-parenthesis-string/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/valid-parenthesis-string/">https://leetcode.cn/problems/valid-parenthesis-string/</a></strong></p><p><strong>題意：</strong>給一只包含三種 char <code>（</code> 、<code>）</code> 和 <code>*</code> 的 string <code>s</code>, 判斷 <code>s</code> 是否為<strong>有效</strong>的 string。有效的 string 具有如下規則：</p><ul><li>任何左括號 <code>(</code> 必須有相應的右括號 <code>)</code></li><li>任何右括號 <code>)</code> 必須有相應的左括號 <code>(</code></li><li>左括號 <code>(</code> 必須在對應的右括號之前 <code>)</code></li><li><code>*</code> 可以被視為單個右括號 <code>)</code> or 單個左括號 <code>(</code> or 一個 empty string <code>&quot;&quot;</code></li></ul><p>empty string <code>&quot;&quot;</code> 也被視為有效的 string。</p></blockquote><p><img src="https://i.imgur.com/MeGfxoM.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 由於 <code>*</code> 有三種可能, 因此我們需要用 <code>leftMin</code>、<code>leftMax</code> 來記錄未匹配左括號的範圍</strong></p><ul><li><code>leftMax</code> 代表未匹配左括號的最大數量, 也就是將所有 <strong><code>*</code></strong> 都變成 <code>(</code></li><li><code>leftMin</code> 代表未匹配左括號的最小數量, 也就是將所有 <strong><code>*</code></strong> 都變成 <code>)</code></li></ul><p>一旦 <code>leftMax &lt; 0</code>, 代表 <code>s</code> 中 <code>)</code> 太多, 將所有 <code>*</code> 都變成 <code>(</code> 也無法匹配, 直接返回 <code>false</code></p><p>一旦 <code>leftMin &lt; 0</code>, 此時的 <code>leftMin</code> 為 <code>-1</code>, 代表不應把所有 <code>*</code> 都設為 <code>)</code></p><p>➔ 而是應該把其中一個 <code>*</code> 設為 <code>&quot;&quot;</code>, 以確保 <code>leftMin == 0</code></p><ul><li>將其中一個 <code> </code> 從 <code>)</code> 改為 <code>&quot;&quot;</code>, 也就是讓 <code>leftMin + 1</code></li></ul><p>e.g. <code>s = (*)</code></p><ul><li><code>leftMin = -1</code>, 因為 <code>(*)</code> ➔ <code>())</code>, 但其實可以將 <strong><code>*</code></strong> 從 <code>)</code> 改為 <code>&quot;&quot;</code>, 使得 <code>(*)</code> 變成 <code>()</code></li><li><code>leftMin = 1</code>, 因為 <code>(*)</code> ➔ <code>(()</code></li></ul><p>遍歷結束時, 所有的左括號都應和右括號匹配。因此只有當 <code>leftMin == 0</code> 時, <code>s</code> 才是有效的</p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">checkValidString</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> leftMax = <span class="number">0</span>; <span class="comment">// 未匹配左括號的最大數量, 將所有 * 都變成 (</span></span><br><span class="line">        <span class="type">int</span> leftMin = <span class="number">0</span>; <span class="comment">// 未匹配左括號的最小數量, 將所有 * 都變成 )</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; ch : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                ++leftMax;</span><br><span class="line">                ++leftMin;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">                --leftMax;</span><br><span class="line">                --leftMin;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++leftMax;</span><br><span class="line">                --leftMin;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (leftMax &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (leftMin &lt; <span class="number">0</span>) &#123;<span class="comment">// (*) -&gt; leftMin = -1, leftMax = 1</span></span><br><span class="line">                leftMin = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> leftMin == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>s</code>, 其中 <code>n</code> 為 <code>s</code> 的長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Leetcode </category>
-          
-          <category> Greedy </category>
           
       </categories>
       
@@ -744,6 +673,190 @@
             <tag> Google </tag>
             
             <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>846. Hand of Straights</title>
+      <link href="/post/hand-of-straights/"/>
+      <url>/post/hand-of-straights/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/hand-of-straights/">https://leetcode.cn/problems/hand-of-straights/</a></strong></p><p><strong>題意：</strong>Alice 手中有一堆牌, 她想要重新排列這些牌, 將其分成若干組, 使每一組的牌數都是 <code>groupSize</code>, 並且由 <code>groupSize</code> 張<strong>連續</strong>的牌組成。</p><p>給一整數 array <code>hand</code> 和一整數 <code>groupSize</code>, 其中 <code>hand[i]</code> 代表第 <code>i</code> 張牌。如果她可以重新排列這些牌, 返回 <code>true</code>；否則, 返回 <code>false</code>。</p></blockquote><p><img src="https://i.imgur.com/v90S1cr.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 首先判斷 <code>hand.size()</code> 能否被 <code>groupSize</code> 所整除, 若不行則返回 <code>false</code>。否則, 用 map 統計每張牌出現的次數, 並且根據 card value 由小到大排序。每個 group 每次都先從 map 中取出最小的 card value <code>start</code>, 則該 group 的數字範圍為 <code>[start, start + groupSize - 1]</code>, 只要缺少一個便直接返回 <code>false</code></strong></p><p>取出數字後, 要將其出現次數減一, 然後判斷是否為 <code>0</code>。若是的話, 要將其移除, 否則 <code>start</code> 會一直取到同一個數</p><p>e.g. <code>freqs = &#123;&#123;1, 1&#125;, &#123;2, 1&#125;&#125;</code>, <code>groupSize = 1</code></p><ul><li>若不移除 <code>cnt = 0</code> 的元素, 則取完第一個 group 後, <code>freqs = &#123;&#123;1, 0&#125;, &#123;2, 1&#125;&#125;</code></li><li>第二個 group 的 <code>start</code> 仍會取到 <code>1</code>, 而非 <code>2</code></li></ul></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isNStraightHand</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; hand, <span class="type">int</span> groupSize)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hand.<span class="built_in">size</span>() % groupSize != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; freqs; <span class="comment">// &#123;card value, cnt&#125;</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; card : hand) &#123;</span><br><span class="line">            ++freqs[card];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!freqs.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> start = freqs.<span class="built_in">begin</span>()-&gt;first; <span class="comment">// group 開頭數字</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// group range : [start, start + groupSize - 1]</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; groupSize; ++i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (freqs[start + i] == <span class="number">0</span>) &#123; <span class="comment">// 該 group 內有數字不存在</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 取出該數字, 並將其出現次數減一, 然後判斷是否為 0</span></span><br><span class="line">                <span class="comment">// 若是的話, 要將其移除, 否則 start 會一直取到同一個數</span></span><br><span class="line">                <span class="keyword">if</span> (--freqs[start + i] == <span class="number">0</span>) &#123;</span><br><span class="line">                    freqs.<span class="built_in">erase</span>(start + i);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ map 移除元素需花 $O(log(n))$, worse case：每個 <code>hand[i]</code> 都是 unique</li><li><strong>space：</strong>$O(n)$ ➔ <code>freqs</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Greedy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1899. Merge Triplets to Form Target Triplet</title>
+      <link href="/post/merge-triplets-to-form-target-triplet/"/>
+      <url>/post/merge-triplets-to-form-target-triplet/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/merge-triplets-to-form-target-triplet/">https://leetcode.cn/problems/merge-triplets-to-form-target-triplet/</a></strong></p><p><strong>題意：triplet</strong> 是由三個整數所組成的 array。給一 2D 整數 array <code>triplets</code>, 其中 <code>triplets[i] = [ai, bi, ci]</code> 表示第 <code>i</code> 個 triplet。並給一整數 array <code>target = [x, y, z]</code>, 表示你想要得到的 triplet。</p><p>為了得到 <code>target</code>, 你需要對 <code>triplets</code> 進行下面的操作<strong>任意次</strong>（也可能是 <code>0</code> 次）：</p><ul><li>選出兩個 index（index 從 <code>0</code> 開始）<code>i</code> 和 <code>j</code>（<code>i != j</code>）, 並更新 <code>triplets[j]</code> 為 <code>[max(ai, aj), max(bi, bj), max(ci, cj)]</code></li></ul><p>e.g. <code>triplets[i] = [2, 5, 3]</code> 且 <code>triplets[j] = [1, 7, 5]</code></p><p>➔ 則 <code>triplets[j]</code> 將會更新為 <code>[max(2, 1), max(5, 7), max(3, 5)] = [2, 7, 5]</code>。</p><p>若透過上述操作可使得 <code>target</code> 成為 <code>triplets</code> 中的元素, 則返回 <code>true</code>；否則, 返回 <code>false</code>。</p></blockquote><p><img src="https://i.imgur.com/EuddNK2.png"></p><p><img src="https://i.imgur.com/c5eJ7vA.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 令 <code>x = target[0]</code>, <code>y = target[1]</code>, <code>z = target[2]</code>, 且 <code>ai = triplet[0]</code>, <code>bi = triplet[1]</code>, <code>ci = triplet[2]</code>。若 <code>ai &gt; x</code> 或 <code>bi &gt; y</code> 或 <code>ci &gt; z</code>, 則跳過該 triplet, 因為若拿該 triplet 做運算 <code>(a, b, c)</code> 一定不等於 <code>(x, y, z)</code>。否則, 更新 <code>a, b, c</code>。最後判斷 <code>(a, b, c)</code> 是否等於 <code>(x, y, z)</code></strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">mergeTriplets</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; triplets, vector&lt;<span class="type">int</span>&gt;&amp; target)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>, c = <span class="number">0</span>;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> x = target[<span class="number">0</span>], y = target[<span class="number">1</span>], z = target[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; triplet : triplets) &#123;</span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> ai = triplet[<span class="number">0</span>], bi = triplet[<span class="number">1</span>], ci = triplet[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 ai &gt; x 或 bi &gt; y 或 ci &gt; z, 則跳過該 triplet</span></span><br><span class="line">            <span class="keyword">if</span> (ai &lt;= x &amp;&amp; bi &lt;= y &amp;&amp; ci &lt;= z) &#123;</span><br><span class="line">                a = <span class="built_in">max</span>(a, ai);</span><br><span class="line">                b = <span class="built_in">max</span>(b, bi);</span><br><span class="line">                c = <span class="built_in">max</span>(c, ci);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// tie 可用於比較 struct</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">tie</span>(a, b, c) == <span class="built_in">tie</span>(x, y, z);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>triplets</code></li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Greedy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Google </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>763. Partition Labels</title>
+      <link href="/post/partition-labels/"/>
+      <url>/post/partition-labels/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/partition-labels/">https://leetcode.cn/problems/partition-labels/</a></strong></p><p><strong>題意：</strong>給一 string <code>s</code> 由<strong>小寫</strong>字母所組成。我們要把 <code>s</code> 劃分為盡可能多的 partition, 同一字母只能出現在同一個 partition 中。返回一個表示每個 partition 的長度之 array。</p></blockquote><p><img src="https://i.imgur.com/VsVJiwl.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 首先遍歷 <code>s</code>, 並用 <code>lastIdx</code> 紀錄每個字母的最後一個 index, 然後從頭開始遍歷 <code>s</code>, 並不斷更新當前 partition 的結尾。若 <code>i == idx</code> 代表已走到 partition 結尾, 即可確定當前 partition 的 size, 因為該 partition 中的 char 都沒有出現在更後面的位置</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">partitionLabels</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">const</span> <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt; lastIdx; <span class="comment">// &#123;char, last index&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            lastIdx[s[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; res;</span><br><span class="line">        <span class="type">int</span> curSize = <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            ++curSize;</span><br><span class="line">            end = <span class="built_in">max</span>(end, lastIdx[s[i]]); <span class="comment">// 更新當前 partition 的結尾</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 抵達該 partition 的結尾</span></span><br><span class="line">            <span class="keyword">if</span> (i == end) &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(curSize);</span><br><span class="line">                curSize = <span class="number">0</span>; <span class="comment">// 下一個 partition 的長度從 0 開始算</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ for loop</li><li><strong>space：</strong>$O(1)$ ➔ <code>lastIdx</code> 中的元素不超過 26 個</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Greedy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>678. Valid Parenthesis String</title>
+      <link href="/post/valid-parenthesis-string/"/>
+      <url>/post/valid-parenthesis-string/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/valid-parenthesis-string/">https://leetcode.cn/problems/valid-parenthesis-string/</a></strong></p><p><strong>題意：</strong>給一只包含三種 char <code>（</code> 、<code>）</code> 和 <code>*</code> 的 string <code>s</code>, 判斷 <code>s</code> 是否為<strong>有效</strong>的 string。有效的 string 具有如下規則：</p><ul><li>任何左括號 <code>(</code> 必須有相應的右括號 <code>)</code></li><li>任何右括號 <code>)</code> 必須有相應的左括號 <code>(</code></li><li>左括號 <code>(</code> 必須在對應的右括號之前 <code>)</code></li><li><code>*</code> 可以被視為單個右括號 <code>)</code> or 單個左括號 <code>(</code> or 一個 empty string <code>&quot;&quot;</code></li></ul><p>empty string <code>&quot;&quot;</code> 也被視為有效的 string。</p></blockquote><p><img src="https://i.imgur.com/MeGfxoM.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：利用 Greedy, 由於 <code>*</code> 有三種可能, 因此我們需要用 <code>leftMin</code>、<code>leftMax</code> 來記錄未匹配左括號的範圍</strong></p><ul><li><code>leftMax</code> 代表未匹配左括號的最大數量, 也就是將所有 <strong><code>*</code></strong> 都變成 <code>(</code></li><li><code>leftMin</code> 代表未匹配左括號的最小數量, 也就是將所有 <strong><code>*</code></strong> 都變成 <code>)</code></li></ul><p>一旦 <code>leftMax &lt; 0</code>, 代表 <code>s</code> 中 <code>)</code> 太多, 將所有 <code>*</code> 都變成 <code>(</code> 也無法匹配, 直接返回 <code>false</code></p><p>一旦 <code>leftMin &lt; 0</code>, 此時的 <code>leftMin</code> 為 <code>-1</code>, 代表不應把所有 <code>*</code> 都設為 <code>)</code></p><p>➔ 而是應該把其中一個 <code>*</code> 設為 <code>&quot;&quot;</code>, 以確保 <code>leftMin == 0</code></p><ul><li>將其中一個 <code> </code> 從 <code>)</code> 改為 <code>&quot;&quot;</code>, 也就是讓 <code>leftMin + 1</code></li></ul><p>e.g. <code>s = (*)</code></p><ul><li><code>leftMin = -1</code>, 因為 <code>(*)</code> ➔ <code>())</code>, 但其實可以將 <strong><code>*</code></strong> 從 <code>)</code> 改為 <code>&quot;&quot;</code>, 使得 <code>(*)</code> 變成 <code>()</code></li><li><code>leftMin = 1</code>, 因為 <code>(*)</code> ➔ <code>(()</code></li></ul><p>遍歷結束時, 所有的左括號都應和右括號匹配。因此只有當 <code>leftMin == 0</code> 時, <code>s</code> 才是有效的</p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">checkValidString</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> leftMax = <span class="number">0</span>; <span class="comment">// 未匹配左括號的最大數量, 將所有 * 都變成 (</span></span><br><span class="line">        <span class="type">int</span> leftMin = <span class="number">0</span>; <span class="comment">// 未匹配左括號的最小數量, 將所有 * 都變成 )</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">const</span> <span class="keyword">auto</span>&amp; ch : s) &#123;</span><br><span class="line">            <span class="keyword">if</span> (ch == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                ++leftMax;</span><br><span class="line">                ++leftMin;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(ch == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">                --leftMax;</span><br><span class="line">                --leftMin;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++leftMax;</span><br><span class="line">                --leftMin;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (leftMax &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (leftMin &lt; <span class="number">0</span>) &#123;<span class="comment">// (*) -&gt; leftMin = -1, leftMax = 1</span></span><br><span class="line">                leftMin = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> leftMin == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>s</code>, 其中 <code>n</code> 為 <code>s</code> 的長度</li><li><strong>space：</strong>$O(1)$ ➔ 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Greedy </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>57. Insert Interval</title>
+      <link href="/post/insert-interval/"/>
+      <url>/post/insert-interval/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/insert-interval/">https://leetcode.cn/problems/insert-interval/</a></strong></p><p><strong>題意：</strong>給一無重疊的 interval array <code>intervals</code>, 且 <code>intervals</code> 已根據 <code>intervals[i][0]</code> 做<strong>升序</strong>排列。</p><p>今插入一區間 <code>newInterval</code>, 必須確保插入後 <code>intervals</code> 仍升序排列且不重疊 (如果有必要的話, 可以合併區間)</p></blockquote><p><img src="https://i.imgur.com/g1p0WiU.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：先將 <code>newInterval</code> 插入 <code>intervals</code> 中的正確位置, 然後再利用 <a href="https://zako945.github.io/post/merge-intervals/">56. Merge Intervals</a> 進行 merge</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">insert</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals, vector&lt;<span class="type">int</span>&gt;&amp; newInterval) &#123;</span><br><span class="line">        <span class="keyword">auto</span> it = intervals.<span class="built_in">begin</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 根據 start 將 newInterval 插入到 intervals 中</span></span><br><span class="line">        <span class="keyword">while</span> (it != intervals.<span class="built_in">end</span>() &amp;&amp; newInterval[<span class="number">0</span>] &gt; (*it)[<span class="number">0</span>]) &#123;</span><br><span class="line">            ++it;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        intervals.<span class="built_in">insert</span>(it, newInterval);</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res&#123;intervals[<span class="number">0</span>]&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 取出前一個 interval 的 end</span></span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> lastEnd = res.<span class="built_in">back</span>()[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 interval[i].start &lt;= interval[i-1].end, 則重設新的 end(合併)</span></span><br><span class="line">            <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt;= lastEnd) &#123;</span><br><span class="line">                res.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(lastEnd, intervals[i][<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(intervals[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n)$ ➔ 遍歷 <code>intervals</code></li><li><strong>space：</strong>$O(n)$ ➔ <code>res</code></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Intervals </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
+            
+            <tag> Microsoft </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>56. Merge Intervals</title>
+      <link href="/post/merge-intervals/"/>
+      <url>/post/merge-intervals/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p><strong>題目網址：<a href="https://leetcode.cn/problems/merge-intervals/">https://leetcode.cn/problems/merge-intervals/</a></strong></p><p><strong>題意：</strong>給一 array <code>intervals</code>, 其中 <code>intervals[i] = [start_i, end_i]</code>, 合併所有重疊的區間, 並返回一個不重疊區間 array。</p></blockquote><p><img src="https://i.imgur.com/hPbh5w5.png"></p><h2 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a><strong>Solution：</strong></h2><blockquote><p><strong>想法：類似 <a href="https://zako945.github.io/post/meeting-rooms/">252. Meeting Rooms</a>, 先根據 <code>intervals[i].start</code> 做排序, 若 <code>interval[i].start ≤ res.back().end</code> 的話代表有重疊, 則將當前的 <code>interval.end</code> 設為兩者 <code>end</code> 中較大的（合併）; 若無重疊, 則將 <code>interval[i]</code> 加入到 <code>res</code> 中</strong></p></blockquote><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">merge</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; intervals) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(intervals.<span class="built_in">begin</span>(), intervals.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res&#123;intervals[<span class="number">0</span>]&#125;; <span class="comment">// 將第一個區間放入到 res</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; intervals.<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">            <span class="comment">// 取出當前 interval 的 end</span></span><br><span class="line">            <span class="type">const</span> <span class="type">int</span> lastEnd = res.<span class="built_in">back</span>()[<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 若 interval[i].start &lt;= res.back().end, 則重設新的 end (合併)</span></span><br><span class="line">            <span class="comment">// e.g. [[1,4], [2,3]] -&gt; [1,4]</span></span><br><span class="line">            <span class="keyword">if</span> (intervals[i][<span class="number">0</span>] &lt;= lastEnd) &#123;</span><br><span class="line">                res.<span class="built_in">back</span>()[<span class="number">1</span>] = <span class="built_in">max</span>(lastEnd, intervals[i][<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                res.<span class="built_in">emplace_back</span>(intervals[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><ul><li><strong>time：</strong>$O(n \cdot log(n))$ ➔ sorting</li><li><strong>space：</strong>$O(1)$ ➔ 若不考慮要返回 array, 只需常數空間</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+          <category> Intervals </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Medium </tag>
+            
+            <tag> Amazon </tag>
+            
+            <tag> Google </tag>
             
         </tags>
       
