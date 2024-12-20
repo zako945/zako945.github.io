@@ -116,11 +116,11 @@
   </entry>
   
   <entry>
-    <title>322. Coin Change</title>
-    <link href="http://zako945.github.io/post/coin-change/"/>
-    <id>http://zako945.github.io/post/coin-change/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.188Z</updated>
+    <title>54. Spiral Matrix</title>
+    <link href="http://zako945.github.io/post/spiral-matrix/"/>
+    <id>http://zako945.github.io/post/spiral-matrix/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:13:29.731Z</updated>
     
     
       
@@ -128,8 +128,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/coin-change/&quot;&gt;https://leetcode.cn/problems/coin-change/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一整數 array &lt;code&gt;coins&lt;/code&gt;, 表示不同面額的零錢, 和一整數 &lt;code&gt;amount&lt;/code&gt;</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/spiral-matrix/&quot;&gt;https://leetcode.cn/problems/spiral-matrix/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 &lt;code&gt;m x n&lt;/code&gt; 的 matrix, 按照 &lt;strong&gt;順時針螺旋&lt;/strong&gt; 順序, 返回 matrix</summary>
         
       
     
@@ -137,7 +137,7 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
@@ -151,11 +151,11 @@
   </entry>
   
   <entry>
-    <title>91. Decode Ways</title>
-    <link href="http://zako945.github.io/post/decode-ways/"/>
-    <id>http://zako945.github.io/post/decode-ways/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.189Z</updated>
+    <title>73. Set Matrix Zeroes</title>
+    <link href="http://zako945.github.io/post/set-matrix-zeroes/"/>
+    <id>http://zako945.github.io/post/set-matrix-zeroes/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:15:44.227Z</updated>
     
     
       
@@ -163,9 +163,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/decode-ways/&quot;&gt;https://leetcode.cn/problems/decode-ways/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一只含數字的&lt;strong&gt;非空&lt;/strong&gt; string &lt;code&gt;s&lt;/code&gt;，計算並返回解碼的方法數&lt;/p&gt;
-&lt;p&gt;一則包含字母</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/set-matrix-zeroes/&quot;&gt;https://leetcode.cn/problems/set-matrix-zeroes/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 &lt;code&gt;m x n&lt;/code&gt; 的 matrix, 若其中一元素為&lt;code&gt;0&lt;/code&gt;,</summary>
         
       
     
@@ -173,7 +172,40 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>50. Pow(x, n)</title>
+    <link href="http://zako945.github.io/post/powx-n/"/>
+    <id>http://zako945.github.io/post/powx-n/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:17:31.627Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/powx-n/&quot;&gt;https://leetcode.cn/problems/powx-n/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 double &lt;code&gt;x&lt;/code&gt; 和一整數 &lt;code&gt;n&lt;/code&gt;, 返回 &lt;code&gt;x&lt;/code&gt; 的 &lt;code&gt;n&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
@@ -187,11 +219,11 @@
   </entry>
   
   <entry>
-    <title>300. Longest Increasing Subsequence</title>
-    <link href="http://zako945.github.io/post/longest-increasing-subsequence/"/>
-    <id>http://zako945.github.io/post/longest-increasing-subsequence/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.190Z</updated>
+    <title>43. Multiply Strings</title>
+    <link href="http://zako945.github.io/post/multiply-strings/"/>
+    <id>http://zako945.github.io/post/multiply-strings/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:18:49.673Z</updated>
     
     
       
@@ -199,8 +231,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/longest-increasing-subsequence/&quot;&gt;https://leetcode.cn/problems/longest-increasing-subsequence/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;,</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/multiply-strings/&quot;&gt;https://leetcode.cn/problems/multiply-strings/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給兩個以 string 表示的非負整數 &lt;code&gt;num1&lt;/code&gt; 和 &lt;code&gt;num2&lt;/code&gt;, 返回</summary>
         
       
     
@@ -208,7 +240,7 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
@@ -222,11 +254,11 @@
   </entry>
   
   <entry>
-    <title>152. Maximum Product Subarray</title>
-    <link href="http://zako945.github.io/post/maximum-product-subarray/"/>
-    <id>http://zako945.github.io/post/maximum-product-subarray/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.190Z</updated>
+    <title>2013. Detect Squares</title>
+    <link href="http://zako945.github.io/post/detect-squares/"/>
+    <id>http://zako945.github.io/post/detect-squares/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:21:11.509Z</updated>
     
     
       
@@ -234,8 +266,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/maximum-product-subarray/&quot;&gt;https://leetcode.cn/problems/maximum-product-subarray/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一整數 array &lt;code&gt;nums&lt;/code&gt;, 找出乘積最大的非空&lt;strong&gt;連續&lt;/strong&gt;</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/detect-squares/&quot;&gt;https://leetcode.cn/problems/detect-squares/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一在 &lt;code&gt;X-Y&lt;/code&gt; 平面上的點所構成的 data</summary>
         
       
     
@@ -243,12 +275,41 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    <category term="Math &amp; Geometry" scheme="http://zako945.github.io/categories/Leetcode/Math-Geometry/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>371. Sum of Two Integers</title>
+    <link href="http://zako945.github.io/post/sum-of-two-integers/"/>
+    <id>http://zako945.github.io/post/sum-of-two-integers/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:23:30.314Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/sum-of-two-integers/&quot;&gt;https://leetcode.cn/problems/sum-of-two-integers/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給兩整數 &lt;code&gt;a&lt;/code&gt; 和 &lt;code&gt;b&lt;/code&gt;, 在不使用 &lt;code&gt;+&lt;/code&gt;、</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Bit Manipulation" scheme="http://zako945.github.io/categories/Leetcode/Bit-Manipulation/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
@@ -257,11 +318,11 @@
   </entry>
   
   <entry>
-    <title>416. Partition Equal Subset Sum</title>
-    <link href="http://zako945.github.io/post/partition-equal-subset-sum/"/>
-    <id>http://zako945.github.io/post/partition-equal-subset-sum/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.191Z</updated>
+    <title>7. Reverse Integer</title>
+    <link href="http://zako945.github.io/post/reverse-integer/"/>
+    <id>http://zako945.github.io/post/reverse-integer/</id>
+    <published>2024-12-19T16:00:00.000Z</published>
+    <updated>2024-12-20T05:25:06.711Z</updated>
     
     
       
@@ -269,8 +330,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/partition-equal-subset-sum/&quot;&gt;https://leetcode.cn/problems/partition-equal-subset-sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一&lt;strong&gt;只含正整數&lt;/strong&gt;的非空 array &lt;code&gt;nums&lt;/code&gt;,</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reverse-integer/&quot;&gt;https://leetcode.cn/problems/reverse-integer/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 32-bit 的有號整數 &lt;code&gt;x&lt;/code&gt;, 返回將 &lt;code&gt;x&lt;/code&gt;</summary>
         
       
     
@@ -278,75 +339,7 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>62. Unique Paths</title>
-    <link href="http://zako945.github.io/post/unique-paths/"/>
-    <id>http://zako945.github.io/post/unique-paths/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:43:39.959Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/unique-paths/&quot;&gt;https://leetcode.cn/problems/unique-paths/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：有一機器人位於 &lt;code&gt;m x n&lt;/code&gt; 網格的&lt;strong&gt;左上角&lt;/strong&gt;, 機器人每次只能往下 or 往右一步,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>647. Palindromic Substrings</title>
-    <link href="http://zako945.github.io/post/palindromic-substrings/"/>
-    <id>http://zako945.github.io/post/palindromic-substrings/</id>
-    <published>2024-12-18T16:00:00.000Z</published>
-    <updated>2024-12-19T04:23:16.191Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/palindromic-substrings/&quot;&gt;https://leetcode.cn/problems/palindromic-substrings/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 string &lt;code&gt;s&lt;/code&gt;, 返回迴文 substring</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    <category term="Bit Manipulation" scheme="http://zako945.github.io/categories/Leetcode/Bit-Manipulation/"/>
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
