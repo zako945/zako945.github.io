@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-22T16:14:08.118Z</updated>
+  <updated>2024-12-22T23:54:54.938Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://zako945.github.io/post/merge-k-sorted-lists/"/>
     <id>http://zako945.github.io/post/merge-k-sorted-lists/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T16:14:08.118Z</updated>
+    <updated>2024-12-22T23:54:54.938Z</updated>
     
     
       
@@ -56,7 +56,7 @@
     <link href="http://zako945.github.io/post/reverse-nodes-in-k-group/"/>
     <id>http://zako945.github.io/post/reverse-nodes-in-k-group/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T16:14:10.247Z</updated>
+    <updated>2024-12-22T23:54:55.105Z</updated>
     
     
       
@@ -91,7 +91,7 @@
     <link href="http://zako945.github.io/post/binary-tree-maximum-path-sum/"/>
     <id>http://zako945.github.io/post/binary-tree-maximum-path-sum/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:32:24.597Z</updated>
+    <updated>2024-12-22T23:54:55.298Z</updated>
     
     
       
@@ -124,7 +124,7 @@
     <link href="http://zako945.github.io/post/serialize-and-deserialize-binary-tree/"/>
     <id>http://zako945.github.io/post/serialize-and-deserialize-binary-tree/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:32:57.146Z</updated>
+    <updated>2024-12-22T23:54:55.481Z</updated>
     
     
       
@@ -159,7 +159,7 @@
     <link href="http://zako945.github.io/post/word-search-ii/"/>
     <id>http://zako945.github.io/post/word-search-ii/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:33:30.955Z</updated>
+    <updated>2024-12-22T23:58:00.917Z</updated>
     
     
       
@@ -194,7 +194,7 @@
     <link href="http://zako945.github.io/post/find-median-from-data-stream/"/>
     <id>http://zako945.github.io/post/find-median-from-data-stream/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:33:32.935Z</updated>
+    <updated>2024-12-22T23:58:03.494Z</updated>
     
     
       
@@ -229,7 +229,7 @@
     <link href="http://zako945.github.io/post/n-queens/"/>
     <id>http://zako945.github.io/post/n-queens/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:33:33.126Z</updated>
+    <updated>2024-12-22T23:58:03.693Z</updated>
     
     
       
@@ -261,11 +261,44 @@
   </entry>
   
   <entry>
+    <title>332. Reconstruct Itinerary</title>
+    <link href="http://zako945.github.io/post/reconstruct-itinerary/"/>
+    <id>http://zako945.github.io/post/reconstruct-itinerary/</id>
+    <published>2024-12-22T16:00:00.000Z</published>
+    <updated>2024-12-22T23:58:04.059Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reconstruct-itinerary/&quot;&gt;https://leetcode.cn/problems/reconstruct-itinerary/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一航線列表 &lt;code&gt;tickets&lt;/code&gt;, 其中 &lt;code&gt;tickets[i] = [from_i,</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Advanced Graph" scheme="http://zako945.github.io/categories/Leetcode/Advanced-Graph/"/>
+    
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
+    
+  </entry>
+  
+  <entry>
     <title>127. Word Ladder</title>
     <link href="http://zako945.github.io/post/word-ladder/"/>
     <id>http://zako945.github.io/post/word-ladder/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:33:33.351Z</updated>
+    <updated>2024-12-22T23:58:03.860Z</updated>
     
     
       
@@ -296,11 +329,11 @@
   </entry>
   
   <entry>
-    <title>332. Reconstruct Itinerary</title>
-    <link href="http://zako945.github.io/post/reconstruct-itinerary/"/>
-    <id>http://zako945.github.io/post/reconstruct-itinerary/</id>
+    <title>778. Swim in Rising Water</title>
+    <link href="http://zako945.github.io/post/swim-in-rising-water/"/>
+    <id>http://zako945.github.io/post/swim-in-rising-water/</id>
     <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:33:33.419Z</updated>
+    <updated>2024-12-22T23:58:04.226Z</updated>
     
     
       
@@ -308,8 +341,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reconstruct-itinerary/&quot;&gt;https://leetcode.cn/problems/reconstruct-itinerary/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一航線列表 &lt;code&gt;tickets&lt;/code&gt;, 其中 &lt;code&gt;tickets[i] = [from_i,</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/swim-in-rising-water/&quot;&gt;https://leetcode.cn/problems/swim-in-rising-water/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt; 在一個 &lt;code&gt;n x n&lt;/code&gt; 的整數矩陣 &lt;code&gt;grid&lt;/code&gt; 中, 每一個</summary>
         
       
     
@@ -325,35 +358,6 @@
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
     <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>77. Combinations</title>
-    <link href="http://zako945.github.io/post/combinations/"/>
-    <id>http://zako945.github.io/post/combinations/</id>
-    <published>2024-12-21T16:00:00.000Z</published>
-    <updated>2024-12-22T16:01:55.218Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/combinations/&quot;&gt;https://leetcode.cn/problems/combinations/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給兩個整數 &lt;code&gt;n&lt;/code&gt; 和 &lt;code&gt;k&lt;/code&gt;, 以&lt;strong&gt;任意順序&lt;/strong&gt;返回 &lt;code&gt;[1, n]&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Backtracking" scheme="http://zako945.github.io/categories/Leetcode/Backtracking/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
   </entry>
   
