@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-22T23:54:54.938Z</updated>
+  <updated>2024-12-23T23:13:56.651Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>23. Merge k Sorted Lists</title>
-    <link href="http://zako945.github.io/post/merge-k-sorted-lists/"/>
-    <id>http://zako945.github.io/post/merge-k-sorted-lists/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:54:54.938Z</updated>
+    <title>912. Sort an Array</title>
+    <link href="http://zako945.github.io/post/sort-an-array/"/>
+    <id>http://zako945.github.io/post/sort-an-array/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:13:56.651Z</updated>
     
     
       
@@ -29,8 +29,10 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/merge-k-sorted-lists/&quot;&gt;https://leetcode.cn/problems/merge-k-sorted-lists/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 linked list array &lt;code&gt;lists&lt;/code&gt;, 每個 linked list</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/sort-an-array/&quot;&gt;https://leetcode.cn/problems/sort-an-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一整數 array &lt;code&gt;nums&lt;/code&gt;, 將其按升序排列後並返回它。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -38,8 +40,10 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
+    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
     
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
@@ -47,16 +51,14 @@
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
   </entry>
   
   <entry>
-    <title>25. Reverse Nodes in k-Group</title>
-    <link href="http://zako945.github.io/post/reverse-nodes-in-k-group/"/>
-    <id>http://zako945.github.io/post/reverse-nodes-in-k-group/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:54:55.105Z</updated>
+    <title>399. Evaluate Division</title>
+    <link href="http://zako945.github.io/post/evaluate-division/"/>
+    <id>http://zako945.github.io/post/evaluate-division/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:16:40.343Z</updated>
     
     
       
@@ -64,250 +66,8 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reverse-nodes-in-k-group/&quot;&gt;https://leetcode.cn/problems/reverse-nodes-in-k-group/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 linked list 的 &lt;code&gt;head&lt;/code&gt;, 每 &lt;code&gt;k&lt;/code&gt; 個 node</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Linked List" scheme="http://zako945.github.io/categories/Leetcode/Linked-List/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>124. Binary Tree Maximum Path Sum</title>
-    <link href="http://zako945.github.io/post/binary-tree-maximum-path-sum/"/>
-    <id>http://zako945.github.io/post/binary-tree-maximum-path-sum/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:54:55.298Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/binary-tree-maximum-path-sum/&quot;&gt;https://leetcode.cn/problems/binary-tree-maximum-path-sum/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 BT 的 &lt;code&gt;root&lt;/code&gt;, 返回其最大的 path</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>297. Serialize and Deserialize Binary Tree</title>
-    <link href="http://zako945.github.io/post/serialize-and-deserialize-binary-tree/"/>
-    <id>http://zako945.github.io/post/serialize-and-deserialize-binary-tree/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:54:55.481Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/&quot;&gt;https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;Serialize 是將資料結構轉換成一系列的 bit,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>212. Word Search II</title>
-    <link href="http://zako945.github.io/post/word-search-ii/"/>
-    <id>http://zako945.github.io/post/word-search-ii/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:00.917Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/word-search-ii/&quot;&gt;https://leetcode.cn/problems/word-search-ii/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一 &lt;code&gt;m x n&lt;/code&gt; 的網格 &lt;code&gt;board&lt;/code&gt;, 和一 string list &lt;code&gt;words&lt;/code&gt;,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Trie" scheme="http://zako945.github.io/categories/Leetcode/Trie/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>295. Find Median from Data Stream</title>
-    <link href="http://zako945.github.io/post/find-median-from-data-stream/"/>
-    <id>http://zako945.github.io/post/find-median-from-data-stream/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:03.494Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/find-median-from-data-stream/&quot;&gt;https://leetcode.cn/problems/find-median-from-data-stream/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;中位數是指有序 array 裡中間的數。若 array 長度偶數,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Heap" scheme="http://zako945.github.io/categories/Leetcode/Heap/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>51. N-Queens</title>
-    <link href="http://zako945.github.io/post/n-queens/"/>
-    <id>http://zako945.github.io/post/n-queens/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:03.693Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/n-queens/&quot;&gt;https://leetcode.cn/problems/n-queens/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;按照國際象棋的規則, 皇后可以攻擊處於同一行 or 同一列 or 同一斜線上的棋子。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;n-queens 問題&lt;/strong&gt;是研究如何將</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Backtracking" scheme="http://zako945.github.io/categories/Leetcode/Backtracking/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>332. Reconstruct Itinerary</title>
-    <link href="http://zako945.github.io/post/reconstruct-itinerary/"/>
-    <id>http://zako945.github.io/post/reconstruct-itinerary/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:04.059Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reconstruct-itinerary/&quot;&gt;https://leetcode.cn/problems/reconstruct-itinerary/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;給一航線列表 &lt;code&gt;tickets&lt;/code&gt;, 其中 &lt;code&gt;tickets[i] = [from_i,</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Advanced Graph" scheme="http://zako945.github.io/categories/Leetcode/Advanced-Graph/"/>
-    
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>127. Word Ladder</title>
-    <link href="http://zako945.github.io/post/word-ladder/"/>
-    <id>http://zako945.github.io/post/word-ladder/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:03.860Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/word-ladder/&quot;&gt;https://leetcode.cn/problems/word-ladder/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt;一個 transform sequence 指的是 &lt;code&gt;wordList&lt;/code&gt; 中從單字 &lt;code&gt;beginWord&lt;/code&gt; 到</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/evaluate-division/&quot;&gt;https://leetcode.cn/problems/evaluate-division/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一變數 pair array &lt;code&gt;equations&lt;/code&gt;, 和一實數 array &lt;code&gt;values&lt;/code&gt;, 其中</summary>
         
       
     
@@ -318,22 +78,22 @@
     <category term="Graph" scheme="http://zako945.github.io/categories/Leetcode/Graph/"/>
     
     
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
-    
   </entry>
   
   <entry>
-    <title>778. Swim in Rising Water</title>
-    <link href="http://zako945.github.io/post/swim-in-rising-water/"/>
-    <id>http://zako945.github.io/post/swim-in-rising-water/</id>
-    <published>2024-12-22T16:00:00.000Z</published>
-    <updated>2024-12-22T23:58:04.226Z</updated>
+    <title>394. Decode String</title>
+    <link href="http://zako945.github.io/post/decode-string/"/>
+    <id>http://zako945.github.io/post/decode-string/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:18:51.403Z</updated>
     
     
       
@@ -341,8 +101,9 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/swim-in-rising-water/&quot;&gt;https://leetcode.cn/problems/swim-in-rising-water/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意：&lt;/strong&gt; 在一個 &lt;code&gt;n x n&lt;/code&gt; 的整數矩陣 &lt;code&gt;grid&lt;/code&gt; 中, 每一個</summary>
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/decode-string/&quot;&gt;https://leetcode.cn/problems/decode-string/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一經過編碼的 string, 返回它解碼後的 string。&lt;/p&gt;
+&lt;p&gt;編碼規則為：&lt;code&gt;k[encoded_string]&lt;/code&gt;,</summary>
         
       
     
@@ -350,14 +111,240 @@
     
     <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
     
-    <category term="Advanced Graph" scheme="http://zako945.github.io/categories/Leetcode/Advanced-Graph/"/>
+    <category term="Stack" scheme="http://zako945.github.io/categories/Leetcode/Stack/"/>
     
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
     <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
     
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
-    <category term="Hard" scheme="http://zako945.github.io/tags/Hard/"/>
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>388. Longest Absolute File Path</title>
+    <link href="http://zako945.github.io/post/longest-absolute-file-path/"/>
+    <id>http://zako945.github.io/post/longest-absolute-file-path/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:20:53.758Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/longest-absolute-file-path/&quot;&gt;https://leetcode.cn/problems/longest-absolute-file-path/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：假設有一個同時儲存檔案和目錄的 file system。下圖展示了 file system</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>34. Find First and Last Position of Element in Sorted Array</title>
+    <link href="http://zako945.github.io/post/find-first-and-last-position-of-element-in-sorted-array/"/>
+    <id>http://zako945.github.io/post/find-first-and-last-position-of-element-in-sorted-array/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:23:19.626Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Binary Search" scheme="http://zako945.github.io/categories/Leetcode/Binary-Search/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>151. Reverse Words in a String</title>
+    <link href="http://zako945.github.io/post/reverse-words-in-a-string/"/>
+    <id>http://zako945.github.io/post/reverse-words-in-a-string/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:27:18.165Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reverse-words-in-a-string/&quot;&gt;https://leetcode.cn/problems/reverse-words-in-a-string/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 string &lt;code&gt;s&lt;/code&gt;, 請你反轉 &lt;code&gt;s&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>701. Insert into a Binary Search Tree</title>
+    <link href="http://zako945.github.io/post/insert-into-a-binary-search-tree/"/>
+    <id>http://zako945.github.io/post/insert-into-a-binary-search-tree/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:30:30.539Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/insert-into-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/insert-into-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 BST 的 &lt;code&gt;root&lt;/code&gt; 和要插入的值</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>450. Delete Node in a BST</title>
+    <link href="http://zako945.github.io/post/delete-node-in-a-bst/"/>
+    <id>http://zako945.github.io/post/delete-node-in-a-bst/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:32:14.149Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/delete-node-in-a-bst/&quot;&gt;https://leetcode.cn/problems/delete-node-in-a-bst/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 BST 的 &lt;code&gt;root&lt;/code&gt; 和一個值 &lt;code&gt;key&lt;/code&gt;, 刪除 BST</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>189. Rotate Array</title>
+    <link href="http://zako945.github.io/post/rotate-array/"/>
+    <id>http://zako945.github.io/post/rotate-array/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:34:34.550Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/rotate-array/&quot;&gt;https://leetcode.cn/problems/rotate-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 array &lt;code&gt;nums&lt;/code&gt;, 將其往右旋轉 &lt;code&gt;k&lt;/code&gt; 次, 其中 &lt;code&gt;k&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
+    
+    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>474. Ones and Zeroes</title>
+    <link href="http://zako945.github.io/post/ones-and-zeroes/"/>
+    <id>http://zako945.github.io/post/ones-and-zeroes/</id>
+    <published>2024-12-23T16:00:00.000Z</published>
+    <updated>2024-12-23T23:38:11.598Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/ones-and-zeroes/&quot;&gt;https://leetcode.cn/problems/ones-and-zeroes/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一二進制 string array &lt;code&gt;strs&lt;/code&gt; 和兩整數 &lt;code&gt;m&lt;/code&gt; 和</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
+    
+    
+    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
+    
+    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   

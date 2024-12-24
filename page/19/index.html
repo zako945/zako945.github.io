@@ -52,7 +52,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2024-12-23 08:35:48'
+  postUpdate: '2024-12-24 08:07:28'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -173,99 +173,92 @@ window.addEventListener('load',()=> { preloader.endLoading() })
 if (true) {
   document.addEventListener('pjax:send', () => { preloader.initLoading() })
   document.addEventListener('pjax:complete', () => { preloader.endLoading() })
-}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zako's Blog"><span class="site-name">Zako's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Zako's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/coin-change-ii/" title="518. Coin Change II">518. Coin Change II</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-18T16:00:00.000Z" title="發表於 2024-12-19 00:00:00">2024-12-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Dynamic-Programming/">Dynamic Programming</a></span></div><div class="content">
-題目網址：https://leetcode.cn/problems/coin-change-ii/
-題意：給一整數 array coins 表示不同面額的硬幣, 和一整數 amount 表示總金額。
-返回可以湊成 amount 的硬幣組合數。如果任何硬幣組合都無法湊出總金額, 則返回 0。
-假設每一種面額的硬幣有無限個。
-題目保證結果符合 32-bit 有號整數。
+}</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">257</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">18</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/index_img.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Zako's Blog"><span class="site-name">Zako's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 彙整</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Zako's Blog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/sequence-reconstruction/" title="444. Sequence Reconstruction">444. Sequence Reconstruction</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-21T16:00:00.000Z" title="發表於 2024-12-22 00:00:00">2024-12-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Graph/">Graph</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/sequence-reconstruction/
+題意：給一 [1, n] 長度為 n 的整數 array nums, 以及一些 2d 整數 array sequences, 其中 sequences[i] 是 nums 的 subsequence。
+返回 sequences 是否能唯一重建出 nums。
+e.g. nums = [1,2,3], sequences = [[1,2], [1,3]]
 
-
-Solution 1：
-想法：利用 DP
-1. 定義狀態：
-
-首先, 會在 coins 前先加上一個 0, 代表什麼元素都沒有的狀態
-dp[i][j]：前 i 種硬幣湊齊金額 j 的組合數
-
-2. 得到轉移方程：
-
-coins[i] 有「選 or 不選」兩種可能：
-rods[i] 不選, 則 dp[i][j] = dp[i - 1][j]
-rods[i] 要選, 則 dp[i][j] = dp[i][j - coins[i]]（每一種面額可無限取, 故為 i 而非 i - 1）
-
-
-
-3. 初始化：
-
-dp[0][0]：當沒有任何硬幣時, 湊齊金額 0 的組合數為 1（什麼都不選也是一種方案）➔ dp[0][0] =  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/target-sum/" title="494. Target Sum">494. Target Sum</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-18T16:00:00.000Z" title="發表於 2024-12-19 00:00:00">2024-12-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Dynamic-Programming/">Dynamic Programming</a></span></div><div class="content">
-題目網址：https://leetcode.cn/problems/target-sum/
-題意：給一 array nums 和整數 target, 在 nums 中每個整前添加 + 或 -, 然後串聯整個 nums 形成一個表達式：
-
-e.g. nums = [2, 1] 可以在 2 前添加 +, 在 1 前添加 -, 形成表達式 +2-1
-
-求運算結果等於 target 的不同表達式數目。
-
-
-Solution 1：
-想法：利用暴力法, 遞迴下去做（速度極慢）
-
-class Solution &#123;public:    int findTargetSumWays(vector&lt;int&gt;&amp; nums, int target) &#123;        const int sum = accumulate(nums.begin(), nums.end(), 0);        if (target &gt; abs(sum) || target &lt; -abs(sum)) &#123;            return 0;        &#12 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/interleaving-string/" title="97. Interleaving String">97. Interleaving String</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-18T16:00:00.000Z" title="發表於 2024-12-19 00:00:00">2024-12-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Dynamic-Programming/">Dynamic Programming</a></span></div><div class="content">
-題目網址：https://leetcode.cn/problems/interleaving-string/
-題意：給三個 string s1、s2、s3, 返回 s3 是否是由 s1 和 s2 交錯組成的。
-兩個 sting s、t 交錯的定義與過程如下, 其中每個 string 都會被分割成若干個 non-empty substring：
-
-s = s1 + s2 + ... + sn
-t = t1 + t2 + ... + tm
-|n - m| &lt;= 1
-交錯是 s1 + t1 + s2 + t2 + s3 + t3 + ... 或 t1 + s1 + t2 + s2 + t3 + s3 + ...
-
-注意：a + b 代表 string a 和 b 串接。
+sequences 可重建出 [1,2,3] 和 [1,3,2] 並不唯一, 故返回 false。因為 1 必須在 2、3 的前面, 但 2 和 3 間並沒有唯一的順序
+但若更改 sequences = [[1,2], [1,3], [2,3]], 則可唯一重建出 [1,2,3], 故返回 true。因為 1 必須在 2、3 的前面, 且 2 必須在 3 的前面, 故只能重建出 [1,2,3]
 
 
 
 Solution：
-想法：利用 DP, 其中 dp[i][j] 表示 s1 前 i 個 char 和 s2 前 j 個 char 能否構成 s3 前 i + j 個 char
-dp[i][j] 為 true 有兩種情況：
+想法：利用 Topological Sort + BFS, 將 sequences 轉成有向圖, 給 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/binary-tree-zigzag-level-order-traversal/" title="103. Binary Tree Zigzag Level Order Traversal">103. Binary Tree Zigzag Level Order Traversal</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-21T16:00:00.000Z" title="發表於 2024-12-22 00:00:00">2024-12-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Tree/">Tree</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/
+題意：給一 BT 的 root, 返回 node.val 的 zigzag（鋸齒形）level order（先從左往右, 而下一層從右往左遍歷, 依此類推, 層與層之間交替進行）。
 
-s1[i - 1] == s3[i + j - 1] &amp;&amp; dp[i - ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/burst-balloons/" title="312. Burst Balloons">312. Burst Balloons</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-18T16:00:00.000Z" title="發表於 2024-12-19 00:00:00">2024-12-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Dynamic-Programming/">Dynamic Programming</a></span></div><div class="content">
-題目網址：https://leetcode.cn/problems/burst-balloons/
-題意：給一整數 array nums 表示所有氣球上的編號。
-戳破第 i 個氣球, 可以獲得 nums[i - 1] * nums[i] * nums[i + 1] 枚硬幣。其中 i - 1 和 i + 1 代表與 i 相鄰的兩個氣球之編號。若 i - 1 或 i + 1 超出了 nums 的邊界, 則將其看作是編號為 1 的氣球。
-返回戳破所有氣球所能獲得的最大硬幣數。
-注意：1 ≤ nums[i] ≤ 300
-
-
-Solution：
-想法：利用 DP
-本題重點：
-
-與其考慮先射爆哪個氣球, 不如考慮最後射爆哪個氣球。因為如果是考慮先射爆哪個氣球, 這種方式無法確定當前左、右邊的氣球編號。
-若是考慮最後射爆哪個氣球, 則可以確定該氣球的左、右邊編號
-
-1. 定義狀態：
-
-dp[i][j]：在 nums[i:j] 中最後射爆 index = k 的氣球
-在射爆 idx = k 的氣球前, 必須先射爆 nums[i:(k-1)]、nums[(k+1):j] 區間中的氣球
-
-2. 得到狀態 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/maximum-subarray/" title="53. Maximum Subarray">53. Maximum Subarray</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-18T16:00:00.000Z" title="發表於 2024-12-19 00:00:00">2024-12-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Dynamic-Programming/">Dynamic Programming</a></span></div><div class="content">
-題目網址：https://leetcode.cn/problems/maximum-subarray/
-題意：給一 array nums, 找到一 subarray, 其元素和為所有 subarray 中最大的。
-注意：subarray 必須是連續的（index 不可中斷）
 
 
 Solution 1：
-想法：利用 DP, 每個元素都有加入 or 不加入 subarray 兩種選擇。若不加入, 則該元素成為新的 subarray 的開頭繼續往後尋找, 其中 dp[i] 代表 [0, i] 這個區間中擁有最大和的 subarray 之和
+想法：利用 BFS
 
-class Solution &#123;public:    int maxSubArray(vector&lt;int&gt;&amp; nums) &#123;        const int n = nums.size();        int res = nums[0];        vector&lt;int&gt; dp(n, nums[0]);        for (int i = 1; i &lt; n; ++i) &#123 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/18/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#content-inner">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#content-inner">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/#content-inner">43</a><a class="extend next" rel="next" href="/page/20/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zako945</div><div class="author-info__description">Ciallo～(∠·ω<)⌒★</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">215</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">18</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+class Solution &#123;public:    vector&lt;vector&lt;int&gt;&gt; zigzagLevelOrder(TreeNode* root) &#123;        if (!root) &#123;            return &#123;&#125;;        &#125;        int depth = 0;        vector&lt;vector&lt;int&gt;&gt; res;        queue&lt;TreeNode*&gt; q;        q.emplace(root);        w ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/populating-next-right-pointers-in-each-node/" title="116. Populating Next Right Pointers in Each Node">116. Populating Next Right Pointers in Each Node</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-21T16:00:00.000Z" title="發表於 2024-12-22 00:00:00">2024-12-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Tree/">Tree</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/
+題意：給一 perfect BT, 其所有 leaf 皆在同一層, 且每個 non-leaf 皆有兩個 child。BT 定義如下:
+
+填充每個 node 的 next, 讓 next 指向其右邊的 node。若右邊沒有 node, 則指向 NULL。所有 next 預設皆為 NULL。
+進階：
+
+設計 $O(1)$ space 的演算法
+可以使用遞迴解題, 遞迴所用到的 stack space 不算做額外的 space
+
+
+
+Solution 1：
+想法：利用 BFS
+
+class Solution &#123;public:    Node* connect(Node* root) &#123;        if (!root) &#123;            return root;        &#125;        queue&lt;Node*&gt; q;        q.emplace(root);  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/populating-next-right-pointers-in-each-node-ii/" title="117. Populating Next Right Pointers in Each Node II">117. Populating Next Right Pointers in Each Node II</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-21T16:00:00.000Z" title="發表於 2024-12-22 00:00:00">2024-12-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Tree/">Tree</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/
+題意：給一 BT, 其中每一個 node 的定義如下:
+
+將每個 node 的 next 指向其右邊的 node。若不存在右邊的 node, 則 next 應指向 NULL。所有 next 預設皆為 NULL。
+進階：
+
+設計 $O(1)$ space 的演算法
+可以使用遞迴解題, 遞迴所用到的 stack space 不算做額外的 space
+
+
+
+Solution 1：
+想法：利用 BFS
+
+class Solution &#123;public:    Node* connect(Node* root) &#123;        if (!root) &#123;            return root;        &#125;        queue&lt;Node*&gt; q;        q.emplace(root);        while (!q.empty()) &#123;     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/post/all-nodes-distance-k-in-binary-tree/" title="863. All Nodes Distance K in Binary Tree">863. All Nodes Distance K in Binary Tree</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">發表於</span><time datetime="2024-12-21T16:00:00.000Z" title="發表於 2024-12-22 00:00:00">2024-12-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Leetcode/">Leetcode</a><i class="fas fa-angle-right article-meta-link"></i><a class="article-meta__categories" href="/categories/Leetcode/Tree/">Tree</a></span></div><div class="content">
+題目網址：https://leetcode.cn/problems/all-nodes-distance-k-in-binary-tree/
+題意：給一 BT 的 root, 和一目標點 target, 以及一整數 k。
+返回所有距離目標點 target 為 k 的 node, 可以用任何順序返回。
+tree 中每個 node.val 都不同。
+
+
+
+Solution：
+想法：利用 DFS + BFS
+
+先用 DFS 建立無向圖
+再以 target 為中心向外做 BFS
+
+e.g. target = 5, k = 2
+
+
+以 5 為中心, 首先取出 3, 6, 2
+然後 3 會取出 5, 1
+依此類推…
+
+這邊必須小心, 因為我們建立的是無向圖, child 的 adj list 中是會有 parent 的以上面的為例, 3 向外擴散取出 5 跟 1。其中 1 是答案, 但 5 不是因此, 得用一個 visited 來記錄拜訪過的 node
+
+若已經在 visited 裡則跳過
+否則, 將其加入 visited 中
+
+這樣一來, 5 最一開始就會被加入到 visited 中就算後面的 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/18/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/#content-inner">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/#content-inner">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/#content-inner">52</a><a class="extend next" rel="next" href="/page/20/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Zako945</div><div class="author-info__description">Ciallo～(∠·ω<)⌒★</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">257</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">18</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分類</span>
             <a class="card-more-btn" href="/categories/" title="檢視更多">
     <i class="fas fa-angle-right"></i></a>
             </div>
             <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/"><span class="card-category-list-name">Leetcode</span><span class="card-category-list-count">215</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Advanced-Graph/"><span class="card-category-list-name">Advanced Graph</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Array/"><span class="card-category-list-name">Array</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Backtracking/"><span class="card-category-list-name">Backtracking</span><span class="card-category-list-count">16</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Binary-Search/"><span class="card-category-list-name">Binary Search</span><span class="card-category-list-count">13</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Bit-Manipulation/"><span class="card-category-list-name">Bit Manipulation</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Dynamic-Programming/"><span class="card-category-list-name">Dynamic Programming</span><span class="card-category-list-count">27</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Graph/"><span class="card-category-list-name">Graph</span><span class="card-category-list-count">15</span></a></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/Medium/" style="font-size: 1.34em; color: #99a3b0">Medium</a> <a href="/tags/Google/" style="font-size: 1.42em; color: #99a6b7">Google</a> <a href="/tags/Hard/" style="font-size: 1.1em; color: #999">Hard</a> <a href="/tags/Microsoft/" style="font-size: 1.26em; color: #999fa8">Microsoft</a> <a href="/tags/Amazon/" style="font-size: 1.5em; color: #99a9bf">Amazon</a> <a href="/tags/Easy/" style="font-size: 1.18em; color: #999ca1">Easy</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>彙整</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">2024 十二月</span><span class="card-archive-list-count">156</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">2024 四月</span><span class="card-archive-list-count">59</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章數目 :</div><div class="item-count">215</div></div><div class="webinfo-item"><div class="item-name">已執行時間 :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-04-12T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站總字數 :</div><div class="item-count">104.5k</div></div><div class="webinfo-item"><div class="item-name">最後更新時間 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-23T00:35:46.806Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Zako945</div><div class="footer_custom_text">There is only one corner of the universe you can be certain of improving, and that's your own self.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="簡繁轉換">簡</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/rightMenu.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/"><span class="card-category-list-name">Leetcode</span><span class="card-category-list-count">257</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Advanced-Graph/"><span class="card-category-list-name">Advanced Graph</span><span class="card-category-list-count">6</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Array/"><span class="card-category-list-name">Array</span><span class="card-category-list-count">16</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Backtracking/"><span class="card-category-list-name">Backtracking</span><span class="card-category-list-count">16</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Binary-Search/"><span class="card-category-list-name">Binary Search</span><span class="card-category-list-count">17</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Bit-Manipulation/"><span class="card-category-list-name">Bit Manipulation</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Dynamic-Programming/"><span class="card-category-list-name">Dynamic Programming</span><span class="card-category-list-count">40</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/Graph/"><span class="card-category-list-name">Graph</span><span class="card-category-list-count">17</span></a></li></ul></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>標籤</span></div><div class="card-tag-cloud"><a href="/tags/Google/" style="font-size: 1.42em; color: #99a6b7">Google</a> <a href="/tags/Hard/" style="font-size: 1.1em; color: #999">Hard</a> <a href="/tags/Easy/" style="font-size: 1.18em; color: #999ca1">Easy</a> <a href="/tags/Amazon/" style="font-size: 1.5em; color: #99a9bf">Amazon</a> <a href="/tags/Microsoft/" style="font-size: 1.26em; color: #999fa8">Microsoft</a> <a href="/tags/Medium/" style="font-size: 1.34em; color: #99a3b0">Medium</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>彙整</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">2024 十二月</span><span class="card-archive-list-count">198</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">2024 四月</span><span class="card-archive-list-count">59</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>網站資訊</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章數目 :</div><div class="item-count">257</div></div><div class="webinfo-item"><div class="item-name">已執行時間 :</div><div class="item-count" id="runtimeshow" data-publishDate="2024-04-12T16:00:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站總字數 :</div><div class="item-count">134.5k</div></div><div class="webinfo-item"><div class="item-name">最後更新時間 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2024-12-24T00:07:26.959Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2024 By Zako945</div><div class="footer_custom_text">There is only one corner of the universe you can be certain of improving, and that's your own self.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="簡繁轉換">簡</button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到頂部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script defer data-pjax src="/js/rightMenu.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
