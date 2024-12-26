@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-24T23:50:17.209Z</updated>
+  <updated>2024-12-26T22:18:31.243Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Binary Search Template</title>
+    <link href="http://zako945.github.io/post/binary-search-template/"/>
+    <id>http://zako945.github.io/post/binary-search-template/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-26T22:18:31.243Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;模板&quot;&gt;&lt;a href=&quot;#模板&quot; class=&quot;headerlink&quot; title=&quot;模板&quot;&gt;&lt;/a&gt;模板&lt;/h1&gt;&lt;h2 id=&quot;左閉右開&quot;&gt;&lt;a href=&quot;#左閉右開&quot; class=&quot;headerlink&quot; title=&quot;左閉右開&quot;&gt;&lt;/a&gt;左閉右開&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;選擇 &lt;code&gt;[left, right)&lt;/code&gt; 左閉右開的原因 : 因為 while 判斷式為 &lt;code&gt;left &amp;lt; right&lt;/code&gt;,</summary>
+        
+      
+    
+    
+    
+    <category term="演算法統整" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/"/>
+    
+    <category term="Binary Search" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/Binary-Search/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Sliding Window Template</title>
+    <link href="http://zako945.github.io/post/sliding-window-template/"/>
+    <id>http://zako945.github.io/post/sliding-window-template/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-26T22:18:31.320Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;模板&quot;&gt;&lt;a href=&quot;#模板&quot; class=&quot;headerlink&quot; title=&quot;模板&quot;&gt;&lt;/a&gt;模板&lt;/h1&gt;&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;type&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;slidingWindow&lt;/span&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="演算法統整" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/"/>
+    
+    <category term="Sliding Window" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/Sliding-Window/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamic Programming Template</title>
+    <link href="http://zako945.github.io/post/dynamic-programming-template/"/>
+    <id>http://zako945.github.io/post/dynamic-programming-template/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-26T22:22:59.855Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;套路一：基本-1-型（時間序列）&quot;&gt;&lt;a href=&quot;#套路一：基本-1-型（時間序列）&quot; class=&quot;headerlink&quot; title=&quot;套路一：基本 1 型（時間序列）&quot;&gt;&lt;/a&gt;套路一：基本 1 型（時間序列）&lt;/h1&gt;&lt;h2 id=&quot;觀念：&quot;&gt;&lt;a href=&quot;#觀念：&quot; class=&quot;headerlink&quot; title=&quot;觀念：&quot;&gt;&lt;/a&gt;觀念：&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;給一 sequence, 每個元素可以被視為一天,</summary>
+        
+      
+    
+    
+    
+    <category term="演算法統整" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/"/>
+    
+    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/Dynamic-Programming/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>912. Sort an Array</title>
@@ -58,7 +135,7 @@
     <link href="http://zako945.github.io/post/decode-string/"/>
     <id>http://zako945.github.io/post/decode-string/</id>
     <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:17.633Z</updated>
+    <updated>2024-12-26T21:43:51.613Z</updated>
     
     
       
@@ -129,7 +206,7 @@
     <link href="http://zako945.github.io/post/longest-absolute-file-path/"/>
     <id>http://zako945.github.io/post/longest-absolute-file-path/</id>
     <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:17.915Z</updated>
+    <updated>2024-12-26T21:43:51.614Z</updated>
     
     
       
@@ -250,101 +327,6 @@
     
     
     <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>450. Delete Node in a BST</title>
-    <link href="http://zako945.github.io/post/delete-node-in-a-bst/"/>
-    <id>http://zako945.github.io/post/delete-node-in-a-bst/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:18.886Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/delete-node-in-a-bst/&quot;&gt;https://leetcode.cn/problems/delete-node-in-a-bst/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 BST 的 &lt;code&gt;root&lt;/code&gt; 和一個值 &lt;code&gt;key&lt;/code&gt;, 刪除 BST</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>189. Rotate Array</title>
-    <link href="http://zako945.github.io/post/rotate-array/"/>
-    <id>http://zako945.github.io/post/rotate-array/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:19.101Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/rotate-array/&quot;&gt;https://leetcode.cn/problems/rotate-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 array &lt;code&gt;nums&lt;/code&gt;, 將其往右旋轉 &lt;code&gt;k&lt;/code&gt; 次, 其中 &lt;code&gt;k&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>474. Ones and Zeroes</title>
-    <link href="http://zako945.github.io/post/ones-and-zeroes/"/>
-    <id>http://zako945.github.io/post/ones-and-zeroes/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:19.718Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/ones-and-zeroes/&quot;&gt;https://leetcode.cn/problems/ones-and-zeroes/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一二進制 string array &lt;code&gt;strs&lt;/code&gt; 和兩整數 &lt;code&gt;m&lt;/code&gt; 和</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Dynamic Programming" scheme="http://zako945.github.io/categories/Leetcode/Dynamic-Programming/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
   </entry>
   
