@@ -94,6 +94,64 @@
   </entry>
   
   <entry>
+    <title>Backtracking Template</title>
+    <link href="http://zako945.github.io/post/backtracking-template/"/>
+    <id>http://zako945.github.io/post/backtracking-template/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-26T23:19:16.610Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;核心概念&quot;&gt;&lt;a href=&quot;#核心概念&quot; class=&quot;headerlink&quot; title=&quot;核心概念&quot;&gt;&lt;/a&gt;核心概念&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;窮舉所有可能&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;透過「撤銷選擇」的方式回到上次做出選擇的分歧點 &lt;code&gt;root&lt;/code&gt;，以繼續遍歷其他選擇&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="演算法統整" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/"/>
+    
+    <category term="Backtracking" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/Backtracking/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Graph Template</title>
+    <link href="http://zako945.github.io/post/graph-template/"/>
+    <id>http://zako945.github.io/post/graph-template/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-26T23:33:37.541Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;注意事項&quot;&gt;&lt;a href=&quot;#注意事項&quot; class=&quot;headerlink&quot; title=&quot;注意事項&quot;&gt;&lt;/a&gt;注意事項&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;拜訪過的節點要記得標記，避免重複拜訪&lt;/li&gt;
+&lt;li&gt;DFS 沒啥好講的，故跳過&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;BFS（剝洋蔥）&quot;&gt;&lt;a href=&quot;#BFS（剝洋蔥）&quot; class=&quot;headerlink&quot; title=&quot;BFS（剝洋蔥）&quot;&gt;&lt;/a&gt;BFS（剝洋蔥）&lt;/h1&gt;&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="演算法統整" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/"/>
+    
+    <category term="Graph" scheme="http://zako945.github.io/categories/%E6%BC%94%E7%AE%97%E6%B3%95%E7%B5%B1%E6%95%B4/Graph/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>912. Sort an Array</title>
     <link href="http://zako945.github.io/post/sort-an-array/"/>
     <id>http://zako945.github.io/post/sort-an-array/</id>
@@ -263,70 +321,6 @@
     <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
     
     <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>151. Reverse Words in a String</title>
-    <link href="http://zako945.github.io/post/reverse-words-in-a-string/"/>
-    <id>http://zako945.github.io/post/reverse-words-in-a-string/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:18.453Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/reverse-words-in-a-string/&quot;&gt;https://leetcode.cn/problems/reverse-words-in-a-string/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 string &lt;code&gt;s&lt;/code&gt;, 請你反轉 &lt;code&gt;s&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Two Pointers" scheme="http://zako945.github.io/categories/Leetcode/Two-Pointers/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>701. Insert into a Binary Search Tree</title>
-    <link href="http://zako945.github.io/post/insert-into-a-binary-search-tree/"/>
-    <id>http://zako945.github.io/post/insert-into-a-binary-search-tree/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:18.666Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/insert-into-a-binary-search-tree/&quot;&gt;https://leetcode.cn/problems/insert-into-a-binary-search-tree/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一 BST 的 &lt;code&gt;root&lt;/code&gt; 和要插入的值</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Tree" scheme="http://zako945.github.io/categories/Leetcode/Tree/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
     
   </entry>
   
