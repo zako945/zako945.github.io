@@ -6,7 +6,7 @@
   <link href="http://zako945.github.io/atom.xml" rel="self"/>
   
   <link href="http://zako945.github.io/"/>
-  <updated>2024-12-26T22:18:31.243Z</updated>
+  <updated>2024-12-28T03:10:09.957Z</updated>
   <id>http://zako945.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 題型難度 &amp; 投資報酬率</title>
+    <link href="http://zako945.github.io/post/leetcode-difficulty-roi/"/>
+    <id>http://zako945.github.io/post/leetcode-difficulty-roi/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-28T03:10:09.957Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Leetcode-題型難度-amp-投資報酬率&quot;&gt;&lt;a href=&quot;#Leetcode-題型難度-amp-投資報酬率&quot; class=&quot;headerlink&quot; title=&quot;Leetcode 題型難度 &amp;amp; 投資報酬率&quot;&gt;&lt;/a&gt;Leetcode 題型難度 &amp;amp;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Binary Search Template</title>
@@ -98,7 +119,7 @@
     <link href="http://zako945.github.io/post/backtracking-template/"/>
     <id>http://zako945.github.io/post/backtracking-template/</id>
     <published>2024-12-26T16:00:00.000Z</published>
-    <updated>2024-12-26T23:19:16.610Z</updated>
+    <updated>2024-12-30T06:14:03.292Z</updated>
     
     
       
@@ -127,7 +148,7 @@
     <link href="http://zako945.github.io/post/graph-template/"/>
     <id>http://zako945.github.io/post/graph-template/</id>
     <published>2024-12-26T16:00:00.000Z</published>
-    <updated>2024-12-26T23:33:37.541Z</updated>
+    <updated>2024-12-30T06:14:03.500Z</updated>
     
     
       
@@ -152,175 +173,102 @@
   </entry>
   
   <entry>
-    <title>912. Sort an Array</title>
-    <link href="http://zako945.github.io/post/sort-an-array/"/>
-    <id>http://zako945.github.io/post/sort-an-array/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:17.209Z</updated>
+    <title>BQ 常見問題</title>
+    <link href="http://zako945.github.io/post/bq-common-questions/"/>
+    <id>http://zako945.github.io/post/bq-common-questions/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-28T03:10:09.955Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/sort-an-array/&quot;&gt;https://leetcode.cn/problems/sort-an-array/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一整數 array &lt;code&gt;nums&lt;/code&gt;, 將其按升序排列後並返回它。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;h1 id=&quot;必考題&quot;&gt;&lt;a href=&quot;#必考題&quot; class=&quot;headerlink&quot; title=&quot;必考題&quot;&gt;&lt;/a&gt;必考題&lt;/h1&gt;&lt;h2 id=&quot;對我們公司了解多少？&quot;&gt;&lt;a href=&quot;#對我們公司了解多少？&quot; class=&quot;headerlink&quot; title=&quot;對我們公司了解多少？&quot;&gt;&lt;/a&gt;對我們公司了解多少？&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;看面試者是否對於公司 or</summary>
         
       
     
     
     
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    <category term="Behavior Question" scheme="http://zako945.github.io/categories/Behavior-Question/"/>
     
-    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   
   <entry>
-    <title>394. Decode String</title>
-    <link href="http://zako945.github.io/post/decode-string/"/>
-    <id>http://zako945.github.io/post/decode-string/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-26T21:43:51.613Z</updated>
+    <title>英文面試常用句子</title>
+    <link href="http://zako945.github.io/post/interview-english-phrases/"/>
+    <id>http://zako945.github.io/post/interview-english-phrases/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-28T03:10:09.955Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/decode-string/&quot;&gt;https://leetcode.cn/problems/decode-string/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一經過編碼的 string, 返回它解碼後的 string。&lt;/p&gt;
-&lt;p&gt;編碼規則為：&lt;code&gt;k[encoded_string]&lt;/code&gt;,</summary>
+    <summary type="html">&lt;h1 id=&quot;電話&quot;&gt;&lt;a href=&quot;#電話&quot; class=&quot;headerlink&quot; title=&quot;電話&quot;&gt;&lt;/a&gt;電話&lt;/h1&gt;&lt;h2 id=&quot;確認對方身分&quot;&gt;&lt;a href=&quot;#確認對方身分&quot; class=&quot;headerlink&quot; title=&quot;確認對方身分&quot;&gt;&lt;/a&gt;確認對方身分&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Hi, may I ask who’s calling?&lt;/li&gt;
+&lt;li&gt;May I have your name, please?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2</summary>
         
       
     
     
     
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    <category term="Behavior Question" scheme="http://zako945.github.io/categories/Behavior-Question/"/>
     
-    <category term="Stack" scheme="http://zako945.github.io/categories/Leetcode/Stack/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   
   <entry>
-    <title>399. Evaluate Division</title>
-    <link href="http://zako945.github.io/post/evaluate-division/"/>
-    <id>http://zako945.github.io/post/evaluate-division/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:17.408Z</updated>
+    <title>Leadership Principles</title>
+    <link href="http://zako945.github.io/post/leadership-principles/"/>
+    <id>http://zako945.github.io/post/leadership-principles/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-28T03:10:09.956Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/evaluate-division/&quot;&gt;https://leetcode.cn/problems/evaluate-division/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：給一變數 pair array &lt;code&gt;equations&lt;/code&gt;, 和一實數 array &lt;code&gt;values&lt;/code&gt;, 其中</summary>
+    <summary type="html">&lt;h1 id=&quot;顧客至上（Customer-Obsession）&quot;&gt;&lt;a href=&quot;#顧客至上（Customer-Obsession）&quot; class=&quot;headerlink&quot; title=&quot;顧客至上（Customer Obsession）&quot;&gt;&lt;/a&gt;顧客至上（Customer Obsession）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;領導者從客戶入手，然後逆向操作。他們努力工作，贏得並維持客戶對他們的信任。雖然領導者會留意競爭對手，但是他們更重視客戶。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1</summary>
         
       
     
     
     
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    <category term="Behavior Question" scheme="http://zako945.github.io/categories/Behavior-Question/"/>
     
-    <category term="Graph" scheme="http://zako945.github.io/categories/Leetcode/Graph/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   
   <entry>
-    <title>388. Longest Absolute File Path</title>
-    <link href="http://zako945.github.io/post/longest-absolute-file-path/"/>
-    <id>http://zako945.github.io/post/longest-absolute-file-path/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-26T21:43:51.614Z</updated>
+    <title>自我介紹</title>
+    <link href="http://zako945.github.io/post/self-introduction/"/>
+    <id>http://zako945.github.io/post/self-introduction/</id>
+    <published>2024-12-26T16:00:00.000Z</published>
+    <updated>2024-12-28T03:10:09.958Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a href=&quot;https://leetcode.cn/problems/longest-absolute-file-path/&quot;&gt;https://leetcode.cn/problems/longest-absolute-file-path/&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;題意&lt;/strong&gt;：假設有一個同時儲存檔案和目錄的 file system。下圖展示了 file system</summary>
+    <summary type="html">&lt;h1 id=&quot;舊版（須更新）&quot;&gt;&lt;a href=&quot;#舊版（須更新）&quot; class=&quot;headerlink&quot; title=&quot;舊版（須更新）&quot;&gt;&lt;/a&gt;舊版（須更新）&lt;/h1&gt;&lt;h2 id=&quot;版本一&quot;&gt;&lt;a href=&quot;#版本一&quot; class=&quot;headerlink&quot; title=&quot;版本一&quot;&gt;&lt;/a&gt;版本一&lt;/h2&gt;&lt;h3 id=&quot;中文&quot;&gt;&lt;a href=&quot;#中文&quot; class=&quot;headerlink&quot;</summary>
         
       
     
     
     
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
+    <category term="Behavior Question" scheme="http://zako945.github.io/categories/Behavior-Question/"/>
     
-    <category term="Array" scheme="http://zako945.github.io/categories/Leetcode/Array/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>34. Find First and Last Position of Element in Sorted Array</title>
-    <link href="http://zako945.github.io/post/find-first-and-last-position-of-element-in-sorted-array/"/>
-    <id>http://zako945.github.io/post/find-first-and-last-position-of-element-in-sorted-array/</id>
-    <published>2024-12-23T16:00:00.000Z</published>
-    <updated>2024-12-24T23:50:18.209Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;題目網址：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="http://zako945.github.io/categories/Leetcode/"/>
-    
-    <category term="Binary Search" scheme="http://zako945.github.io/categories/Leetcode/Binary-Search/"/>
-    
-    
-    <category term="Medium" scheme="http://zako945.github.io/tags/Medium/"/>
-    
-    <category term="Amazon" scheme="http://zako945.github.io/tags/Amazon/"/>
-    
-    <category term="Google" scheme="http://zako945.github.io/tags/Google/"/>
-    
-    <category term="Microsoft" scheme="http://zako945.github.io/tags/Microsoft/"/>
     
   </entry>
   
